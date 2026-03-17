@@ -1,0 +1,230 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Contacto | Iturribero Abereak"
+  description="Contacto de Iturribero Abereak, explotación agroganadera familiar en Durana (Arrazua-Ubarrundia, Álava)."
+  image="/tierra.jpg"
+>
+
+  <!-- HERO -->
+  <section class="relative h-[55vh] md:h-[60vh] w-full overflow-hidden">
+    <img
+      src="/tierra.jpg"
+      alt="Contacto - Iturribero Abereak"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/10"></div>
+
+    <div class="relative z-10 h-full flex items-end">
+      <div class="max-w-7xl mx-auto px-8 pb-12 w-full">
+        <div class="max-w-2xl text-white">
+          <p class="uppercase tracking-[0.25em] text-yellow-200 text-xs md:text-sm mb-4">
+            Contacto
+          </p>
+
+          <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
+            Hablemos.
+          </h1>
+
+          <p class="mt-5 text-white/90 text-lg leading-relaxed">
+            Para consultas, disponibilidad o colaboración, escríbenos y te respondemos lo antes posible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO (blanco) -->
+  <section class="w-full bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-8 py-20 grid lg:grid-cols-12 gap-10 items-start">
+
+      <!-- Datos -->
+      <div class="lg:col-span-5">
+        <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-4">
+          Iturribero Abereak
+        </p>
+
+        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
+          Durana (Arrazua-Ubarrundia, Álava)
+        </h2>
+
+        <p class="mt-4 text-gray-600 leading-relaxed text-lg">
+          Explotación agroganadera familiar. Si necesitas información, quieres visitarnos o plantear una colaboración,
+          aquí tienes las vías de contacto.
+        </p>
+
+        <div class="mt-10 space-y-4">
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Teléfono</p>
+            <p class="mt-1 font-semibold text-gray-900">[Pon el teléfono]</p>
+          </div>
+
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Email</p>
+            <p class="mt-1 font-semibold text-gray-900">[Pon el email]</p>
+          </div>
+
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Ubicación</p>
+            <p class="mt-1 font-semibold text-gray-900">Durana · Arrazua-Ubarrundia · Álava</p>
+            <p class="mt-1 text-sm text-gray-600">
+              *Si vienes, escríbenos antes y te indicamos el acceso.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href="https://instagram.com/TU_USUARIO"
+            target="_blank"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-300 text-gray-900 text-sm font-semibold hover:bg-gray-50 transition"
+          >
+            Instagram →
+          </a>
+
+          <a
+            href="mailto:[pon_el_email]"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm"
+          >
+            Enviar email →
+          </a>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="lg:col-span-7">
+        <div class="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+          <div class="p-8 md:p-10">
+            <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-3">
+              Formulario
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-semibold text-gray-900">
+              Escríbenos
+            </h3>
+
+            <p class="mt-3 text-gray-600 leading-relaxed">
+              Cuéntanos qué necesitas y te respondemos lo antes posible.
+            </p>
+
+            <!--
+              Opción rápida (Formspree):
+              1) crea un formulario en formspree.io y pega tu endpoint en action=""
+              2) ejemplo: action="https://formspree.io/f/xxxxxx"
+            -->
+            <form
+              class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5"
+              method="POST"
+              action="https://formspree.io/f/TU_ENDPOINT"
+            >
+              <div class="md:col-span-1">
+                <label class="block text-sm font-semibold text-gray-900">Nombre</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  required
+                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
+                  placeholder="Tu nombre"
+                />
+              </div>
+
+              <div class="md:col-span-1">
+                <label class="block text-sm font-semibold text-gray-900">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
+                  placeholder="tu@email.com"
+                />
+              </div>
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold text-gray-900">Asunto</label>
+                <input
+                  type="text"
+                  name="asunto"
+                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
+                  placeholder="Consulta / disponibilidad / colaboración"
+                />
+              </div>
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold text-gray-900">Mensaje</label>
+                <textarea
+                  name="mensaje"
+                  required
+                  rows="6"
+                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
+                  placeholder="Escribe aquí tu mensaje…"
+                ></textarea>
+              </div>
+
+              <div class="md:col-span-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <p class="text-sm text-gray-500">
+                  Al enviar aceptas que usemos tus datos solo para responder a tu consulta.
+                </p>
+
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm"
+                >
+                  Enviar →
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Banda inferior sutil (para coherencia visual) -->
+          <div class="px-8 md:px-10 py-6 bg-slate-50 border-t border-gray-200">
+            <p class="text-sm text-gray-600">
+              Si lo prefieres, también puedes escribirnos directamente por email o Instagram.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAPA (gris sutil) -->
+  <section class="w-full bg-slate-100 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-8 py-16">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-2xl">
+          <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-3">
+            Ubicación
+          </p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">
+            Durana · Arrazua-Ubarrundia · Álava
+          </h2>
+          <p class="mt-3 text-gray-600 leading-relaxed">
+            Puedes incrustar un mapa o enlazar a Google Maps. Si vas a venir, avísanos antes.
+          </p>
+        </div>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Durana%2C%20Arrazua-Ubarrundia%2C%20%C3%81lava"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 text-gray-900 text-sm font-semibold hover:bg-white transition"
+        >
+          Abrir en Google Maps →
+        </a>
+      </div>
+
+      <div class="mt-10 rounded-3xl overflow-hidden border border-gray-200 bg-white">
+        <!-- Sustituye el src por tu embed real si quieres un punto exacto -->
+        <iframe
+          title="Mapa Durana"
+          class="w-full h-[380px] md:h-[460px]"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Durana%2C%20Arrazua-Ubarrundia%2C%20%C3%81lava&output=embed"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+</Layout>

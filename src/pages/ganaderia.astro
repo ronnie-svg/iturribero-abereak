@@ -1,0 +1,230 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Quiénes somos | Iturribero Abereak"
+  description="Conoce Iturribero Abereak, una explotación agroganadera familiar en Durana (Álava), actualmente en su tercera generación."
+  image="/txabola.jpg"
+>
+
+  <!-- HERO -->
+  <section class="relative h-[70vh] md:h-[78vh] w-full overflow-hidden">
+    <img
+      src="/vaca_primer-plano.jpg"
+      alt="Ganadería - Iturribero Abereak"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/15"></div>
+
+    <div class="relative z-10 h-full flex items-end">
+      <div class="max-w-7xl mx-auto px-8 pb-14 w-full">
+        <div class="max-w-2xl text-white">
+          <p class="uppercase tracking-[0.25em] text-yellow-200 text-xs md:text-sm mb-4">
+            Ganadería
+          </p>
+
+          <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
+            Vacas de carne.
+            <br class="hidden md:block" />
+            Cuidado diario y seguimiento.
+          </h1>
+
+          <p class="mt-5 text-white/90 text-lg leading-relaxed">
+            Explotación familiar en Durana (Arrazua-Ubarrundia, Álava). Manejo responsable,
+            bienestar animal y atención al detalle, con el ritmo que marca el campo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE EDITORIAL -->
+  <section class="w-full bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-8 py-20">
+      <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-5">
+        Nuestra forma de trabajar
+      </p>
+
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-gray-900">
+        Bienestar primero.
+        <br class="hidden md:block" />
+        Manejo responsable, sin atajos.
+      </h2>
+
+      <div class="mt-10 h-px w-full bg-gray-200"></div>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="relative pl-6">
+          <div class="absolute left-0 top-1 w-1 h-10 rounded-full bg-gray-900"></div>
+          <p class="text-sm font-semibold text-gray-900">Seguimiento</p>
+          <p class="text-gray-600 mt-2 leading-relaxed">
+            Observación diaria y control para anticiparnos y cuidar los detalles.
+          </p>
+        </div>
+
+        <div class="relative pl-6">
+          <div class="absolute left-0 top-1 w-1 h-10 rounded-full bg-gray-900"></div>
+          <p class="text-sm font-semibold text-gray-900">Manejo responsable</p>
+          <p class="text-gray-600 mt-2 leading-relaxed">
+            Rutinas claras, bienestar y buenas prácticas en el trabajo diario.
+          </p>
+        </div>
+
+        <div class="relative pl-6">
+          <div class="absolute left-0 top-1 w-1 h-10 rounded-full bg-gray-900"></div>
+          <p class="text-sm font-semibold text-gray-900">Alimentación</p>
+          <p class="text-gray-600 mt-2 leading-relaxed">
+            Parte del alimento viene de nuestros cultivos: campo y ganado conectados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- CLAVES DE LA GANADERÍA -->
+<section class="w-full bg-slate-100 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-8 py-20">
+
+    <div class="max-w-3xl">
+      <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-4">
+        En el día a día
+      </p>
+
+      <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
+        Una ganadería pequeña permite
+        <br class="hidden md:block" />
+        estar encima de lo importante.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-8">
+
+      <div class="rounded-3xl border border-gray-200 bg-white p-8">
+        <p class="text-sm font-semibold text-gray-900">
+          Seguimiento diario
+        </p>
+        <p class="mt-3 text-gray-600 leading-relaxed">
+          Observar, controlar y anticiparse forma parte del trabajo diario con el ganado.
+        </p>
+      </div>
+
+      <div class="rounded-3xl border border-gray-200 bg-white p-8">
+        <p class="text-sm font-semibold text-gray-900">
+          Bienestar animal
+        </p>
+        <p class="mt-3 text-gray-600 leading-relaxed">
+          El manejo responsable y la atención al detalle marcan la forma de trabajar.
+        </p>
+      </div>
+
+      <div class="rounded-3xl border border-gray-200 bg-white p-8">
+        <p class="text-sm font-semibold text-gray-900">
+          Alimentación ligada al campo
+        </p>
+        <p class="mt-3 text-gray-600 leading-relaxed">
+          Parte de la alimentación procede de nuestros propios cultivos, manteniendo un ciclo conectado.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+  <!-- BLOQUE VISUAL (diagonal, coherente con home) -->
+  <section class="w-full bg-slate-100 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-8 py-20">
+      <a href="/contacto" class="group block">
+        <div class="relative w-full h-[420px] overflow-hidden rounded-[28px] border border-gray-200 bg-white">
+          <img
+            src="/vacas.jpg"
+            alt="Ganado"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent"></div>
+
+          <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 h-full w-[60%] bg-black/20 [clip-path:polygon(0_0,70%_0,50%_100%,0_100%)]"></div>
+          </div>
+
+          <div class="relative z-10 h-full flex items-center px-10 md:px-20 lg:px-28 xl:px-36">
+            <div class="max-w-md text-white">
+              <p class="uppercase tracking-[0.25em] text-yellow-200 text-xs mb-3">
+                Explotación pequeña
+              </p>
+              <h3 class="text-3xl md:text-4xl font-semibold leading-tight">
+                Cercanía y control
+              </h3>
+              <p class="mt-3 text-white/90 leading-relaxed">
+                Un tamaño humano permite estar encima del día a día y trabajar con calma, sin perder el foco.
+              </p>
+
+             <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
+  Contactar → 
+</div>
+            </div>
+          </div>
+
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- GALERÍA / VIDA EN EL CAMPO (incluye vídeos) -->
+  <section class="w-full bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-8 py-20">
+      <div class="flex items-end justify-between gap-6">
+        <div class="max-w-2xl">
+          <p class="mt-3 text-gray-600 leading-relaxed max-w-2xl">
+  Imágenes y vídeos del trabajo de campaña, la maquinaria y el ritmo real del día a día.
+</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">
+            Campo, maquinaria y trabajo real
+          </h2>
+        </div>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- vídeo 1 -->
+        <video
+          class="rounded-3xl h-64 w-full object-cover border border-gray-200 bg-black"
+          src="/cosechando.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+
+        <!-- vídeo 2 -->
+        <video
+          class="rounded-3xl h-64 w-full object-cover border border-gray-200 bg-black"
+          src="/cosechadora-remolque.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+
+        <!-- foto -->
+        <img
+          src="/mccormick2.jpg"
+          alt="Trabajo de campo"
+          class="rounded-3xl h-64 w-full object-cover border border-gray-200"
+        />
+
+        <!-- foto -->
+        <img
+          src="/deutz.jpg"
+          alt="Maquinaria"
+          class="rounded-3xl h-64 w-full object-cover border border-gray-200"
+        />
+
+      </div>
+    </div>
+  </section>
+
+
+
+</Layout>

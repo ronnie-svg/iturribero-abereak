@@ -1,0 +1,312 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const pageTitle = Astro.props.title ?? "Iturribero Abereak";
+const pageDescription =
+  Astro.props.description ??
+  "Explotación agroganadera familiar en Durana (Arrazua-Ubarrundia, Álava). Vacas de carne y cultivos cerealistas.";
+
+const pageImage = Astro.props.image ?? "/hero-colza.jpg";
+const canonicalUrl = Astro.props.canonical ?? Astro.url.href;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="Iturribero Abereak" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/Iturriberoabereaklogo.svg" type="image/svg+xml" />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={pageImage} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Iturribero Abereak" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={pageImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "Iturribero Abereak",
+        image: pageImage,
+        url: canonicalUrl,
+        description: pageDescription,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Durana",
+          addressRegion: "Álava",
+          addressCountry: "ES"
+        }
+      })}
+    ></script>
+  </head>
+
+  <body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- Header fixed (para poder estar encima del hero) -->
+    <header
+      id="site-header"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+        <a href="/" class="flex items-center gap-3">
+          <img
+            src="/Iturriberoabereaklogo.svg"
+            alt="Iturribero Abereak"
+            class="h-10 w-auto"
+          />
+          <span id="brand-text" class="font-semibold text-lg tracking-tight">
+            Iturribero Abereak
+          </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a id="nav-qs" href="/quienes-somos" class="hover:underline underline-offset-4">Quiénes somos</a>
+          <a id="nav-gan" href="/ganaderia" class="hover:underline underline-offset-4">Ganadería</a>
+          <a id="nav-agr" href="/agricultura" class="hover:underline underline-offset-4">Agricultura</a>
+
+          <a
+            id="nav-contact"
+            href="/contacto"
+            class="inline-flex items-center justify-center px-5 py-2 rounded-full font-semibold transition"
+          >
+            Contacto
+          </a>
+        </nav>
+
+        <div class="md:hidden">
+          <a
+            id="nav-contact-mobile"
+            href="/contacto"
+            class="inline-flex items-center justify-center px-4 py-2 rounded-full font-semibold transition"
+          >
+            Contacto
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- main con padding-top para que el contenido no quede tapado por el header fixed -->
+    <main class="pt-[72px]">
+      <slot />
+    </main>
+
+  
+<footer class="bg-slate-100 border-t border-gray-200">
+
+  <div class="max-w-7xl mx-auto px-8 py-14">
+    <div class="grid md:grid-cols-[1.2fr_1fr_1fr] gap-12 md:gap-16 items-start">
+
+      <!-- Marca -->
+      <div class="max-w-sm">
+        <img
+          src="/Iturriberoabereaklogo.svg"
+          alt="Iturribero Abereak"
+          class="h-14 w-auto"
+        />
+
+        <p class="mt-6 text-base leading-relaxed text-gray-700">
+          Explotación agrogana
+		  dera familiar en Durana
+          (Arrazua-Ubarrundia, Álava).
+        </p>
+
+        <p class="mt-6 text-base text-gray-500">
+          Campo, ganado y trabajo de temporada.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <p class="text-sm font-semibold text-gray-900 uppercase tracking-[0.18em]">
+          Contacto
+        </p>
+
+        <div class="mt-6 space-y-4 text-base text-gray-700">
+          <p>Durana · Arrazua-Ubarrundia · Álava</p>
+
+          <a
+            href="mailto:info@iturriberoabereak.com"
+            class="block hover:text-gray-900 transition"
+          >
+            info@iturriberoabereak.com
+          </a>
+
+          <a
+            href="https://instagram.com/TU_USUARIO"
+            target="_blank"
+            class="inline-flex items-center gap-3 hover:text-gray-900 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 shrink-0"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.75 2h8.5C19.99 2 22 4.01 22 7.75v8.5C22 19.99 19.99 22 16.25 22h-8.5C4.01 22 2 19.99 2 16.25v-8.5C2 4.01 4.01 2 7.75 2zm8.4 2h-8.3A3.85 3.85 0 004 7.85v8.3A3.85 3.85 0 007.85 20h8.3A3.85 3.85 0 0020 16.15v-8.3A3.85 3.85 0 0016.15 4zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm5.2-2.3a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+              />
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Información -->
+      <div>
+        <p class="text-sm font-semibold text-gray-900 uppercase tracking-[0.18em]">
+          Información
+        </p>
+
+        <div class="mt-6 space-y-4 text-base text-gray-700">
+          <a
+            href="/aviso-legal"
+            class="block hover:text-gray-900 transition"
+          >
+            Aviso legal
+          </a>
+
+          <a
+            href="/privacidad"
+            class="block hover:text-gray-900 transition"
+          >
+            Política de privacidad
+          </a>
+
+          <a
+            href="/cookies"
+            class="block hover:text-gray-900 transition"
+          >
+            Política de cookies
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-8 py-6 text-sm text-gray-500 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+      <p>© {new Date().getFullYear()} Iturribero Abereak</p>
+      <p>Durana · Arrazua-Ubarrundia · Álava</p>
+    </div>
+  </div>
+
+</footer>
+
+    <script is:inline>
+  const header = document.getElementById("site-header");
+  const brandText = document.getElementById("brand-text");
+
+  const navIds = ["nav-qs", "nav-gan", "nav-agr", "nav-contact", "nav-contact-mobile"];
+  const navEls = navIds.map((id) => document.getElementById(id)).filter(Boolean);
+
+  const isHome = window.location.pathname === "/" || window.location.pathname === "/index.html";
+  const THRESHOLD = 8; // puedes bajar a 12 si quieres que cambie antes
+
+  let ticking = false;
+  let lastMode = null; // "transparent" | "solid"
+
+  function setTransparent() {
+  if (lastMode === "transparent") return;
+  lastMode = "transparent";
+
+  header.className =
+    "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-b from-black/35 to-transparent";
+
+  brandText.className = "font-semibold text-lg tracking-tight text-white";
+  navEls.forEach((el) => {
+    el.classList.remove("text-gray-700");
+    el.classList.add("text-white");
+  });
+
+  const contact = document.getElementById("nav-contact");
+  const contactMobile = document.getElementById("nav-contact-mobile");
+  [contact, contactMobile].filter(Boolean).forEach((el) => {
+    const isMobile = el.id === "nav-contact-mobile";
+    el.className =
+      (isMobile
+        ? "inline-flex items-center justify-center px-4 py-2"
+        : "inline-flex items-center justify-center px-5 py-2") +
+      " rounded-full font-semibold transition bg-white/15 text-white border border-white/25 hover:bg-white/25";
+  });
+}
+
+  function setSolid() {
+  if (lastMode === "solid") return;
+  lastMode = "solid";
+
+  header.className =
+    "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur shadow-sm";
+
+  brandText.className = "font-semibold text-lg tracking-tight text-gray-900";
+  navEls.forEach((el) => {
+    el.classList.remove("text-white");
+    el.classList.add("text-gray-700");
+  });
+
+  const contact = document.getElementById("nav-contact");
+  const contactMobile = document.getElementById("nav-contact-mobile");
+  [contact, contactMobile].filter(Boolean).forEach((el) => {
+    const isMobile = el.id === "nav-contact-mobile";
+    el.className =
+      (isMobile
+        ? "inline-flex items-center justify-center px-4 py-2"
+        : "inline-flex items-center justify-center px-5 py-2") +
+      " rounded-full font-semibold transition bg-gray-900 text-white hover:bg-gray-800";
+  });
+}
+
+  function applyModeFromScroll() {
+    if (!isHome) {
+      setSolid();
+      return;
+    }
+
+    // Cambia inmediatamente cuando estás arriba (reduce "lag")
+    if (window.scrollY <= THRESHOLD) setTransparent();
+    else setSolid();
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(() => {
+        applyModeFromScroll();
+        ticking = false;
+      });
+    }
+  }
+
+  // Eventos: scroll + wheel + touchmove para respuesta instantánea
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("wheel", requestTick, { passive: true });
+  window.addEventListener("touchmove", requestTick, { passive: true });
+
+  // Por si la página se carga ya scrolleada
+  requestTick();
+</script>
+  </body>
+</html>
