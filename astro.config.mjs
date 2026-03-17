@@ -4,10 +4,10 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://astro.iturriberoabereak.com',
+  site: 'https://iturriberoabereak.com',
   integrations: [sitemap()],
-  output: 'server',
-  adapter: vercel(),
+  output: 'server',   // 🔥 MUY IMPORTANTE
+  adapter: vercel(),  // 🔥 MUY IMPORTANTE
   vite: {
     plugins: [tailwindcss()],
   },

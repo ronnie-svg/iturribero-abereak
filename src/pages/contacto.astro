@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
 <Layout
@@ -7,8 +8,6 @@ import Layout from "../layouts/Layout.astro";
   description="Contacto de Iturribero Abereak, explotación agroganadera familiar en Durana (Arrazua-Ubarrundia, Álava)."
   image="/tierra.jpg"
 >
-
-  <!-- HERO -->
   <section class="relative h-[55vh] md:h-[60vh] w-full overflow-hidden">
     <img
       src="/tierra.jpg"
@@ -36,11 +35,8 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
 
-  <!-- CONTENIDO (blanco) -->
   <section class="w-full bg-white border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-8 py-20 grid lg:grid-cols-12 gap-10 items-start">
-
-      <!-- Datos -->
       <div class="lg:col-span-5">
         <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-4">
           Iturribero Abereak
@@ -63,7 +59,7 @@ import Layout from "../layouts/Layout.astro";
 
           <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
             <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Email</p>
-            <p class="mt-1 font-semibold text-gray-900">[Pon el email]</p>
+            <p class="mt-1 font-semibold text-gray-900">info@iturriberoabereak.com</p>
           </div>
 
           <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
@@ -77,7 +73,7 @@ import Layout from "../layouts/Layout.astro";
 
         <div class="mt-10 flex flex-wrap gap-3">
           <a
-            href="https://instagram.com/TU_USUARIO"
+            href="https://instagram.com/iturriberoabereak"
             target="_blank"
             class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-300 text-gray-900 text-sm font-semibold hover:bg-gray-50 transition"
           >
@@ -85,7 +81,7 @@ import Layout from "../layouts/Layout.astro";
           </a>
 
           <a
-            href="mailto:[pon_el_email]"
+            href="mailto:info@iturriberoabereak.com"
             class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm"
           >
             Enviar email →
@@ -93,7 +89,6 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
 
-      <!-- Formulario -->
       <div class="lg:col-span-7">
         <div class="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div class="p-8 md:p-10">
@@ -109,21 +104,15 @@ import Layout from "../layouts/Layout.astro";
               Cuéntanos qué necesitas y te respondemos lo antes posible.
             </p>
 
-            <!--
-              Opción rápida (Formspree):
-              1) crea un formulario en formspree.io y pega tu endpoint en action=""
-              2) ejemplo: action="https://formspree.io/f/xxxxxx"
-            -->
             <form
+              id="contact-form"
               class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5"
-              method="POST"
-              action="https://formspree.io/f/TU_ENDPOINT"
             >
               <div class="md:col-span-1">
                 <label class="block text-sm font-semibold text-gray-900">Nombre</label>
                 <input
                   type="text"
-                  name="nombre"
+                  name="name"
                   required
                   class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
                   placeholder="Tu nombre"
@@ -142,19 +131,19 @@ import Layout from "../layouts/Layout.astro";
               </div>
 
               <div class="md:col-span-2">
-                <label class="block text-sm font-semibold text-gray-900">Asunto</label>
+                <label class="block text-sm font-semibold text-gray-900">Teléfono</label>
                 <input
                   type="text"
-                  name="asunto"
+                  name="phone"
                   class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
-                  placeholder="Consulta / disponibilidad / colaboración"
+                  placeholder="Tu teléfono"
                 />
               </div>
 
               <div class="md:col-span-2">
                 <label class="block text-sm font-semibold text-gray-900">Mensaje</label>
                 <textarea
-                  name="mensaje"
+                  name="message"
                   required
                   rows="6"
                   class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:ring-2 focus:ring-gray-900/20"
@@ -168,16 +157,20 @@ import Layout from "../layouts/Layout.astro";
                 </p>
 
                 <button
+                  id="contact-submit"
                   type="submit"
                   class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm"
                 >
                   Enviar →
                 </button>
               </div>
+
+              <div class="md:col-span-2">
+                <p id="form-status" class="text-sm text-gray-600"></p>
+              </div>
             </form>
           </div>
 
-          <!-- Banda inferior sutil (para coherencia visual) -->
           <div class="px-8 md:px-10 py-6 bg-slate-50 border-t border-gray-200">
             <p class="text-sm text-gray-600">
               Si lo prefieres, también puedes escribirnos directamente por email o Instagram.
@@ -185,11 +178,9 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- MAPA (gris sutil) -->
   <section class="w-full bg-slate-100 border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-8 py-16">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -215,7 +206,6 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <div class="mt-10 rounded-3xl overflow-hidden border border-gray-200 bg-white">
-        <!-- Sustituye el src por tu embed real si quieres un punto exacto -->
         <iframe
           title="Mapa Durana"
           class="w-full h-[380px] md:h-[460px]"
@@ -226,5 +216,45 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
-
 </Layout>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const submitButton = document.getElementById("contact-submit");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!status || !submitButton || !(form instanceof HTMLFormElement)) return;
+
+    status.textContent = "Enviando mensaje...";
+    submitButton.setAttribute("disabled", "disabled");
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result?.error || "Error al enviar el mensaje.");
+      }
+
+      status.textContent = "Mensaje enviado correctamente.";
+      form.reset();
+    } catch (error) {
+      status.textContent = "No se pudo enviar el mensaje. Inténtalo de nuevo.";
+    } finally {
+      submitButton.removeAttribute("disabled");
+    }
+  });
+</script>
