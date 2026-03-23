@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import '../styles/global.css';
+import TimelineGeneraciones from "../components/TimelineGeneraciones.astro";
+---
 ---
 
 <Layout
@@ -102,89 +105,7 @@ import Layout from "../layouts/Layout.astro";
 </section>
 
 <!-- LÍNEA TEMPORAL -->
-<section class="w-full bg-slate-100 border-t border-gray-200">
-  <div class="max-w-7xl mx-auto px-8 py-20">
-
-    <div class="max-w-3xl">
-      <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-4">
-        Generaciones
-      </p>
-
-      <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
-        Un proyecto que ha pasado
-        <br class="hidden md:block" />
-        de generación en generación.
-      </h2>
-    </div>
-
-    <div class="mt-14 relative">
-      <!-- línea -->
-      <div class="hidden md:block absolute top-5 left-0 right-0 h-px bg-gray-300"></div>
-
-      <div class="grid md:grid-cols-3 gap-10 relative">
-
-        <!-- 1 -->
-        <div class="relative">
-          <div class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-semibold mb-6 relative z-10">
-            1
-          </div>
-
-          <div class="md:hidden flex items-center gap-3 mb-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-semibold">
-              1
-            </div>
-            <p class="text-sm font-semibold text-gray-900">Primera generación</p>
-          </div>
-
-          <p class="hidden md:block text-sm font-semibold text-gray-900">Primera generación</p>
-          <p class="mt-2 text-gray-600 leading-relaxed">
-            El origen del proyecto: trabajo diario, oficio y una manera de vivir el campo desde dentro.
-          </p>
-        </div>
-
-        <!-- 2 -->
-        <div class="relative">
-          <div class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-semibold mb-6 relative z-10">
-            2
-          </div>
-
-          <div class="md:hidden flex items-center gap-3 mb-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-semibold">
-              2
-            </div>
-            <p class="text-sm font-semibold text-gray-900">Segunda generación</p>
-          </div>
-
-          <p class="hidden md:block text-sm font-semibold text-gray-900">Segunda generación</p>
-          <p class="mt-2 text-gray-600 leading-relaxed">
-            Continuidad y evolución: mantener la base familiar adaptándose a cada campaña y necesidad.
-          </p>
-        </div>
-
-        <!-- 3 -->
-        <div class="relative">
-          <div class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-semibold mb-6 relative z-10">
-            3
-          </div>
-
-          <div class="md:hidden flex items-center gap-3 mb-4">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-semibold">
-              3
-            </div>
-            <p class="text-sm font-semibold text-gray-900">Tercera generación</p>
-          </div>
-
-          <p class="hidden md:block text-sm font-semibold text-gray-900">Tercera generación</p>
-          <p class="mt-2 text-gray-600 leading-relaxed">
-            El presente: una explotación pequeña, cercana y responsable, con vacas de carne y cultivos vinculados a su alimentación.
-          </p>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
+<TimelineGeneraciones />
 
   <!-- DOS BLOQUES GRANDES (gris sutil) -->
   <section class="w-full bg-white border-t border-gray-200">
@@ -258,6 +179,7 @@ import Layout from "../layouts/Layout.astro";
 
           <a href="/agricultura" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-gray-700 transition">
             Ver agricultura <span class="opacity-70">→</span>
+          </a>
           </a>
         </div>
       </div>
