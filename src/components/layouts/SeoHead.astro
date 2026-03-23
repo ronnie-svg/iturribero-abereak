@@ -1,0 +1,64 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image: string;
+  canonical: string;
+}
+
+const { title, description, image, canonical } = Astro.props;
+
+const gtmHeadScript = `
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NHDHMVVK');
+`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Iturribero Abereak" />
+<meta name="robots" content="index, follow" />
+
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/Iturriberoabereaklogo.svg" type="image/svg+xml" />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Iturribero Abereak" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Iturribero Abereak",
+    image,
+    url: canonical,
+    description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Durana",
+      addressRegion: "Álava",
+      addressCountry: "ES"
+    }
+  })}
+/>
+
+<!-- Google Tag Manager -->
+<script is:inline set:html={gtmHeadScript}></script>
+<!-- End Google Tag Manager -->
