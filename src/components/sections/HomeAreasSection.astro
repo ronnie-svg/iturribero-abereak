@@ -1,0 +1,285 @@
+---
+const items = [
+  {
+    title: "Quiénes somos",
+    href: "/quienes-somos",
+    cta: "Conocer más",
+    description:
+      "Una historia familiar ligada al campo, al cuidado de los animales y al trabajo constante.",
+  },
+  {
+    title: "Ganadería",
+    href: "/ganaderia",
+    cta: "Conocer más",
+    description:
+      "Cría de vacuno de carne con atención al bienestar animal y al manejo responsable.",
+  },
+  {
+    title: "Agricultura",
+    href: "/agricultura",
+    cta: "Conocer más",
+    description:
+      "Cultivos cerealistas y forrajeros trabajados con respeto por la tierra y cada campaña.",
+  },
+  {
+    title: "Contacto",
+    href: "/contacto",
+    cta: "Conocer más",
+    description:
+      "Estamos en Durana, Álava. Si quieres saber más, estaremos encantados de hablar contigo.",
+  },
+];
+---
+
+<section class="home-areas" aria-label="Áreas principales">
+  <img
+    src="/cebada.jpg"
+    alt="Paisaje agrícola de Iturribero Abereak"
+    class="home-areas__bg"
+    loading="lazy"
+  />
+
+  <div class="home-areas__overlay"></div>
+
+  <div class="home-areas__links">
+    {items.map((item) => (
+      <a class="home-areas__link" href={item.href}>
+        <div class="home-areas__shade"></div>
+
+        <div class="home-areas__inner">
+          <div class="home-areas__content">
+            <h3>{item.title}</h3>
+
+            <div class="home-areas__reveal">
+              <p>{item.description}</p>
+            </div>
+
+            <span class="home-areas__cta">
+              <span class="home-areas__cta-text">{item.cta}</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .home-areas {
+    position: relative;
+    height: 80vh;
+    min-height: 540px;
+    overflow: hidden;
+    color: #fff;
+    isolation: isolate;
+  }
+
+  .home-areas__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-areas__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.24)
+    );
+  }
+
+  .home-areas__links {
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .home-areas__link {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 1.2rem 1.4rem;
+    text-decoration: none;
+    color: white;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .home-areas__link:first-child {
+    border-left: none;
+  }
+
+  .home-areas__shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.35s ease;
+  }
+
+  .home-areas__inner {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 1rem;
+  }
+
+  .home-areas__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(0);
+    transition: transform 0.35s ease;
+  }
+
+  .home-areas__content h3 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2.2vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.02;
+  }
+
+  .home-areas__reveal {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition:
+      max-height 0.35s ease,
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .home-areas__reveal p {
+    margin: 0.7rem 0 0;
+    max-width: 28ch;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .home-areas__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .home-areas__cta svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .home-areas__link:hover .home-areas__shade,
+  .home-areas__link:focus-visible .home-areas__shade {
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  .home-areas__link:hover .home-areas__content,
+  .home-areas__link:focus-visible .home-areas__content {
+    transform: translateY(-3.8rem);
+  }
+
+  .home-areas__link:hover .home-areas__reveal,
+  .home-areas__link:focus-visible .home-areas__reveal {
+    max-height: 6rem;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .home-areas__link:hover .home-areas__cta svg,
+  .home-areas__link:focus-visible .home-areas__cta svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .home-areas__links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .home-areas {
+      height: auto;
+      min-height: 0;
+    }
+
+    .home-areas__links {
+      grid-template-columns: 1fr;
+    }
+
+    .home-areas__link {
+      align-items: stretch;
+      border-left: none;
+      padding: 0 1rem;
+    }
+
+    .home-areas__inner {
+      padding: 1.15rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .home-areas__content {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transform: none !important;
+    }
+
+    .home-areas__content h3 {
+      font-size: 2rem;
+      max-width: none;
+      line-height: 1.05;
+    }
+
+    .home-areas__reveal {
+      display: none;
+    }
+
+    .home-areas__cta {
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    .home-areas__cta-text {
+      display: none;
+    }
+
+    .home-areas__cta svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .home-areas__shade {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-areas__shade,
+    .home-areas__content,
+    .home-areas__reveal,
+    .home-areas__cta svg {
+      transition: none;
+    }
+  }
+</style>
