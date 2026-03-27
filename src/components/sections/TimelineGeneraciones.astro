@@ -30,7 +30,7 @@
       >
         <button
           type="button"
-          class="generation-tab flex-shrink-0 rounded-full border border-gray-900 bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition"
+          class="generation-tab shrink-0 rounded-full border border-gray-900 bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition"
           data-generation="1"
           aria-selected="true"
         >
@@ -39,7 +39,7 @@
 
         <button
           type="button"
-          class="generation-tab flex-shrink-0 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition"
+          class="generation-tab shrink-0 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition"
           data-generation="2"
           aria-selected="false"
         >
@@ -48,7 +48,7 @@
 
         <button
           type="button"
-          class="generation-tab flex-shrink-0 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition"
+          class="generation-tab shrink-0 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition"
           data-generation="3"
           aria-selected="false"
         >
@@ -58,10 +58,10 @@
     </div>
 
     <!-- Stage -->
-    <div class="mt-8 md:mt-10 overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-950">
-      <div class="grid lg:grid-cols-12 min-h-[560px]">
+    <div class="mt-8 md:mt-10 overflow-hidden rounded-4xl border border-gray-200 bg-gray-950">
+      <div class="grid lg:grid-cols-12 min-h-140">
         <!-- Imagen -->
-        <div class="relative lg:col-span-7 min-h-[300px] lg:min-h-full">
+        <div class="relative lg:col-span-7 min-h-75 lg:min-h-full">
           <img
             id="generation-image-1"
             src="/tierra.jpg"
@@ -83,7 +83,7 @@
             class="generation-image pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 scale-[1.03] transition-all duration-700 ease-out"
           />
 
-          <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
+          <div class="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
 
           <div class="absolute left-6 bottom-6 md:left-8 md:bottom-8">
             <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-white/85 backdrop-blur-sm">

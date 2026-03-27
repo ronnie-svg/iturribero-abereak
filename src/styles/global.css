@@ -144,7 +144,7 @@
   }
 
   .image-card {
-    @apply relative overflow-hidden rounded-[2rem];
+    @apply relative overflow-hidden rounded-4xl;
   }
 
   .image-overlay-dark {
@@ -167,3 +167,7 @@
     @apply inline-flex items-center gap-2 text-sm font-semibold text-gray-900 no-underline transition hover:text-gray-700;
   }
 }
+
+<section class="section-shell bg-white pt-20">
+  <!-- ...existing code... -->
+</section>

@@ -1,5 +1,5 @@
 <section class="w-full bg-white">
-  <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-10">
 <!-- Header -->
 <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
 
@@ -24,58 +24,50 @@
 </div>
 
     <!-- Stage -->
-    <div class="mt-12 overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-950">
-      <div class="grid lg:grid-cols-12 min-h-[560px]">
+    <div class="mt-12 overflow-hidden rounded-4xl border border-gray-200 bg-gray-950">
+      <div class="flex flex-col lg:grid lg:grid-cols-12 min-h-140">
         <!-- Imagen -->
-        <div class="relative lg:col-span-7 min-h-[300px] lg:min-h-full">
+        <div class="relative w-full min-h-60 sm:min-h-80 lg:col-span-7 lg:min-h-full">
           <img
             id="generation-image-1"
             src="/tierra.jpg"
             alt="Primera generación de Iturribero Abereak"
             class="generation-image is-active"
           />
-
           <img
             id="generation-image-2"
             src="/camino.jpg"
             alt="Segunda generación de Iturribero Abereak"
             class="generation-image"
           />
-
           <img
             id="generation-image-3"
             src="/asturiana.jpg"
             alt="Tercera generación de Iturribero Abereak"
             class="generation-image"
           />
-
-          <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
-
-          <div class="absolute left-6 bottom-6 md:left-8 md:bottom-8">
-            <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-white/85 backdrop-blur-sm">
-              <span class="text-xs uppercase tracking-[0.3em]">Iturribero Abereak</span>
+          <div class="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
+          <div class="absolute left-4 bottom-4 md:left-8 md:bottom-8">
+            <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-white/85 backdrop-blur-sm text-xs md:text-sm">
+              <span class="uppercase tracking-[0.3em]">Iturribero Abereak</span>
             </div>
           </div>
         </div>
-
         <!-- Panel -->
-        <div class="relative lg:col-span-5 bg-gray-950 text-white">
+        <div class="relative w-full lg:col-span-5 bg-gray-950 text-white">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_40%)]"></div>
-
-          <div class="relative h-full flex flex-col justify-between p-6 md:p-8 lg:p-10">
+          <div class="relative h-full flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10">
             <div>
               <!-- Tabs -->
-              <div class="generation-indicators">
+              <div class="generation-indicators overflow-x-auto no-scrollbar -mx-2 px-2 pb-2">
                 <button class="generation-indicator is-active" data-generation="1" type="button">
                   <span class="generation-indicator__number">1</span>
                   <span class="generation-indicator__label">Primera</span>
                 </button>
-
                 <button class="generation-indicator" data-generation="2" type="button">
                   <span class="generation-indicator__number">2</span>
                   <span class="generation-indicator__label">Segunda</span>
                 </button>
-
                 <button class="generation-indicator" data-generation="3" type="button">
                   <span class="generation-indicator__number">3</span>
                   <span class="generation-indicator__label">Tercera</span>
@@ -219,41 +211,48 @@
       transform: scale(1);
     }
 
+
     .generation-indicators {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.4rem;
       margin-bottom: 2rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .generation-indicator {
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      padding: 0.4rem 0.8rem 0.4rem 0.45rem;
+      gap: 0.3rem;
+      padding: 0.25rem 0.5rem 0.25rem 0.3rem;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.12);
       background: transparent;
       color: rgba(255,255,255,0.6);
       transition: all 220ms ease;
+      font-size: 0.78rem;
+      min-width: 0;
     }
 
     .generation-indicator__number {
       display: inline-flex;
-      width: 1.9rem;
-      height: 1.9rem;
+      width: 1.2rem;
+      height: 1.2rem;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
       background: rgba(255,255,255,0.08);
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       font-weight: 600;
+      min-width: 1.2rem;
     }
 
     .generation-indicator__label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
     }
 
     .generation-indicator.is-active {

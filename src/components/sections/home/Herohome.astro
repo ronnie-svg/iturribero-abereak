@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import hero from "@/assets/agricultura/hero-colza.jpg";
+---
+
+<section class="relative min-h-screen -mt-16 pt-16 md:mt-0 md:pt-0 overflow-hidden">
+  <Image
+    src={hero}
+    alt="Explotación agroganadera en Durana, Álava"
+    class="absolute inset-0 w-full h-full object-cover"
+    format={"webp"}
+    sizes="100vw"
+    loading="eager"
+    priority
+  />
+
+  <!-- Solo una capa muy suave general -->
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <!-- Refuerzo solo arriba para que el menú se lea -->
+  <div class="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-black/45 to-transparent"></div>
+
+  <div class="relative z-10 flex min-h-screen items-center">
+    <div class="max-w-7xl mx-auto w-full px-8">
+      <div class="max-w-2xl text-white">
+        <p class="eyebrow mb-5">
+          Iturribero Abereak
+        </p>
+
+        <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
+          Ganadería y agricultura
+          <br />
+          en Durana, Álava
+        </h1>
+
+        <p class="mt-6 text-lg text-white/90 leading-relaxed">
+          Explotación agroganadera familiar centrada en el cuidado del ganado,
+          el trabajo de la tierra y el respeto por cada campaña.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="/ganaderia"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-gray-900 text-sm font-semibold hover:bg-gray-200 transition"
+          >
+            Ganadería →
+          </a>
+
+          <a
+            href="/agricultura"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white text-sm font-semibold hover:bg-white hover:text-gray-900 transition"
+          >
+            Agricultura →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
