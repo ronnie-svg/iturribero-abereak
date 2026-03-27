@@ -1,3 +1,8 @@
+---
+import mcormickImg from "@/assets/agricultura/mcormick2.jpg";
+import deutzImg from "@/assets/agricultura/deutz.jpg";
+---
+
 <section class="section-shell bg-white">
   <div class="section-inner">
 
@@ -17,13 +22,37 @@
 
     <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <video class="rounded-3xl h-64 w-full object-cover bg-black" src="/reels/cosechando.mp4" autoplay muted loop playsinline></video>
+      <!-- Videos (se quedan en public) -->
+      <video
+        class="rounded-3xl h-64 w-full object-cover bg-black"
+        src="/reels/cosechando.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
 
-      <video class="rounded-3xl h-64 w-full object-cover bg-black" src="/reels/cosechadora-remolque.mp4" autoplay muted loop playsinline></video>
+      <video
+        class="rounded-3xl h-64 w-full object-cover bg-black"
+        src="/reels/cosechadora-remolque.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
 
-      <img src="/mcormick2.jpg" class="rounded-3xl h-64 w-full object-cover" />
+      <!-- Imágenes (desde src/assets) -->
+      <img
+        src={mcormickImg.src}
+        alt="Tractor McCormick en la explotación"
+        class="rounded-3xl h-64 w-full object-cover"
+      />
 
-      <img src="/deutz.jpg" class="rounded-3xl h-64 w-full object-cover" />
+      <img
+        src={deutzImg.src}
+        alt="Tractor Deutz en la explotación"
+        class="rounded-3xl h-64 w-full object-cover"
+      />
 
     </div>
 

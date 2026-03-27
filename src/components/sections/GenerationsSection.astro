@@ -1,86 +1,96 @@
+---
+import tierraImg from "@/assets/agricultura/tierra.jpg";
+import caminoImg from "@/assets/agricultura/camino.jpg";
+import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
+---
+
 <section class="w-full bg-white">
   <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-10">
-<!-- Header -->
-<div class="grid gap-8 lg:grid-cols-12 lg:items-end">
 
-  <div class="lg:col-span-7">
-    <p class="eyebrow mb-5">
-      Generaciones
-    </p>
+    <!-- Header -->
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7">
+        <p class="eyebrow mb-5">Generaciones</p>
 
-    <h2 class="section-title">
-      Un proyecto que evoluciona
-      <span class="block">sin perder la raíz</span>
-    </h2>
-  </div>
+        <h2 class="section-title">
+          Un proyecto que evoluciona
+          <span class="block">sin perder la raíz</span>
+        </h2>
+      </div>
 
-  <div class="lg:col-span-5">
-    <p class="section-copy max-w-xl">
-      Tres generaciones unidas por una misma manera de entender el campo:
-      trabajo diario, continuidad familiar y una relación directa con el territorio.
-    </p>
-  </div>
-
-</div>
+      <div class="lg:col-span-5">
+        <p class="section-copy max-w-xl">
+          Tres generaciones unidas por una misma manera de entender el campo:
+          trabajo diario, continuidad familiar y una relación directa con el territorio.
+        </p>
+      </div>
+    </div>
 
     <!-- Stage -->
     <div class="mt-12 overflow-hidden rounded-4xl border border-gray-200 bg-gray-950">
       <div class="flex flex-col lg:grid lg:grid-cols-12 min-h-140">
+
         <!-- Imagen -->
         <div class="relative w-full min-h-60 sm:min-h-80 lg:col-span-7 lg:min-h-full">
+
           <img
             id="generation-image-1"
-            src="/tierra.jpg"
+            src={tierraImg.src}
             alt="Primera generación de Iturribero Abereak"
             class="generation-image is-active"
           />
+
           <img
             id="generation-image-2"
-            src="/camino.jpg"
+            src={caminoImg.src}
             alt="Segunda generación de Iturribero Abereak"
             class="generation-image"
           />
+
           <img
             id="generation-image-3"
-            src="/asturiana.jpg"
+            src={asturianaImg.src}
             alt="Tercera generación de Iturribero Abereak"
             class="generation-image"
           />
+
           <div class="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
+
           <div class="absolute left-4 bottom-4 md:left-8 md:bottom-8">
             <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-white/85 backdrop-blur-sm text-xs md:text-sm">
               <span class="uppercase tracking-[0.3em]">Iturribero Abereak</span>
             </div>
           </div>
         </div>
+
         <!-- Panel -->
         <div class="relative w-full lg:col-span-5 bg-gray-950 text-white">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_40%)]"></div>
+
           <div class="relative h-full flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10">
             <div>
+
               <!-- Tabs -->
               <div class="generation-indicators overflow-x-auto no-scrollbar -mx-2 px-2 pb-2">
                 <button class="generation-indicator is-active" data-generation="1" type="button">
                   <span class="generation-indicator__number">1</span>
                   <span class="generation-indicator__label">Primera</span>
                 </button>
+
                 <button class="generation-indicator" data-generation="2" type="button">
                   <span class="generation-indicator__number">2</span>
                   <span class="generation-indicator__label">Segunda</span>
                 </button>
+
                 <button class="generation-indicator" data-generation="3" type="button">
                   <span class="generation-indicator__number">3</span>
                   <span class="generation-indicator__label">Tercera</span>
                 </button>
               </div>
 
-              <div
-                id="generation-content-1"
-                class="generation-content is-active"
-              >
-                <p class="generation-content__eyebrow">
-                  Primera generación
-                </p>
+              <!-- Contenido -->
+              <div id="generation-content-1" class="generation-content is-active">
+                <p class="generation-content__eyebrow">Primera generación</p>
 
                 <h3 class="generation-content__title">
                   Los inicios del proyecto
@@ -98,13 +108,8 @@
                 </p>
               </div>
 
-              <div
-                id="generation-content-2"
-                class="generation-content"
-              >
-                <p class="generation-content__eyebrow">
-                  Segunda generación
-                </p>
+              <div id="generation-content-2" class="generation-content">
+                <p class="generation-content__eyebrow">Segunda generación</p>
 
                 <h3 class="generation-content__title">
                   Continuidad con capacidad de adaptación
@@ -122,13 +127,8 @@
                 </p>
               </div>
 
-              <div
-                id="generation-content-3"
-                class="generation-content"
-              >
-                <p class="generation-content__eyebrow">
-                  Tercera generación
-                </p>
+              <div id="generation-content-3" class="generation-content">
+                <p class="generation-content__eyebrow">Tercera generación</p>
 
                 <h3 class="generation-content__title">
                   El presente de Iturribero Abereak
@@ -146,6 +146,7 @@
               </div>
             </div>
 
+            <!-- Footer -->
             <div class="generation-stage__footer">
               <div class="generation-stage__footer-top">
                 <span>Legado</span>
@@ -159,10 +160,12 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
+  <!-- Script -->
   <script is:inline>
     (() => {
       const contents = document.querySelectorAll(".generation-content");
@@ -191,6 +194,7 @@
     })();
   </script>
 
+  <!-- Styles -->
   <style>
     .generation-image {
       position: absolute;
@@ -210,7 +214,6 @@
       opacity: 1;
       transform: scale(1);
     }
-
 
     .generation-indicators {
       display: flex;
@@ -232,7 +235,6 @@
       color: rgba(255,255,255,0.6);
       transition: all 220ms ease;
       font-size: 0.78rem;
-      min-width: 0;
     }
 
     .generation-indicator__number {
@@ -245,7 +247,6 @@
       background: rgba(255,255,255,0.08);
       font-size: 0.7rem;
       font-weight: 600;
-      min-width: 1.2rem;
     }
 
     .generation-indicator__label {
@@ -270,9 +271,7 @@
       display: none;
       opacity: 0;
       transform: translateY(8px);
-      transition:
-        opacity 350ms ease,
-        transform 350ms ease;
+      transition: opacity 350ms ease, transform 350ms ease;
     }
 
     .generation-content.is-active {
@@ -296,7 +295,6 @@
       line-height: 1.02;
       font-weight: 600;
       max-width: 14ch;
-      text-wrap: balance;
     }
 
     .generation-content__text {

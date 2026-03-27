@@ -1,21 +1,20 @@
+---
+import vacaImg from "@/assets/ganaderia/vaca_2.jpg";
+---
+
 <section class="section-shell bg-white py-2">
   <div class="section-inner py-0">
-
     <a href="/contacto" class="group block">
-
       <div class="image-card h-105 border border-gray-200">
-
         <img
-          src="/vaca_2.jpg"
+          src={vacaImg.src}
           alt="Ganado"
           class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.05] transition duration-700"
         />
 
         <div class="image-overlay-dark"></div>
 
-        <!-- Bloque texto -->
         <div class="absolute bottom-10 left-10 max-w-md text-white">
-
           <p class="eyebrow-light mb-3">
             Explotación pequeña
           </p>
@@ -31,12 +30,8 @@
           <div class="mt-6 inline-link text-white">
             Contactar →
           </div>
-
         </div>
-
       </div>
-
     </a>
-
   </div>
 </section>
