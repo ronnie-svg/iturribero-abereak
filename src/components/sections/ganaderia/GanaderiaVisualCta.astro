@@ -1,34 +1,38 @@
 ---
+import { Image } from "astro:assets";
 import vacaImg from "@/assets/ganaderia/vaca_2.jpg";
 ---
 
 <section class="section-shell bg-white py-2">
   <div class="section-inner py-0">
     <a href="/contacto" class="group block">
-      <div class="image-card h-105 border border-gray-200">
-        <img
-          src={vacaImg.src}
+      <div class="image-card h-105 border border-gray-200 shadow-[0_28px_80px_-56px_rgba(0,0,0,0.55)]">
+        <Image
+          src={vacaImg}
           alt="Ganado"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.05] transition duration-700"
+          class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+          sizes="100vw"
+          loading="lazy"
         />
 
-        <div class="image-overlay-dark"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(120deg,_rgba(12,10,9,0.62),_rgba(12,10,9,0.18)_42%,_rgba(12,10,9,0.4))]"></div>
 
-        <div class="absolute bottom-10 left-10 max-w-md text-white">
+        <div class="absolute bottom-8 left-8 right-8 max-w-md rounded-[1.5rem] border border-white/10 bg-black/18 p-6 text-white backdrop-blur-sm md:bottom-10 md:left-10 md:right-auto">
           <p class="eyebrow-light mb-3">
-            Explotación pequeña
+            Explotacion pequena
           </p>
 
           <h3 class="panel-title">
-            Cercanía y control
+            Cercania y control
           </h3>
 
           <p class="section-copy-light mt-3">
-            Un tamaño humano permite estar encima del día a día y trabajar con calma.
+            Un tamano humano permite estar encima del dia a dia y responder con mas calma y criterio.
           </p>
 
-          <div class="mt-6 inline-link text-white">
-            Contactar →
+          <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition group-hover:gap-3 group-hover:text-amber-200">
+            Ir a contacto
+            <span aria-hidden="true">+</span>
           </div>
         </div>
       </div>

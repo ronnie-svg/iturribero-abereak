@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import cebada from "@/assets/agricultura/cebada.jpg";
+---
+
+<section class="section-shell bg-white py-2">
+  <div class="section-inner py-0">
+    <a href="/ganaderia" class="group block">
+      <div class="grid overflow-hidden rounded-[2rem] border border-stone-200 bg-stone-50 shadow-[0_28px_80px_-56px_rgba(28,25,23,0.38)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <div class="relative min-h-[22rem] overflow-hidden">
+          <Image
+            src={cebada}
+            alt="Cultivo de cebada en Iturribero Abereak"
+            class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+            sizes="(min-width: 1024px) 52vw, 100vw"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-[linear-gradient(to_top,_rgba(12,10,9,0.3),_rgba(12,10,9,0.02)_45%,_transparent)]"></div>
+        </div>
+
+        <div class="flex flex-col justify-between bg-stone-950 p-8 text-white md:p-10">
+          <div>
+            <p class="eyebrow-light mb-4">
+              Campo y ganado
+            </p>
+
+            <h3 class="text-4xl font-semibold leading-tight tracking-[-0.04em] text-white md:text-5xl">
+              Lo que se cultiva
+              <span class="block text-white/72">tambien alimenta.</span>
+            </h3>
+
+            <p class="section-copy-light mt-5 max-w-lg">
+              Agricultura y ganaderia no aparecen como bloques aislados. Parte del
+              trabajo del campo sostiene despues la alimentacion del ganado.
+            </p>
+          </div>
+
+          <div class="mt-8 flex items-center justify-between border-t border-white/12 pt-5">
+            <span class="text-sm font-medium text-white/78">
+              Ver ganaderia
+            </span>
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-white/6 transition duration-500 group-hover:translate-x-1 group-hover:border-amber-200/45 group-hover:text-amber-200">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

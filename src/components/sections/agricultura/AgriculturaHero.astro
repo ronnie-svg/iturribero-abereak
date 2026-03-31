@@ -1,67 +1,81 @@
 ---
 import { Image } from "astro:assets";
-import hero from "@/assets/agricultura/txabola.jpg";
+import hero from "@/assets/agricultura/hero-colza.jpg";
+
+const notes = [
+  "Cultivos cerealistas y forrajeros",
+  "Trabajo ligado a la campana",
+  "Conexion directa con la ganaderia",
+];
 ---
 
 <section class="relative isolate overflow-hidden border-b border-stone-200 bg-stone-100 text-stone-950">
   <div class="absolute inset-0">
     <Image
       src={hero}
-      alt="Entorno de Iturribero Abereak en Durana"
+      alt="Cultivos de Iturribero Abereak en Durana, Alava"
       class="h-full w-full object-cover object-center"
       sizes="100vw"
       loading="eager"
       priority
     />
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,_rgba(245,245,244,0.8)_0%,_rgba(245,245,244,0.62)_34%,_rgba(245,245,244,0.08)_64%,_rgba(28,25,23,0.26)_100%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.08),_transparent_28%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,_rgba(245,245,244,0.74)_0%,_rgba(245,245,244,0.56)_34%,_rgba(245,245,244,0.08)_64%,_rgba(28,25,23,0.24)_100%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.08),_transparent_30%)]"></div>
   </div>
 
   <div class="relative mx-auto flex min-h-[58vh] max-w-7xl items-end px-6 py-14 md:min-h-[62vh] md:px-8 md:py-16">
     <div class="grid w-full gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
       <div class="max-w-2xl">
         <p class="eyebrow text-stone-500">
-          Quienes somos
+          Agricultura
         </p>
 
         <h1 class="mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.045em] text-stone-950 sm:text-6xl lg:text-7xl">
-          Campo y vacas,
+          El campo marca
           <br />
-          en familia.
+          el calendario.
         </h1>
 
         <p class="mt-6 max-w-xl text-base leading-7 text-stone-600 md:text-lg">
-          Explotacion agroganadera familiar en Durana, Alava, construida desde
-          el trabajo diario y hoy sostenida por una tercera generacion.
+          Cultivamos cereal y forraje en Durana, Alava, con decisiones que se
+          toman segun suelo, clima, tiempo de trabajo y necesidades reales de la explotacion.
         </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          {notes.map((note) => (
+            <span class="rounded-full border border-stone-300 bg-white/80 px-4 py-2 text-sm text-stone-700 shadow-[0_10px_24px_-18px_rgba(28,25,23,0.35)] backdrop-blur-sm">
+              {note}
+            </span>
+          ))}
+        </div>
       </div>
 
       <div class="lg:justify-self-end lg:max-w-xl">
-        <div class="grid gap-px overflow-hidden rounded-[2rem] border border-stone-300 bg-stone-300 shadow-[0_30px_80px_-56px_rgba(28,25,23,0.42)] md:grid-cols-3">
+        <div class="grid gap-px overflow-hidden rounded-[2rem] border border-stone-300 bg-stone-300 shadow-[0_30px_80px_-56px_rgba(28,25,23,0.45)] md:grid-cols-3">
           <article class="bg-white/86 p-5 backdrop-blur-sm">
             <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
-              Familia
+              Suelo
             </p>
             <p class="mt-3 text-lg font-semibold leading-tight text-stone-950">
-              Proyecto de tamaño humano, ligado al territorio y al oficio.
+              Mantener la tierra en condiciones para la siguiente campana.
             </p>
           </article>
 
           <article class="bg-white/78 p-5 backdrop-blur-sm">
             <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
-              Generaciones
+              Ritmo
             </p>
             <p class="mt-3 text-lg font-semibold leading-tight text-stone-950">
-              Experiencia acumulada, continuidad y aprendizaje sobre el terreno.
+              Sembrar, seguir y cosechar cuando el momento acompana.
             </p>
           </article>
 
           <article class="bg-stone-950 p-5 text-white">
             <p class="text-xs uppercase tracking-[0.28em] text-amber-200/90">
-              Durana
+              Ganado
             </p>
             <p class="mt-3 text-lg font-semibold leading-tight">
-              Una explotacion conectada con el ritmo real del campo en Alava.
+              Parte del cultivo vuelve a la explotacion como alimento.
             </p>
           </article>
         </div>

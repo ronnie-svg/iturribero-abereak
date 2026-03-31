@@ -1,77 +1,77 @@
 ---
+import { Image } from "astro:assets";
 import tierraImg from "@/assets/agricultura/tierra.jpg";
 import caminoImg from "@/assets/agricultura/camino.jpg";
 import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
 ---
 
 <section class="w-full bg-white">
-  <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-10">
-
-    <!-- Header -->
+  <div class="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-18">
     <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7">
-        <p class="eyebrow mb-5">Generaciones</p>
+        <p class="eyebrow mb-5">
+          Generaciones
+        </p>
 
         <h2 class="section-title">
           Un proyecto que evoluciona
-          <span class="block">sin perder la raíz</span>
+          <span class="block">sin perder la raiz</span>
         </h2>
       </div>
 
       <div class="lg:col-span-5">
         <p class="section-copy max-w-xl">
           Tres generaciones unidas por una misma manera de entender el campo:
-          trabajo diario, continuidad familiar y una relación directa con el territorio.
+          trabajo diario, continuidad familiar y una relacion directa con el territorio.
         </p>
       </div>
     </div>
 
-    <!-- Stage -->
     <div class="mt-12 overflow-hidden rounded-4xl border border-gray-200 bg-gray-950">
-      <div class="flex flex-col lg:grid lg:grid-cols-12 min-h-140">
-
-        <!-- Imagen -->
-        <div class="relative w-full min-h-60 sm:min-h-80 lg:col-span-7 lg:min-h-full">
-
-          <img
+      <div class="flex flex-col lg:grid lg:min-h-[42rem] lg:grid-cols-12">
+        <div class="relative min-h-[15rem] w-full sm:min-h-[19rem] lg:col-span-7 lg:min-h-full">
+          <Image
             id="generation-image-1"
-            src={tierraImg.src}
-            alt="Primera generación de Iturribero Abereak"
+            src={tierraImg}
+            alt="Primera generacion de Iturribero Abereak"
             class="generation-image is-active"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            loading="eager"
           />
 
-          <img
+          <Image
             id="generation-image-2"
-            src={caminoImg.src}
-            alt="Segunda generación de Iturribero Abereak"
+            src={caminoImg}
+            alt="Segunda generacion de Iturribero Abereak"
             class="generation-image"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            loading="lazy"
           />
 
-          <img
+          <Image
             id="generation-image-3"
-            src={asturianaImg.src}
-            alt="Tercera generación de Iturribero Abereak"
+            src={asturianaImg}
+            alt="Tercera generacion de Iturribero Abereak"
             class="generation-image"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            loading="lazy"
           />
 
-          <div class="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
+          <div class="absolute inset-0 bg-linear-to-t from-black/45 via-black/12 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-black/10"></div>
 
-          <div class="absolute left-4 bottom-4 md:left-8 md:bottom-8">
-            <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-white/85 backdrop-blur-sm text-xs md:text-sm">
+          <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8">
+            <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-[11px] text-white/85 backdrop-blur-sm md:text-sm">
               <span class="uppercase tracking-[0.3em]">Iturribero Abereak</span>
             </div>
           </div>
         </div>
 
-        <!-- Panel -->
-        <div class="relative w-full lg:col-span-5 bg-gray-950 text-white">
+        <div class="relative w-full bg-gray-950 text-white lg:col-span-5">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_40%)]"></div>
 
-          <div class="relative h-full flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10">
+          <div class="relative flex h-full flex-col justify-between p-5 sm:p-6 md:p-8 lg:p-10">
             <div>
-
-              <!-- Tabs -->
-              <div class="generation-indicators overflow-x-auto no-scrollbar -mx-2 px-2 pb-2">
+              <div class="generation-indicators no-scrollbar -mx-1 overflow-x-auto px-1 pb-2">
                 <button class="generation-indicator is-active" data-generation="1" type="button">
                   <span class="generation-indicator__number">1</span>
                   <span class="generation-indicator__label">Primera</span>
@@ -88,9 +88,8 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
                 </button>
               </div>
 
-              <!-- Contenido -->
               <div id="generation-content-1" class="generation-content is-active">
-                <p class="generation-content__eyebrow">Primera generación</p>
+                <p class="generation-content__eyebrow">Primera generacion</p>
 
                 <h3 class="generation-content__title">
                   Los inicios del proyecto
@@ -103,40 +102,40 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
                 </p>
 
                 <p class="generation-content__text">
-                  Esta etapa representa la base sobre la que se construye todo lo demás:
-                  oficio, experiencia y una relación directa con la tierra.
+                  Esta etapa representa la base sobre la que se construye todo lo demas:
+                  oficio, experiencia y una relacion directa con la tierra.
                 </p>
               </div>
 
               <div id="generation-content-2" class="generation-content">
-                <p class="generation-content__eyebrow">Segunda generación</p>
+                <p class="generation-content__eyebrow">Segunda generacion</p>
 
                 <h3 class="generation-content__title">
-                  Continuidad con capacidad de adaptación
+                  Continuidad con capacidad de adaptacion
                 </h3>
 
                 <p class="generation-content__text generation-content__text--lead">
-                  La segunda generación mantiene viva la base familiar, incorporando
+                  La segunda generacion mantiene viva la base familiar, incorporando
                   ajustes y decisiones que permiten dar continuidad al proyecto en un
                   contexto cambiante.
                 </p>
 
                 <p class="generation-content__text">
-                  Es una etapa de consolidación: seguir adelante sin perder la esencia,
-                  pero sabiendo evolucionar con cada campaña y necesidad.
+                  Es una etapa de consolidacion: seguir adelante sin perder la esencia,
+                  pero sabiendo evolucionar con cada campana y necesidad.
                 </p>
               </div>
 
               <div id="generation-content-3" class="generation-content">
-                <p class="generation-content__eyebrow">Tercera generación</p>
+                <p class="generation-content__eyebrow">Tercera generacion</p>
 
                 <h3 class="generation-content__title">
                   El presente de Iturribero Abereak
                 </h3>
 
                 <p class="generation-content__text generation-content__text--lead">
-                  Hoy, el proyecto se traduce en una explotación pequeña, cercana y
-                  responsable, con vacas de carne y cultivos destinados a su alimentación.
+                  Hoy, el proyecto se traduce en una explotacion pequena, cercana y
+                  responsable, con vacas de carne y cultivos destinados a su alimentacion.
                 </p>
 
                 <p class="generation-content__text">
@@ -146,7 +145,6 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
               </div>
             </div>
 
-            <!-- Footer -->
             <div class="generation-stage__footer">
               <div class="generation-stage__footer-top">
                 <span>Legado</span>
@@ -154,23 +152,24 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
               </div>
 
               <p>
-                Cada generación suma experiencia, decisiones y una forma propia de
+                Cada generacion suma experiencia, decisiones y una forma propia de
                 seguir vinculados al campo.
               </p>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- Script -->
   <script is:inline>
     (() => {
-      const contents = document.querySelectorAll(".generation-content");
-      const images = document.querySelectorAll(".generation-image");
-      const indicators = document.querySelectorAll(".generation-indicator");
+      const section = document.currentScript?.closest("section");
+      if (!section) return;
+
+      const contents = section.querySelectorAll(".generation-content");
+      const images = section.querySelectorAll(".generation-image");
+      const indicators = section.querySelectorAll(".generation-indicator");
 
       const activateGeneration = (id) => {
         contents.forEach((content) => {
@@ -183,6 +182,10 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
 
         indicators.forEach((indicator) => {
           indicator.classList.toggle("is-active", indicator.dataset.generation === id);
+          indicator.setAttribute(
+            "aria-pressed",
+            indicator.dataset.generation === id ? "true" : "false"
+          );
         });
       };
 
@@ -194,7 +197,6 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
     })();
   </script>
 
-  <!-- Styles -->
   <style>
     .generation-image {
       position: absolute;
@@ -217,48 +219,52 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
 
     .generation-indicators {
       display: flex;
-      gap: 0.4rem;
-      margin-bottom: 2rem;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
     }
 
     .generation-indicator {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      padding: 0.25rem 0.5rem 0.25rem 0.3rem;
+      gap: 0.45rem;
+      min-height: 2.6rem;
+      padding: 0.4rem 0.75rem 0.4rem 0.4rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       background: transparent;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.66);
       transition: all 220ms ease;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
     }
 
     .generation-indicator__number {
       display: inline-flex;
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 1.55rem;
+      height: 1.55rem;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.78rem;
       font-weight: 600;
     }
 
     .generation-indicator__label {
-      font-size: 0.7rem;
-      font-weight: 500;
+      font-size: 0.76rem;
+      font-weight: 600;
       letter-spacing: 0.01em;
       white-space: nowrap;
     }
 
     .generation-indicator.is-active {
-      border-color: rgba(255,255,255,0.24);
-      background: rgba(255,255,255,0.08);
+      border-color: rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.08);
       color: white;
     }
 
@@ -281,46 +287,48 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
     }
 
     .generation-content__eyebrow {
-      margin: 0 0 0.75rem;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.75rem;
+      margin: 0 0 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.32em;
     }
 
     .generation-content__title {
       margin: 0;
       color: white;
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 1.02;
+      font-size: clamp(1.6rem, 5.6vw, 3rem);
+      line-height: 1.04;
       font-weight: 600;
       max-width: 14ch;
+      text-wrap: balance;
     }
 
     .generation-content__text {
-      margin: 1rem 0 0;
-      color: rgba(255,255,255,0.66);
-      line-height: 1.7;
+      margin: 0.9rem 0 0;
+      color: rgba(255, 255, 255, 0.66);
+      line-height: 1.65;
+      font-size: 0.95rem;
     }
 
     .generation-content__text--lead {
-      margin-top: 1.25rem;
-      color: rgba(255,255,255,0.78);
-      font-size: 1rem;
+      margin-top: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.98rem;
     }
 
     .generation-stage__footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 1.8rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .generation-stage__footer-top {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      color: rgba(255,255,255,0.58);
-      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.3em;
     }
@@ -329,15 +337,51 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
       display: block;
       height: 1px;
       flex: 1;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .generation-stage__footer p {
-      margin: 1rem 0 0;
+      margin: 0.85rem 0 0;
       max-width: 32rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.56);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 640px) {
+      .generation-indicators {
+        margin-bottom: 1.8rem;
+      }
+
+      .generation-indicator {
+        min-height: 2.8rem;
+        padding: 0.45rem 0.9rem 0.45rem 0.45rem;
+      }
+
+      .generation-content__text,
+      .generation-content__text--lead {
+        font-size: 1rem;
+      }
+
+      .generation-stage__footer {
+        margin-top: 2.2rem;
+        padding-top: 1.4rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .generation-indicators {
+        margin-bottom: 2rem;
+      }
+
+      .generation-stage__footer {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+      }
+
+      .generation-stage__footer p {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </section>

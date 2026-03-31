@@ -2,17 +2,21 @@
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import AboutHero from "../components/sections/about/AboutHero.astro";
-import AboutStory from "../components/sections/about/AboutStory.astro";
+import AboutOverview from "../components/sections/about/AboutOverview.astro";
+import AboutNarrative from "../components/sections/about/AboutNarrative.astro";
 import AboutGallery from "../components/sections/about/AboutGallery.astro";
 import TimelineGeneraciones from "../components/sections/GenerationsSection.astro";
 ---
 
-<Layout ...>
-
+<Layout
+  title="Nuestra historia | Iturribero Abereak en Durana, Alava"
+  description="Conoce Iturribero Abereak, explotacion agroganadera familiar en Durana, Alava. Tercera generacion, vacuno de carne, trabajo de campo y una forma de hacer basada en la continuidad."
+  image="/txabola.jpg"
+  canonical="https://iturriberoabereak.com/quienes-somos"
+>
   <AboutHero />
-
-  <AboutStory />
+  <AboutOverview />
+  <AboutNarrative />
   <TimelineGeneraciones />
   <AboutGallery />
-
 </Layout>

@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import mcormick from "@/assets/agricultura/mcormick2.jpg";
+import deutz from "@/assets/agricultura/deutz.jpg";
+---
+
+<section class="section-shell bg-stone-50">
+  <div class="section-inner">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+      <div class="max-w-xl">
+        <p class="eyebrow mb-3">
+          Trabajo de campo
+        </p>
+
+        <h2 class="section-title">
+          Campana vista
+          <span class="block">desde dentro.</span>
+        </h2>
+
+        <p class="section-copy mt-4">
+          Maquinaria, seguimiento y cosecha aparecen aqui sin una galeria uniforme:
+          cada pieza ocupa su propio espacio, como ocurre tambien en el trabajo real.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        <video
+          class="rounded-[1.75rem] h-72 w-full object-cover border border-stone-200 bg-black shadow-[0_20px_50px_-42px_rgba(28,25,23,0.65)] md:row-span-2 md:h-full"
+          src="/reels/cosechando.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+
+        <Image
+          src={mcormick}
+          alt="Tractor McCormick trabajando en la explotacion"
+          class="rounded-[1.75rem] h-72 w-full object-cover border border-stone-200 shadow-[0_20px_50px_-42px_rgba(28,25,23,0.45)]"
+          sizes="(min-width: 1024px) 28vw, 50vw"
+          loading="lazy"
+        />
+
+        <video
+          class="rounded-[1.75rem] h-56 w-full object-cover border border-stone-200 bg-black shadow-[0_20px_50px_-42px_rgba(28,25,23,0.65)]"
+          src="/reels/cosechadora-remolque.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+
+        <Image
+          src={deutz}
+          alt="Tractor Deutz en una campana agricola"
+          class="rounded-[1.75rem] h-72 w-full object-cover border border-stone-200 shadow-[0_20px_50px_-42px_rgba(28,25,23,0.45)] md:col-span-2"
+          sizes="(min-width: 1024px) 56vw, 100vw"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

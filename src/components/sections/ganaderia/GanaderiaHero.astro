@@ -1,27 +1,70 @@
-<section class="relative h-[70vh] md:h-[78vh] w-full overflow-hidden">
-  <img
-    src="/vaca_primer-plano.jpg"
-    alt="Ganadería - Iturribero Abereak"
-    class="absolute inset-0 w-full h-full object-cover"
-  />
+---
+import { Image } from "astro:assets";
+import hero from "@/assets/ganaderia/vaca_primer-plano.jpg";
+---
 
-  <div class="absolute inset-0 bg-linear-to-brom-black/60 via-black/35 to-black/15"></div>
+<section class="relative isolate overflow-hidden border-b border-stone-200 bg-stone-100 text-stone-950">
+  <div class="absolute inset-0">
+    <Image
+      src={hero}
+      alt="Ganaderia de Iturribero Abereak en Durana, Alava"
+      class="h-full w-full object-cover object-center"
+      sizes="100vw"
+      loading="eager"
+      priority
+    />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,_rgba(245,245,244,0.76)_0%,_rgba(245,245,244,0.58)_34%,_rgba(245,245,244,0.08)_62%,_rgba(28,25,23,0.3)_100%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.08),_transparent_30%)]"></div>
+  </div>
 
-  <div class="relative z-10 h-full flex items-end">
-    <div class="max-w-7xl mx-auto px-6 md:px-8 pb-14 w-full">
-      <div class="max-w-2xl text-white">
-        <p class="eyebrow-light mb-4">Ganadería</p>
+  <div class="relative mx-auto flex min-h-[58vh] max-w-7xl items-end px-6 py-14 md:min-h-[62vh] md:px-8 md:py-16">
+    <div class="grid w-full gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-stone-500">
+          Ganaderia
+        </p>
 
-        <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
+        <h1 class="mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.045em] text-stone-950 sm:text-6xl lg:text-7xl">
           Vacas de carne.
-          <br class="hidden md:block" />
-          Cuidado diario y seguimiento.
+          <br />
+          Cuidado diario.
         </h1>
 
-        <p class="mt-5 text-white/85 text-lg leading-relaxed">
-          Explotación familiar en Durana (Álava). Manejo responsable,
-          bienestar animal y atención al detalle, con el ritmo que marca el campo.
+        <p class="mt-6 max-w-xl text-base leading-7 text-stone-600 md:text-lg">
+          Explotacion familiar en Durana, Alava, con seguimiento constante,
+          bienestar animal y una manera de trabajar cercana al ritmo real del campo.
         </p>
+      </div>
+
+      <div class="lg:justify-self-end lg:max-w-xl">
+        <div class="grid gap-px overflow-hidden rounded-[2rem] border border-stone-300 bg-stone-300 shadow-[0_30px_80px_-56px_rgba(28,25,23,0.45)] md:grid-cols-3">
+          <article class="bg-white/86 p-5 backdrop-blur-sm">
+            <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
+              Seguimiento
+            </p>
+            <p class="mt-3 text-lg font-semibold leading-tight text-stone-950">
+              Observar, anticiparse y estar encima de lo importante.
+            </p>
+          </article>
+
+          <article class="bg-white/78 p-5 backdrop-blur-sm">
+            <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
+              Bienestar
+            </p>
+            <p class="mt-3 text-lg font-semibold leading-tight text-stone-950">
+              Manejo responsable y atencion constante al animal.
+            </p>
+          </article>
+
+          <article class="bg-stone-950 p-5 text-white">
+            <p class="text-xs uppercase tracking-[0.28em] text-amber-200/90">
+              Explotacion
+            </p>
+            <p class="mt-3 text-lg font-semibold leading-tight">
+              Un tamaño cercano permite trabajar con calma y control.
+            </p>
+          </article>
+        </div>
       </div>
     </div>
   </div>

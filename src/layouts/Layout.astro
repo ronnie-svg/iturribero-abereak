@@ -10,15 +10,23 @@ export interface Props {
   description?: string;
   image?: string;
   canonical?: string;
+  type?: string;
+  robots?: string;
+  headerOffset?: boolean;
 }
 
 const pageTitle = Astro.props.title ?? "Iturribero Abereak";
 const pageDescription =
   Astro.props.description ??
-  "Explotación agroganadera familiar en Durana (Arrazua-Ubarrundia, Álava). Vacas de carne y cultivos cerealistas.";
+  "Explotacion agroganadera familiar en Durana, Alava. Vacuno de carne y cultivos cerealistas.";
 
 const pageImage = Astro.props.image ?? "/hero-colza.jpg";
 const canonicalUrl = Astro.props.canonical ?? Astro.url.href;
+const pageType = Astro.props.type ?? "website";
+const pageRobots =
+  Astro.props.robots ??
+  "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+const headerOffset = Astro.props.headerOffset ?? false;
 ---
 
 <html lang="es">
@@ -28,6 +36,8 @@ const canonicalUrl = Astro.props.canonical ?? Astro.url.href;
       description={pageDescription}
       image={pageImage}
       canonical={canonicalUrl}
+      type={pageType}
+      robots={pageRobots}
     />
   </head>
 
@@ -45,7 +55,7 @@ const canonicalUrl = Astro.props.canonical ?? Astro.url.href;
 
     <SiteHeader />
 
-    <main class="18">
+    <main class={`min-h-screen ${headerOffset ? "pt-20 md:pt-24" : ""}`}>
       <slot />
     </main>
 

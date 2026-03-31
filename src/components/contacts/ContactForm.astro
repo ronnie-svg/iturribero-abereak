@@ -1,0 +1,108 @@
+<form
+  id="contact-form"
+  class="grid grid-cols-1 gap-5 md:grid-cols-2"
+>
+  <div class="md:col-span-1">
+    <label class="block text-sm font-semibold text-stone-900">Nombre</label>
+    <input
+      type="text"
+      name="name"
+      placeholder="Tu nombre"
+      required
+      class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
+    />
+  </div>
+
+  <div class="md:col-span-1">
+    <label class="block text-sm font-semibold text-stone-900">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="tu@email.com"
+      required
+      class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
+    />
+  </div>
+
+  <div class="md:col-span-2">
+    <label class="block text-sm font-semibold text-stone-900">
+      Telefono <span class="font-normal text-stone-400">(opcional)</span>
+    </label>
+    <input
+      type="text"
+      name="phone"
+      placeholder="Tu telefono, si quieres que te llamemos"
+      class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
+    />
+  </div>
+
+  <div class="md:col-span-2">
+    <label class="block text-sm font-semibold text-stone-900">Mensaje</label>
+    <textarea
+      name="message"
+      placeholder="Escribe aqui tu mensaje"
+      required
+      rows="6"
+      class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
+    ></textarea>
+  </div>
+
+  <div class="md:col-span-2 border-t border-stone-200 pt-2">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <p class="max-w-xl text-sm text-stone-500">
+        Al enviar aceptas que usemos tus datos solo para responder a tu consulta.
+      </p>
+
+      <button
+        id="contact-submit"
+        type="submit"
+        class="inline-flex items-center justify-center rounded-full bg-stone-950 px-8 py-3 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-stone-800 active:translate-y-[1px] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        Enviar
+      </button>
+    </div>
+
+    <p id="form-status" class="mt-4 text-sm text-stone-600"></p>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const submitButton = document.getElementById("contact-submit");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!status || !submitButton || !(form instanceof HTMLFormElement)) return;
+
+    status.textContent = "Enviando mensaje...";
+    submitButton.setAttribute("disabled", "disabled");
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result?.error || "Error al enviar el mensaje.");
+      }
+
+      status.textContent = "Mensaje enviado correctamente.";
+      form.reset();
+    } catch {
+      status.textContent = "No se pudo enviar el mensaje. Intentalo de nuevo.";
+    } finally {
+      submitButton.removeAttribute("disabled");
+    }
+  });
+</script>

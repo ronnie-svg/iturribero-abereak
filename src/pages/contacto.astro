@@ -1,257 +1,161 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import ContactForm from "../components/contacts/ContactForm.astro";
+import { Image } from "astro:assets";
+import tierraImg from "../assets/agricultura/tierra.jpg";
 ---
 
 <Layout
-  title="Contacto | Iturribero Abereak"
-  description="Contacto de Iturribero Abereak, explotación agroganadera familiar en Durana (Arrazua-Ubarrundia, Álava)."
+  title="Contacto en Durana, Alava | Iturribero Abereak"
+  description="Contacta con Iturribero Abereak en Durana, Alava. Consultas, visitas o colaboraciones con una explotacion agroganadera familiar."
   image="/tierra.jpg"
+  headerOffset={true}
+  canonical="https://iturriberoabereak.com/contacto"
 >
-  <section class="relative h-[55vh] md:h-[60vh] w-full overflow-hidden">
-    <img
-      src="/tierra.jpg"
-      alt="Contacto - Iturribero Abereak"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-linear-to-b from-black/55 via-black/30 to-black/10"></div>
+  <section class="relative isolate overflow-hidden border-b border-stone-200 bg-stone-950 text-white">
+    <div class="absolute inset-0">
+      <Image
+        src={tierraImg}
+        alt="Contacto de Iturribero Abereak"
+        class="h-full w-full object-cover object-center"
+        sizes="100vw"
+        loading="eager"
+        priority
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(120deg,_rgba(12,10,9,0.72),_rgba(12,10,9,0.32)_42%,_rgba(12,10,9,0.58))]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_top,_rgba(12,10,9,0.64),_rgba(12,10,9,0.08)_40%,_rgba(12,10,9,0.26))]"></div>
+    </div>
 
-    <div class="relative z-10 h-full flex items-end">
-      <div class="max-w-7xl mx-auto px-8 pb-12 w-full">
-        <div class="max-w-2xl text-white">
-          <p class="uppercase tracking-[0.25em] text-yellow-200 text-xs md:text-sm mb-4">
-            Contacto
-          </p>
+    <div class="relative mx-auto flex min-h-[58vh] max-w-7xl items-end px-6 py-14 md:min-h-[62vh] md:px-8 md:py-16">
+      <div class="max-w-2xl">
+        <p class="eyebrow-light">
+          Contacto
+        </p>
 
-          <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
-            Hablemos.
-          </h1>
+        <h1 class="mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
+          Hablemos.
+        </h1>
 
-          <p class="mt-5 text-white/90 text-lg leading-relaxed">
-            Para consultas, disponibilidad o colaboración, escríbenos y te respondemos lo antes posible.
-          </p>
-        </div>
+        <p class="mt-6 max-w-xl text-base leading-7 text-white/78 md:text-lg">
+          Si quieres hacer una consulta, plantear una visita o escribirnos por
+          algun motivo concreto, aqui tienes una via directa y sencilla.
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="w-full bg-white border-t border-gray-200">
-    <div class="max-w-7xl mx-auto px-8 py-20 grid lg:grid-cols-12 gap-10 items-start">
-      <div class="lg:col-span-5">
-        <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-4">
-          Iturribero Abereak
-        </p>
-
-        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
-          Durana (Arrazua-Ubarrundia, Álava)
-        </h2>
-
-        <p class="mt-4 text-gray-600 leading-relaxed text-lg">
-          Explotación agroganadera familiar. Si necesitas información, quieres visitarnos o plantear una colaboración,
-          aquí tienes las vías de contacto.
-        </p>
-
-        <div class="mt-10 space-y-4">
-          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
-            <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Email</p>
-            <p class="mt-1 font-semibold text-gray-900">info@iturriberoabereak.com</p>
-          </div>
-
-          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
-            <p class="text-xs uppercase tracking-[0.25em] text-gray-500">Ubicación</p>
-            <p class="mt-1 font-semibold text-gray-900">Durana · Arrazua-Ubarrundia · Álava</p>
-            <p class="mt-1 text-sm text-gray-600">
-              *Si vienes, escríbenos antes y te indicamos el acceso.
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-10 flex flex-wrap gap-3">
-          <a
-            href="https://instagram.com/TU_USUARIO"
-            target="_blank"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-300 text-gray-900 text-sm font-semibold hover:bg-gray-50 transition"
-          >
-            Instagram →
-          </a>
-
-          <a
-            href="mailto:info@iturriberoabereak.com"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm"
-          >
-            Enviar email →
-          </a>
-        </div>
-      </div>
-
-      <div class="lg:col-span-7">
-        <div class="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-          <div class="p-8 md:p-10">
-            <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-3">
-              Formulario
-            </p>
-
-            <h3 class="text-2xl md:text-3xl font-semibold text-gray-900">
-              Escríbenos
-            </h3>
-
-            <p class="mt-3 text-gray-600 leading-relaxed max-w-xl">
-              Cuéntanos tu consulta y te responderemos lo antes posible.
-            </p>
-
-            <form
-              id="contact-form"
-              class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5"
-            >
-              <div class="md:col-span-1">
-                <label class="block text-sm font-semibold text-gray-900">Nombre</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-gray-400 focus:ring-2 focus:ring-gray-900/10"
-                  placeholder="Tu nombre"
-                />
-              </div>
-
-              <div class="md:col-span-1">
-                <label class="block text-sm font-semibold text-gray-900">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-gray-400 focus:ring-2 focus:ring-gray-900/10"
-                  placeholder="tu@email.com"
-                />
-              </div>
-
-              <div class="md:col-span-2">
-                <label class="block text-sm font-semibold text-gray-900">
-                  Teléfono <span class="text-gray-400 font-normal">(opcional)</span>
-                </label>
-                <input
-                  type="text"
-                  name="phone"
-                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-gray-400 focus:ring-2 focus:ring-gray-900/10"
-                  placeholder="Tu teléfono, si quieres que te llamemos"
-                />
-              </div>
-
-              <div class="md:col-span-2">
-                <label class="block text-sm font-semibold text-gray-900">Mensaje</label>
-                <textarea
-                  name="message"
-                  required
-                  rows="6"
-                  class="mt-2 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-gray-400 focus:ring-2 focus:ring-gray-900/10"
-                  placeholder="Escribe aquí tu mensaje…"
-                ></textarea>
-              </div>
-
-              <div class="md:col-span-2 border-t border-gray-100 pt-2">
-                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <p class="text-sm text-gray-500 max-w-xl">
-                    Al enviar aceptas que usemos tus datos solo para responder a tu consulta.
-                  </p>
-
-                  <button
-                    id="contact-submit"
-                    type="submit"
-                    class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    Enviar →
-                  </button>
-                </div>
-
-                <p id="form-status" class="mt-4 text-sm text-gray-600"></p>
-              </div>
-            </form>
-          </div>
-
-          <div class="px-8 md:px-10 py-6 bg-slate-50 border-t border-gray-200">
-            <p class="text-sm text-gray-600">
-              Si lo prefieres, también puedes escribirnos directamente por email o Instagram.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="w-full bg-slate-100 border-t border-gray-200">
-    <div class="max-w-7xl mx-auto px-8 py-16">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <div class="max-w-2xl">
-          <p class="text-xs uppercase tracking-[0.35em] text-gray-400 mb-3">
-            Ubicación
+  <section class="section-shell bg-white">
+    <div class="section-inner pb-10 md:pb-14">
+      <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-4">
+            Iturribero Abereak
           </p>
-          <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">
-            Durana · Arrazua-Ubarrundia · Álava
+
+          <h2 class="section-title text-4xl md:text-5xl">
+            Durana, Alava.
           </h2>
-          <p class="mt-3 text-gray-600 leading-relaxed">
-            Puedes incrustar un mapa o enlazar a Google Maps. Si vas a venir, avísanos antes.
+
+          <p class="section-copy mt-5 max-w-xl">
+            Explotacion agroganadera familiar vinculada al campo, al ganado y al
+            trabajo diario. Si necesitas informacion, quieres visitarnos o te
+            interesa hablar con nosotros, puedes escribirnos desde aqui.
           </p>
+
+          <div class="mt-10 space-y-4">
+            <div class="rounded-[1.75rem] border border-stone-200 bg-stone-50 p-5">
+              <p class="text-xs uppercase tracking-[0.25em] text-stone-500">Email</p>
+              <p class="mt-2 font-semibold text-stone-950">info@iturriberoabereak.com</p>
+            </div>
+
+            <div class="rounded-[1.75rem] border border-stone-200 bg-stone-50 p-5">
+              <p class="text-xs uppercase tracking-[0.25em] text-stone-500">Ubicacion</p>
+              <p class="mt-2 font-semibold text-stone-950">Durana - Arrazua-Ubarrundia - Alava</p>
+              <p class="mt-2 text-sm text-stone-600">
+                Si vienes, escribenos antes para indicarte el acceso con detalle.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a
+              href="mailto:info@iturriberoabereak.com"
+              class="inline-flex items-center justify-center rounded-full bg-stone-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
+            >
+              Enviar email
+            </a>
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Durana%2C%20Arrazua-Ubarrundia%2C%20Alava"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center justify-center rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-50"
+            >
+              Abrir mapa
+            </a>
+          </div>
         </div>
 
-        <a
-          href="https://www.google.com/maps/search/?api=1&query=Durana%2C%20Arrazua-Ubarrundia%2C%20%C3%81lava"
-          target="_blank"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 text-gray-900 text-sm font-semibold hover:bg-white transition"
-        >
-          Abrir en Google Maps →
-        </a>
+        <div class="lg:col-span-7">
+          <div class="overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-[0_24px_70px_-48px_rgba(28,25,23,0.28)]">
+            <div class="p-8 md:p-10">
+              <p class="eyebrow mb-3">
+                Formulario
+              </p>
+
+              <h3 class="text-2xl font-semibold text-stone-950 md:text-3xl">
+                Escribenos
+              </h3>
+
+              <p class="mt-3 max-w-xl text-sm leading-6 text-stone-600 md:text-base">
+                Cuentanos que necesitas y te responderemos con la mayor claridad posible.
+              </p>
+
+              <div class="mt-8">
+                <ContactForm />
+              </div>
+            </div>
+
+            <div class="border-t border-stone-200 bg-stone-50 px-8 py-6 md:px-10">
+              <p class="text-sm text-stone-600">
+                Si lo prefieres, tambien puedes escribirnos directamente por email.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell bg-stone-50">
+    <div class="section-inner pt-10 md:pt-14">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl">
+          <p class="eyebrow mb-3">
+            Ubicacion
+          </p>
+
+          <h2 class="section-title text-3xl md:text-4xl">
+            Durana - Arrazua-Ubarrundia - Alava
+          </h2>
+
+          <p class="section-copy mt-4">
+            Estamos en Durana. Si vas a acercarte, avisanos antes y te indicamos
+            el acceso de la forma mas sencilla.
+          </p>
+        </div>
       </div>
 
-      <div class="mt-10 rounded-3xl overflow-hidden border border-gray-200 bg-white">
+      <div class="mt-10 overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-[0_24px_70px_-48px_rgba(28,25,23,0.24)]">
         <iframe
           title="Mapa Durana"
-          class="w-full h-95 md:h-115"
+          class="h-95 w-full md:h-115"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Durana%2C%20Arrazua-Ubarrundia%2C%20%C3%81lava&output=embed"
+          src="https://www.google.com/maps?q=Durana%2C%20Arrazua-Ubarrundia%2C%20Alava&output=embed"
         ></iframe>
       </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
-  const submitButton = document.getElementById("contact-submit");
-
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    if (!status || !submitButton || !(form instanceof HTMLFormElement)) return;
-
-    status.textContent = "Enviando mensaje...";
-    submitButton.setAttribute("disabled", "disabled");
-
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-
-      const result = await res.json();
-
-      if (!res.ok) {
-        throw new Error(result?.error || "Error al enviar el mensaje.");
-      }
-
-      status.textContent = "Mensaje enviado correctamente.";
-      form.reset();
-    } catch (error) {
-      status.textContent = "No se pudo enviar el mensaje. Inténtalo de nuevo.";
-    } finally {
-      submitButton.removeAttribute("disabled");
-    }
-  });
-</script>

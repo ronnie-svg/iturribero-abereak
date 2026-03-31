@@ -5,23 +5,19 @@ import vacas from "@/assets/ganaderia/vacas.jpg";
 
 <section class="section-shell bg-white pt-2">
   <div class="section-inner">
-
-    <!-- BLOQUE PRINCIPAL -->
     <div class="relative">
-      <!-- Imagen -->
-      <div class="relative h-70 md:h-105 rounded-4xl overflow-hidden shadow-xl ring-1 ring-gray-200">
+      <div class="relative h-70 overflow-hidden rounded-4xl shadow-xl ring-1 ring-gray-200 md:h-105">
         <Image
           src={vacas}
           alt="Ganado en Iturribero"
-          class="absolute inset-0 w-full h-full object-cover"
-                    sizes="100vw"
+          class="absolute inset-0 h-full w-full object-cover"
+          sizes="100vw"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-linear-to-trom-black/30 via-black/5 to-transparent"></div>
+        <div class="absolute inset-0 bg-linear-to-t from-black/24 via-black/4 to-transparent"></div>
       </div>
 
-      <!-- Card superpuesta -->
-      <div class="relative md:absolute md:right-10 md:-bottom-22 z-10 max-w-xxl -mt-8 md:mt-0 rounded-[1.75rem] border border-gray-100 bg-white/95 backdrop-blur-md p-6 md:p-8 shadow-2xl">
+      <div class="relative z-10 -mt-8 max-w-xxl rounded-[1.75rem] border border-gray-100 bg-white/95 p-6 shadow-2xl backdrop-blur-md md:absolute md:right-10 md:-bottom-22 md:mt-0 md:p-8">
         <p class="eyebrow mb-4">
           Nuestra forma de trabajar
         </p>
@@ -32,78 +28,56 @@ import vacas from "@/assets/ganaderia/vacas.jpg";
         </h2>
 
         <p class="section-copy mt-5 max-w-lg">
-          Una forma de trabajar basada en el seguimiento diario, la atención al detalle
-          y decisiones que se toman con calma, pensando en el animal y en el entorno.
+          La ganaderia se sostiene en el seguimiento diario, en la observacion y
+          en una forma de decidir que pone por delante al animal, el entorno y la continuidad.
         </p>
       </div>
     </div>
 
-    <!-- BLOQUE INFERIOR -->
     <div class="pt-12 md:pt-24">
-
-      <div class="max-w-xl mb-10 border-l-4 border-blue-200 pl-6 bg-blue-50/40 rounded-r-2xl">
+      <div class="mb-10 max-w-xl rounded-r-2xl border-l-4 border-blue-200 bg-blue-50/40 pl-6">
         <h3 class="title-md text-gray-900">
           Estar encima de lo importante
-          <span class="block">marca la diferencia en el día a día.</span>
+          <span class="block">marca la diferencia en el dia a dia.</span>
         </h3>
 
         <p class="body-copy mt-4">
           Observar, anticiparse y cuidar los detalles forma parte de una manera de trabajar
-          cercana, constante y conectada con el ritmo real del campo.
+          cercana, constante y mas exigente de lo que parece desde fuera.
         </p>
       </div>
 
-      <!-- CARDS -->
-      <div class="grid md:grid-cols-3 gap-5 mt-8">
-
-        <!-- Card -->
-        <div class="group relative rounded-3xl overflow-hidden bg-gray-900 text-white p-6 transition duration-500 hover:-translate-y-1 hover:shadow-2xl ring-1 ring-gray-800/10">
-
-          <div class="absolute inset-0 bg-linear-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-
+      <div class="mt-8 grid gap-5 md:grid-cols-3">
+        <div class="group relative overflow-hidden rounded-3xl bg-gray-900 p-6 text-white ring-1 ring-gray-800/10 transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+          <div class="absolute inset-0 bg-linear-to-t from-white/5 to-transparent opacity-0 transition group-hover:opacity-100"></div>
           <p class="font-semibold">
             Seguimiento diario
           </p>
-
           <p class="mt-3 text-white/75">
-            Observar, controlar y anticiparse forma parte del trabajo diario con el ganado.
+            Revisar, observar y anticiparse forma parte del trabajo diario y condiciona muchas decisiones pequenas.
           </p>
-
         </div>
 
-        <!-- Card -->
-        <div class="group relative rounded-3xl overflow-hidden bg-gray-900 text-white p-6 transition duration-500 hover:-translate-y-1 hover:shadow-2xl ring-1 ring-gray-800/10">
-
-          <div class="absolute inset-0 bg-linear-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-
+        <div class="group relative overflow-hidden rounded-3xl bg-gray-900 p-6 text-white ring-1 ring-gray-800/10 transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+          <div class="absolute inset-0 bg-linear-to-t from-white/5 to-transparent opacity-0 transition group-hover:opacity-100"></div>
           <p class="font-semibold">
             Bienestar animal
           </p>
-
           <p class="mt-3 text-white/75">
-            El manejo responsable y la atención al detalle marcan la forma de trabajar.
+            El manejo responsable no es un eslogan: se traduce en presencia, cuidado y criterio continuado.
           </p>
-
         </div>
 
-        <!-- Card -->
-        <div class="group relative rounded-3xl overflow-hidden bg-gray-900 text-white p-6 transition duration-500 hover:-translate-y-1 hover:shadow-2xl ring-1 ring-gray-800/10">
-
-          <div class="absolute inset-0 bg-linear-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-
+        <div class="group relative overflow-hidden rounded-3xl bg-gray-900 p-6 text-white ring-1 ring-gray-800/10 transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+          <div class="absolute inset-0 bg-linear-to-t from-white/5 to-transparent opacity-0 transition group-hover:opacity-100"></div>
           <p class="font-semibold">
-            Alimentación conectada
+            Alimentacion conectada
           </p>
-
           <p class="mt-3 text-white/75">
-            Parte del alimento procede de nuestros cultivos, manteniendo el ciclo campo–ganado.
+            Parte de la alimentacion procede de nuestros cultivos, reforzando la conexion entre el campo y el ganado.
           </p>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 </section>

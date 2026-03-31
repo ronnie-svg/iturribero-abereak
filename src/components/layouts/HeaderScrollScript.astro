@@ -9,6 +9,7 @@
 
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
+  const mobileBackdrop = document.getElementById("mobile-menu-backdrop");
   const iconMenu = document.getElementById("icon-menu");
   const iconClose = document.getElementById("icon-close");
 
@@ -19,41 +20,72 @@
   const THRESHOLD = 12;
   let mobileOpen = false;
 
+  function isActiveLink(link) {
+    return link?.dataset.active === "true";
+  }
+
+  function lockBodyScroll(locked) {
+    document.body.classList.toggle("overflow-hidden", locked);
+  }
+
   function openMobileMenu() {
-    if (!mobileMenu || !mobileMenuButton || !iconMenu || !iconClose) return;
+    if (!mobileMenu || !mobileMenuButton || !iconMenu || !iconClose || !mobileBackdrop) return;
 
     mobileOpen = true;
-    mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.remove("invisible", "pointer-events-none", "opacity-0");
+    mobileMenu.classList.add("visible", "pointer-events-auto", "opacity-100");
+    mobileBackdrop.classList.remove("pointer-events-none", "opacity-0");
+    mobileBackdrop.classList.add("pointer-events-auto", "opacity-100", "bg-black/30");
     iconMenu.classList.add("hidden");
     iconClose.classList.remove("hidden");
     mobileMenuButton.setAttribute("aria-expanded", "true");
+    mobileMenuButton.setAttribute("aria-label", "Cerrar menu");
+    lockBodyScroll(true);
   }
 
   function closeMobileMenu() {
-    if (!mobileMenu || !mobileMenuButton || !iconMenu || !iconClose) return;
+    if (!mobileMenu || !mobileMenuButton || !iconMenu || !iconClose || !mobileBackdrop) return;
 
     mobileOpen = false;
-    mobileMenu.classList.add("hidden");
+    mobileMenu.classList.add("invisible", "pointer-events-none", "opacity-0");
+    mobileMenu.classList.remove("visible", "pointer-events-auto", "opacity-100");
+    mobileBackdrop.classList.add("pointer-events-none", "opacity-0");
+    mobileBackdrop.classList.remove("pointer-events-auto", "opacity-100", "bg-black/30");
     iconMenu.classList.remove("hidden");
     iconClose.classList.add("hidden");
     mobileMenuButton.setAttribute("aria-expanded", "false");
+    mobileMenuButton.setAttribute("aria-label", "Abrir menu");
+    lockBodyScroll(false);
   }
 
   function setTransparent() {
     if (!header || !brandText) return;
 
     header.className =
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-b from-black/35 to-transparent";
+      "fixed left-0 right-0 top-0 z-50 bg-gradient-to-b from-black/35 to-transparent transition-all duration-300";
 
-    brandText.className = "font-semibold text-lg tracking-tight text-white";
+    brandText.className = "text-lg font-semibold tracking-tight text-white";
 
-    if (navQs) navQs.className = "hover:underline underline-offset-4 text-white";
-    if (navGan) navGan.className = "hover:underline underline-offset-4 text-white";
-    if (navAgr) navAgr.className = "hover:underline underline-offset-4 text-white";
+    if (navQs) {
+      navQs.className = isActiveLink(navQs)
+        ? "text-white/92"
+        : "text-white transition hover:text-white/78";
+    }
+    if (navGan) {
+      navGan.className = isActiveLink(navGan)
+        ? "text-white/92"
+        : "text-white transition hover:text-white/78";
+    }
+    if (navAgr) {
+      navAgr.className = isActiveLink(navAgr)
+        ? "text-white/92"
+        : "text-white transition hover:text-white/78";
+    }
 
     if (navContact) {
-      navContact.className =
-        "inline-flex items-center justify-center px-5 py-2 rounded-full font-semibold transition bg-white/15 text-white border border-white/25 hover:bg-white/25";
+      navContact.className = isActiveLink(navContact)
+        ? "inline-flex items-center justify-center rounded-full bg-amber-300 px-5 py-2 font-semibold text-stone-950 transition"
+        : "inline-flex items-center justify-center rounded-full border border-white/25 bg-white/15 px-5 py-2 font-semibold text-white transition hover:bg-white/25";
     }
 
     if (mobileMenuButton) {
@@ -66,17 +98,30 @@
     if (!header || !brandText) return;
 
     header.className =
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur shadow-sm";
+      "fixed left-0 right-0 top-0 z-50 bg-white/90 shadow-sm backdrop-blur transition-all duration-300";
 
-    brandText.className = "font-semibold text-lg tracking-tight text-gray-900";
+    brandText.className = "text-lg font-semibold tracking-tight text-gray-900";
 
-    if (navQs) navQs.className = "hover:underline underline-offset-4 text-gray-700";
-    if (navGan) navGan.className = "hover:underline underline-offset-4 text-gray-700";
-    if (navAgr) navAgr.className = "hover:underline underline-offset-4 text-gray-700";
+    if (navQs) {
+      navQs.className = isActiveLink(navQs)
+        ? "text-stone-950"
+        : "text-gray-700 transition hover:text-gray-950";
+    }
+    if (navGan) {
+      navGan.className = isActiveLink(navGan)
+        ? "text-stone-950"
+        : "text-gray-700 transition hover:text-gray-950";
+    }
+    if (navAgr) {
+      navAgr.className = isActiveLink(navAgr)
+        ? "text-stone-950"
+        : "text-gray-700 transition hover:text-gray-950";
+    }
 
     if (navContact) {
-      navContact.className =
-        "inline-flex items-center justify-center px-5 py-2 rounded-full font-semibold transition bg-gray-900 text-white hover:bg-gray-800";
+      navContact.className = isActiveLink(navContact)
+        ? "inline-flex items-center justify-center rounded-full bg-amber-300 px-5 py-2 font-semibold text-stone-950 transition"
+        : "inline-flex items-center justify-center rounded-full bg-gray-900 px-5 py-2 font-semibold text-white transition hover:bg-gray-800";
     }
 
     if (mobileMenuButton) {
@@ -86,61 +131,49 @@
   }
 
   function applyModeFromScroll() {
-    if (!isHome) {
+    if (!isHome || mobileOpen) {
       setSolid();
       return;
     }
 
     const scrollTop = window.scrollY || window.pageYOffset || 0;
-
-    if (scrollTop > THRESHOLD) {
-      setSolid();
-    } else {
-      setTransparent();
-    }
+    if (scrollTop > THRESHOLD) setSolid();
+    else setTransparent();
   }
 
   function handleScroll() {
     window.requestAnimationFrame(applyModeFromScroll);
   }
 
+  function handleResize() {
+    if (window.innerWidth >= 768 && mobileOpen) {
+      closeMobileMenu();
+    }
+    applyModeFromScroll();
+  }
+
+  function handleKeydown(event) {
+    if (event.key === "Escape" && mobileOpen) {
+      closeMobileMenu();
+    }
+  }
+
   mobileMenuButton?.addEventListener("click", () => {
     if (mobileOpen) closeMobileMenu();
     else openMobileMenu();
+    applyModeFromScroll();
   });
 
+  mobileBackdrop?.addEventListener("click", closeMobileMenu);
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("keydown", handleKeydown);
   window.addEventListener("scroll", handleScroll, { passive: true });
   window.addEventListener("load", applyModeFromScroll);
-  window.addEventListener("resize", applyModeFromScroll);
+  window.addEventListener("resize", handleResize);
 
   applyModeFromScroll();
-</script>
-<!-- Menu hamburguesa mobile -->
-<script is:inline>
-  if (!window.__iturriberoMobileMenuInit) {
-    window.__iturriberoMobileMenuInit = true;
-
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const iconMenu = document.getElementById("icon-menu");
-    const iconClose = document.getElementById("icon-close");
-
-    mobileMenuButton?.addEventListener("click", () => {
-      if (!mobileMenu || !iconMenu || !iconClose || !(mobileMenuButton instanceof HTMLButtonElement)) return;
-
-      const isHidden = mobileMenu.classList.contains("hidden");
-
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        iconMenu.classList.add("hidden");
-        iconClose.classList.remove("hidden");
-        mobileMenuButton.setAttribute("aria-expanded", "true");
-      } else {
-        mobileMenu.classList.add("hidden");
-        iconMenu.classList.remove("hidden");
-        iconClose.classList.add("hidden");
-        mobileMenuButton.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
 </script>

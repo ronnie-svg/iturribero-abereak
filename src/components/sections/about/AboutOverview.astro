@@ -1,0 +1,92 @@
+---
+const pillars = [
+  {
+    step: "01",
+    title: "Tercera generacion",
+    description:
+      "Un oficio heredado y llevado adelante con escala humana, continuidad y trabajo diario.",
+    tone: "light",
+  },
+  {
+    step: "02",
+    title: "Vacuno de carne",
+    description:
+      "Seguimiento constante, bienestar animal y decisiones tomadas desde el ritmo real del campo.",
+    tone: "dark",
+  },
+  {
+    step: "03",
+    title: "Ciclo campo-ganado",
+    description:
+      "Cultivos propios conectados con la alimentacion del ganado y con el equilibrio general de la explotacion.",
+    tone: "light",
+  },
+];
+---
+
+<section class="section-shell border-t border-stone-200 bg-white">
+  <div class="section-inner">
+    <div class="max-w-4xl">
+      <p class="eyebrow mb-5">
+        Nuestra manera de hacer
+      </p>
+
+      <h2 class="text-4xl font-semibold leading-[0.98] tracking-[-0.045em] text-stone-950 md:text-5xl">
+        Menos ruido.
+        <span class="block">Mas campo.</span>
+      </h2>
+
+      <p class="mt-6 max-w-2xl text-base leading-7 text-stone-600 md:text-lg">
+        Detras de Iturribero Abereak hay una historia familiar ligada al campo,
+        al cuidado del ganado y a una manera de trabajar que no busca artificio,
+        sino continuidad, presencia y criterio.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {pillars.map((item) => (
+        <article
+          class={`rounded-[2rem] border p-6 shadow-[0_20px_50px_-42px_rgba(28,25,23,0.22)] ${
+            item.tone === "dark"
+              ? "border-stone-900 bg-stone-950 text-white"
+              : "border-stone-200 bg-stone-50 text-stone-950"
+          }`}
+        >
+          <div class="flex items-start justify-between gap-5">
+            <div>
+              <p
+                class={`text-xs uppercase tracking-[0.28em] ${
+                  item.tone === "dark" ? "text-amber-200/90" : "text-stone-500"
+                }`}
+              >
+                {item.step}
+              </p>
+
+              <h3 class="mt-4 text-xl font-semibold leading-tight md:text-2xl">
+                {item.title}
+              </h3>
+            </div>
+
+            <span
+              class={`inline-flex h-11 w-11 items-center justify-center rounded-2xl text-sm font-semibold ${
+                item.tone === "dark"
+                  ? "bg-white/8 text-white"
+                  : "bg-amber-100 text-amber-900"
+              }`}
+            >
+              {item.step}
+            </span>
+          </div>
+
+          <p
+            class={`mt-5 text-sm leading-6 md:text-base ${
+              item.tone === "dark" ? "text-white/76" : "text-stone-600"
+            }`}
+          >
+            {item.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

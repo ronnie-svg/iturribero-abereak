@@ -1,47 +1,69 @@
+---
+const pathname = Astro.url.pathname;
+
+const isActive = (href: string) =>
+  pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+
+const navLinkClass = (href: string) =>
+  isActive(href)
+    ? "text-white/92"
+    : "text-white transition hover:text-white/78";
+
+const mobileLinkClass = (href: string) =>
+  isActive(href)
+    ? "rounded-[1.25rem] border border-amber-300/60 bg-amber-50 px-4 py-4 text-base font-medium text-stone-950 no-underline transition"
+    : "rounded-[1.25rem] border border-stone-200 bg-stone-50 px-4 py-4 text-base font-medium text-stone-900 no-underline transition hover:bg-stone-100 hover:text-stone-950";
+---
+
 <header
   id="site-header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-linear-to-b from-black/35 to-transparent"
+  class="fixed left-0 right-0 top-0 z-50 bg-linear-to-b from-black/35 to-transparent transition-all duration-300"
 >
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
-    <a href="/" class="flex items-center gap-3">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="/" class="flex items-center gap-3 rounded-full focus-visible:ring-offset-transparent">
       <img
         src="/Iturriberoabereaklogo.svg"
         alt="Iturribero Abereak"
         class="h-10 w-auto"
       />
-      <span id="brand-text" class="font-semibold text-lg tracking-tight text-white">
+      <span id="brand-text" class="text-lg font-semibold tracking-tight text-white">
         Iturribero Abereak
       </span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a id="nav-qs" href="/quienes-somos" class="hover:underline underline-offset-4 text-white">
-        Quiénes somos
+    <nav class="hidden items-center gap-6 text-sm md:flex">
+      <a id="nav-qs" href="/quienes-somos" data-active={isActive("/quienes-somos")} class={`${navLinkClass("/quienes-somos")} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}>
+        Nuestra historia
       </a>
-      <a id="nav-gan" href="/ganaderia" class="hover:underline underline-offset-4 text-white">
-        Ganadería
+      <a id="nav-gan" href="/ganaderia" data-active={isActive("/ganaderia")} class={`${navLinkClass("/ganaderia")} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}>
+        Ganaderia
       </a>
-      <a id="nav-agr" href="/agricultura" class="hover:underline underline-offset-4 text-white">
+      <a id="nav-agr" href="/agricultura" data-active={isActive("/agricultura")} class={`${navLinkClass("/agricultura")} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}>
         Agricultura
       </a>
 
       <a
         id="nav-contact"
         href="/contacto"
-        class="inline-flex items-center justify-center px-5 py-2 rounded-full font-semibold transition bg-white/15 text-white border border-white/25 hover:bg-white/25"
+        data-active={isActive("/contacto")}
+        class={`inline-flex items-center justify-center rounded-full px-5 py-2 font-semibold transition ${
+          isActive("/contacto")
+            ? "bg-amber-300 text-stone-950"
+            : "border border-white/25 bg-white/15 text-white hover:bg-white/25 active:translate-y-[1px]"
+        }`}
       >
         Contacto
       </a>
     </nav>
 
-    <div class="md:hidden flex items-center">
+    <div class="flex items-center md:hidden">
       <button
         id="mobile-menu-button"
         type="button"
-        aria-label="Abrir menú"
+        aria-label="Abrir menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white/20"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition duration-200 hover:bg-white/20 active:scale-[0.98]"
       >
         <svg
           id="icon-menu"
@@ -71,16 +93,35 @@
   </div>
 
   <div
+    id="mobile-menu-backdrop"
+    class="pointer-events-none fixed inset-0 z-40 bg-black/0 opacity-0 transition duration-300 md:hidden"
+    aria-hidden="true"
+  ></div>
+
+  <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-gray-200 bg-white/95 backdrop-blur shadow-lg"
+    class="pointer-events-none invisible absolute left-0 right-0 top-full z-50 border-t border-stone-200/80 bg-white/96 opacity-0 shadow-xl backdrop-blur transition duration-300 md:hidden"
   >
-    <nav class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-4 text-base">
-      <a href="/quienes-somos" class="text-gray-900 font-medium">Quiénes somos</a>
-      <a href="/ganaderia" class="text-gray-900 font-medium">Ganadería</a>
-      <a href="/agricultura" class="text-gray-900 font-medium">Agricultura</a>
+    <nav class="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-5">
+      <a href="/quienes-somos" class={mobileLinkClass("/quienes-somos")}>
+        Nuestra historia
+      </a>
+
+      <a href="/ganaderia" class={mobileLinkClass("/ganaderia")}>
+        Ganaderia
+      </a>
+
+      <a href="/agricultura" class={mobileLinkClass("/agricultura")}>
+        Agricultura
+      </a>
+
       <a
         href="/contacto"
-        class="mt-2 inline-flex w-fit items-center justify-center px-5 py-3 rounded-full bg-gray-900 text-white font-semibold"
+        class={`mt-1 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold no-underline transition ${
+          isActive("/contacto")
+            ? "bg-amber-300 text-stone-950"
+            : "bg-stone-950 text-white hover:bg-stone-800 active:translate-y-[1px]"
+        }`}
       >
         Contacto
       </a>

@@ -1,0 +1,117 @@
+---
+import { Image } from "astro:assets";
+import tierra from "@/assets/agricultura/tierra.jpg";
+
+const phases = [
+  {
+    step: "01",
+    title: "Leer el terreno",
+    description:
+      "Antes de sembrar, el suelo, la humedad y las condiciones de la campana marcan la base de trabajo.",
+  },
+  {
+    step: "02",
+    title: "Ajustar el calendario",
+    description:
+      "Cada labor depende del momento oportuno, no de una receta fija repetida ano tras ano.",
+  },
+  {
+    step: "03",
+    title: "Integrar la explotacion",
+    description:
+      "Lo que se cultiva se relaciona con el resto del proyecto, especialmente con la alimentacion del ganado y con el equilibrio del conjunto.",
+  },
+];
+
+const crops = ["Trigo", "Cebada", "Avena", "Maiz", "Colza", "Veza", "Hierba"];
+---
+
+<section class="section-shell bg-white">
+  <div class="section-inner">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+      <div class="lg:sticky lg:top-28">
+        <p class="eyebrow mb-4">
+          Proceso de trabajo
+        </p>
+
+        <h2 class="section-title">
+          Agricultura pensada
+          <span class="block">como una secuencia real.</span>
+        </h2>
+
+        <p class="section-copy mt-5 max-w-xl">
+          Aqui no todo empieza y termina en la siembra. Hay lectura del terreno,
+          eleccion del momento, trabajo con maquinaria y una idea clara de hacia
+          donde va cada cultivo dentro de la explotacion.
+        </p>
+
+        <div class="chip-row mt-7">
+          {crops.map((crop) => (
+            <span class="chip">
+              {crop}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-5">
+        {phases.map((phase, index) => (
+          <article class="grid gap-5 rounded-[2rem] border border-stone-200 bg-stone-50 p-6 shadow-[0_20px_60px_-50px_rgba(28,25,23,0.35)] md:grid-cols-[auto_1fr]">
+            <div class="flex items-start gap-4 md:block">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-amber-100 text-base font-semibold text-amber-900">
+                {phase.step}
+              </span>
+            </div>
+
+            <div class="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(240px,0.85fr)] lg:items-center">
+              <div>
+                <h3 class="text-2xl font-semibold leading-tight text-stone-950">
+                  {phase.title}
+                </h3>
+                <p class="mt-4 max-w-xl text-sm leading-6 text-stone-600 md:text-base">
+                  {phase.description}
+                </p>
+              </div>
+
+              {index === 0 && (
+                <div class="overflow-hidden rounded-[1.5rem] border border-stone-200">
+                  <Image
+                    src={tierra}
+                    alt="Detalle del suelo agricola en Iturribero Abereak"
+                    class="h-44 w-full object-cover"
+                    sizes="(min-width: 1024px) 24vw, 100vw"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+
+              {index === 1 && (
+                <div class="rounded-[1.5rem] border border-stone-200 bg-white p-5">
+                  <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
+                    Ventanas de trabajo
+                  </p>
+                  <p class="mt-3 text-sm leading-6 text-stone-600">
+                    El clima y el estado del terreno deciden cuando conviene entrar,
+                    esperar o acelerar una fase concreta de la campana.
+                  </p>
+                </div>
+              )}
+
+              {index === 2 && (
+                <div class="rounded-[1.5rem] border border-stone-200 bg-stone-950 p-5 text-white">
+                  <p class="text-xs uppercase tracking-[0.28em] text-amber-200/90">
+                    Destino del cultivo
+                  </p>
+                  <p class="mt-3 text-sm leading-6 text-white/74">
+                    Parte del cereal y del forraje vuelve a la propia explotacion,
+                    reforzando un ciclo de trabajo mas coherente y autosostenido.
+                  </p>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

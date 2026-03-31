@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import camino from "@/assets/agricultura/camino.jpg";
+import vacas from "@/assets/ganaderia/vacas.jpg";
+
+const blocks = [
+  {
+    eyebrow: "Nuestra manera de hacer",
+    title: "Menos ruido.",
+    highlight: "Mas campo.",
+    text: "El proyecto se sostiene en el trabajo diario, en el contacto directo con el terreno y en una forma de hacer que valora mas la constancia que el gesto.",
+    image: camino,
+    align: "right",
+  },
+  {
+    eyebrow: "Nuestra filosofia",
+    title: "Hacer las cosas bien,",
+    highlight: "sin atajos",
+    text: "Cuidar el ganado, respetar los tiempos del campo y mantener un equilibrio real entre agricultura y ganaderia forma parte de la identidad de la casa.",
+    image: vacas,
+    align: "left",
+  },
+];
+---
+
+<section class="section-shell bg-white">
+  <div class="section-inner space-y-28">
+    {blocks.map((block) => (
+      <div class="relative">
+        <div class="relative h-64 overflow-hidden rounded-4xl md:h-84 lg:h-95">
+          <Image
+            src={block.image}
+            alt={block.title}
+            class="absolute inset-0 h-full w-full object-cover scale-[1.02]"
+            sizes="100vw"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black/24"></div>
+        </div>
+
+        <article
+          class={`relative z-10 -mt-16 rounded-[1.75rem] border border-white/55 bg-white/74 p-7 shadow-[0_24px_70px_-42px_rgba(28,25,23,0.24)] backdrop-blur-md md:max-w-md md:p-8 lg:absolute lg:bottom-[-4rem] lg:-mt-0 ${block.align === "right" ? "lg:right-20" : "lg:left-20"}`}
+        >
+          <p class="eyebrow mb-4">
+            {block.eyebrow}
+          </p>
+
+          <h3 class="text-3xl font-semibold leading-[1.02] tracking-[-0.04em] text-stone-950 md:text-[2.1rem]">
+            {block.title}
+            <span class="block">{block.highlight}</span>
+          </h3>
+
+          <p class="mt-4 text-base leading-7 text-stone-600">
+            {block.text}
+          </p>
+        </article>
+      </div>
+    ))}
+  </div>
+</section>
