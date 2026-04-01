@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+import Herohome from "../../components/sections/home/Herohome.astro";
+import ManifestoSection from "../../components/sections/home/ManifestoSection.astro";
+import HomeAreasSection from "../../components/sections/home/HomeAreasSection.astro";
+import HowWeWorkSection from "../../components/sections/home/HowWeWorkSection.astro";
+import { getAlternateEntries } from "../../i18n";
+---
+
+<Layout
+  title="Abeltzaintza eta nekazaritza Duranan, Araban | Iturribero Abereak"
+  description="Duranan, Araban, dagoen familia ustiapen agroabeltzaina. Haragitarako azienda, zereal eta bazka laboreak arretaz, jarraitutasunez eta lurraldeari lotuta landuak."
+  image="/hero-colza.jpg"
+  canonical="https://iturriberoabereak.com/eu/"
+  locale="eu"
+  pageKey="home"
+  alternates={getAlternateEntries("home")}
+>
+  <Herohome locale="eu" />
+  <ManifestoSection locale="eu" />
+  <HomeAreasSection locale="eu" />
+  <HowWeWorkSection locale="eu" />
+</Layout>

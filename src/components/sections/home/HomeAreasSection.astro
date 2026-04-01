@@ -1,44 +1,92 @@
 ---
 import { Image } from "astro:assets";
 import cebadaBg from "@/assets/agricultura/cebada.jpg";
+import type { Locale } from "../../../i18n";
+import { getLocalizedPath } from "../../../i18n";
 
-const items = [
-  {
-    title: "Quienes somos",
-    href: "/quienes-somos",
-    label: "Historia familiar",
-    description:
-      "Una forma de trabajar ligada al campo, al cuidado de los animales y a la continuidad del proyecto.",
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    alt: "Paisaje agricola de Iturribero Abereak",
+    more: "Ver mas",
+    items: [
+      {
+        title: "Nuestra historia",
+        href: getLocalizedPath("about", locale),
+        label: "Historia familiar",
+        description:
+          "Una forma de trabajar ligada al campo, al cuidado de los animales y a la continuidad del proyecto.",
+      },
+      {
+      title: "Ganadería",
+        href: getLocalizedPath("livestock", locale),
+        label: "Trabajo diario",
+        description:
+        "Cría de vacuno de carne con atención al bienestar animal y una rutina constante sobre el terreno.",
+      },
+      {
+        title: "Agricultura",
+        href: getLocalizedPath("agriculture", locale),
+      label: "Campañas",
+        description:
+        "Cultivos cerealistas y forrajeros trabajados con respeto por la tierra y por cada ciclo agrícola.",
+      },
+      {
+        title: "Contacto",
+        href: getLocalizedPath("contact", locale),
+      label: "Durana, Álava",
+        description:
+        "Una vía directa para conocernos mejor, resolver dudas o hablar sobre la explotación.",
+      },
+    ],
   },
-  {
-    title: "Ganaderia",
-    href: "/ganaderia",
-    label: "Trabajo diario",
-    description:
-      "Cria de vacuno de carne con atencion al bienestar animal y una rutina constante sobre el terreno.",
+  eu: {
+    alt: "Iturribero Abereakeko nekazaritza paisaia",
+    more: "Ikusi gehiago",
+    items: [
+      {
+        title: "Gure historia",
+        href: getLocalizedPath("about", locale),
+        label: "Familia ibilbidea",
+        description:
+          "Landari, animalien zaintzari eta proiektuaren jarraitutasunari lotutako lan egiteko modu bat.",
+      },
+      {
+        title: "Abeltzaintza",
+        href: getLocalizedPath("livestock", locale),
+        label: "Eguneroko lana",
+        description:
+          "Haragitarako aziendaren hazkuntza, animalien ongizatea eta eguneroko errutina etengabe zainduz.",
+      },
+      {
+        title: "Nekazaritza",
+        href: getLocalizedPath("agriculture", locale),
+        label: "Sasoiak",
+        description:
+          "Zereal eta bazka laboreak lurra eta nekazaritza ziklo bakoitza errespetatuz lantzen dira.",
+      },
+      {
+        title: "Kontaktua",
+        href: getLocalizedPath("contact", locale),
+        label: "Durana, Araba",
+        description:
+          "Elkar hobeto ezagutzeko, zalantzak argitzeko edo ustiapenari buruz hitz egiteko bide zuzena.",
+      },
+    ],
   },
-  {
-    title: "Agricultura",
-    href: "/agricultura",
-    label: "Campanas",
-    description:
-      "Cultivos cerealistas y forrajeros trabajados con respeto por la tierra y por cada ciclo agricola.",
-  },
-  {
-    title: "Contacto",
-    href: "/contacto",
-    label: "Durana, Alava",
-    description:
-      "Una via directa para conocernos mejor, resolver dudas o hablar sobre la explotacion.",
-  },
-];
+}[locale];
 ---
 
 <section class="relative isolate overflow-hidden bg-stone-950 text-white">
   <div class="absolute inset-0">
     <Image
       src={cebadaBg}
-      alt="Paisaje agricola de Iturribero Abereak"
+      alt={copy.alt}
       class="h-full w-full object-cover"
       sizes="100vw"
       loading="eager"
@@ -50,7 +98,7 @@ const items = [
 
   <div class="relative mx-auto max-w-7xl px-6 py-12 md:px-8 md:py-16">
     <div class="grid gap-4 md:grid-cols-2">
-      {items.map((item) => (
+      {copy.items.map((item) => (
         <a
           href={item.href}
           class="group relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/7 p-6 no-underline shadow-[0_24px_80px_-48px_rgba(0,0,0,0.72)] backdrop-blur-sm transition duration-500 ease-out hover:-translate-y-1 hover:scale-[1.01] hover:border-white/24 hover:bg-white/12 hover:shadow-[0_30px_100px_-42px_rgba(0,0,0,0.82)]"
@@ -75,7 +123,7 @@ const items = [
 
             <div class="flex items-center justify-between gap-4 border-t border-white/12 pt-4 transition duration-500 group-hover:border-white/22">
               <span class="text-sm font-medium text-white/84 transition duration-500 group-hover:text-white">
-                Ver mas
+                {copy.more}
               </span>
 
               <span class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-black/20 text-white transition duration-500 group-hover:translate-x-1 group-hover:scale-110 group-hover:border-amber-200/45 group-hover:bg-black/35 group-hover:text-amber-200">

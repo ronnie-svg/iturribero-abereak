@@ -1,19 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import "../styles/global.css";
-import ContactForm from "../components/contacts/ContactForm.astro";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+import ContactForm from "../../components/contacts/ContactForm.astro";
 import { Image } from "astro:assets";
-import tierraImg from "../assets/agricultura/tierra.jpg";
-import { getAlternateEntries } from "../i18n";
+import tierraImg from "../../assets/agricultura/tierra.jpg";
+import { getAlternateEntries } from "../../i18n";
 ---
 
 <Layout
-  title="Contacto en Durana, &Aacute;lava | Iturribero Abereak"
-  description="Contacta con Iturribero Abereak en Durana, &Aacute;lava. Consultas, visitas o colaboraciones con una explotaci&oacute;n agroganadera familiar."
+  title="Kontaktua Duranan, Araban | Iturribero Abereak"
+  description="Jarri harremanetan Iturribero Abereakekin Duranan, Araban. Kontsultak, bisitak edo elkarlanerako aukerak familia ustiapen agroabeltzain batekin."
   image="/tierra.jpg"
   headerOffset={true}
-  canonical="https://iturriberoabereak.com/contacto"
-  locale="es"
+  canonical="https://iturriberoabereak.com/eu/kontaktua"
+  locale="eu"
   pageKey="contact"
   alternates={getAlternateEntries("contact")}
 >
@@ -21,7 +21,7 @@ import { getAlternateEntries } from "../i18n";
     <div class="absolute inset-0">
       <Image
         src={tierraImg}
-        alt="Contacto de Iturribero Abereak"
+        alt="Iturribero Abereakekin harremanetan jartzeko irudia"
         class="h-full w-full object-cover object-center"
         sizes="100vw"
         loading="eager"
@@ -34,12 +34,12 @@ import { getAlternateEntries } from "../i18n";
     <div class="relative mx-auto flex min-h-[58vh] max-w-7xl items-end px-6 py-14 md:min-h-[62vh] md:px-8 md:py-16">
       <div class="max-w-2xl">
         <h1 class="text-5xl font-semibold leading-[0.96] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
-          Hablemos.
+          Hitz egin dezagun.
         </h1>
 
         <p class="mt-6 max-w-xl text-base leading-7 text-white/78 md:text-lg">
-          Si quieres hacer una consulta, plantear una visita o escribirnos por
-          alg&uacute;n motivo concreto, aqu&iacute; tienes una v&iacute;a directa y sencilla.
+          Kontsulta bat egin nahi baduzu, bisita bat proposatu edo arrazoiren
+          batengatik idatzi nahi badiguzu, hemen duzu bide zuzen eta erraza.
         </p>
       </div>
     </div>
@@ -54,26 +54,26 @@ import { getAlternateEntries } from "../i18n";
           </p>
 
           <h2 class="section-title text-4xl md:text-5xl">
-            Durana, &Aacute;lava.
+            Durana, Araba.
           </h2>
 
           <p class="section-copy mt-5 max-w-xl">
-            Explotaci&oacute;n agroganadera familiar vinculada al campo, al ganado y al
-            trabajo diario. Si necesitas informaci&oacute;n, quieres visitarnos o te
-            interesa hablar con nosotros, puedes escribirnos desde aqu&iacute;.
+            Lurrari, aziendari eta eguneroko lanari lotutako familia ustiapen
+            agroabeltzaina. Informazioa behar baduzu, bisita egin nahi baduzu
+            edo gurekin hitz egin nahi baduzu, hemendik idatz diezagukezu.
           </p>
 
           <div class="mt-10 space-y-4">
             <div class="rounded-[1.75rem] border border-stone-200 bg-stone-50 p-5">
-              <p class="text-xs uppercase tracking-[0.25em] text-stone-500">Email</p>
+              <p class="text-xs uppercase tracking-[0.25em] text-stone-500">Emaila</p>
               <p class="mt-2 font-semibold text-stone-950">info@iturriberoabereak.com</p>
             </div>
 
             <div class="rounded-[1.75rem] border border-stone-200 bg-stone-50 p-5">
-              <p class="text-xs uppercase tracking-[0.25em] text-stone-500">Ubicaci&oacute;n</p>
-              <p class="mt-2 font-semibold text-stone-950">Durana - Arrazua-Ubarrundia - &Aacute;lava</p>
+              <p class="text-xs uppercase tracking-[0.25em] text-stone-500">Kokapena</p>
+              <p class="mt-2 font-semibold text-stone-950">Durana - Arrazua-Ubarrundia - Araba</p>
               <p class="mt-2 text-sm text-stone-600">
-                Si vienes, escr&iacute;benos antes para indicarte el acceso con detalle.
+                Etortzekotan bazara, idatzi lehenago eta sarbidea zehaztasunez azalduko dizugu.
               </p>
             </div>
           </div>
@@ -83,7 +83,7 @@ import { getAlternateEntries } from "../i18n";
               href="mailto:info@iturriberoabereak.com"
               class="inline-flex items-center justify-center rounded-full bg-stone-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
             >
-              Enviar email
+              Bidali emaila
             </a>
 
             <a
@@ -92,7 +92,7 @@ import { getAlternateEntries } from "../i18n";
               rel="noreferrer"
               class="inline-flex items-center justify-center rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-50"
             >
-              Abrir mapa
+              Ireki mapa
             </a>
           </div>
         </div>
@@ -101,25 +101,25 @@ import { getAlternateEntries } from "../i18n";
           <div class="overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-[0_24px_70px_-48px_rgba(28,25,23,0.28)]">
             <div class="p-8 md:p-10">
               <p class="eyebrow mb-3">
-                Formulario
+                Formularioa
               </p>
 
               <h3 class="text-2xl font-semibold text-stone-950 md:text-3xl">
-                Escr&iacute;benos
+                Idatzi iezaguzu
               </h3>
 
               <p class="mt-3 max-w-xl text-sm leading-6 text-stone-600 md:text-base">
-                Cu&eacute;ntanos qu&eacute; necesitas y te responderemos con la mayor claridad posible.
+                Kontaiguzu zer behar duzun eta ahalik eta argien erantzungo dizugu.
               </p>
 
               <div class="mt-8">
-                <ContactForm locale="es" />
+                <ContactForm locale="eu" />
               </div>
             </div>
 
             <div class="border-t border-stone-200 bg-stone-50 px-8 py-6 md:px-10">
               <p class="text-sm text-stone-600">
-                Si lo prefieres, tambi&eacute;n puedes escribirnos directamente por email.
+                Nahiago baduzu, zuzenean ere idatz diezagukezu posta elektronikoz.
               </p>
             </div>
           </div>
@@ -133,16 +133,16 @@ import { getAlternateEntries } from "../i18n";
       <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div class="max-w-2xl">
           <p class="eyebrow mb-3">
-            Ubicaci&oacute;n
+            Kokapena
           </p>
 
           <h2 class="section-title text-3xl md:text-4xl">
-            Durana - Arrazua-Ubarrundia - &Aacute;lava
+            Durana - Arrazua-Ubarrundia - Araba
           </h2>
 
           <p class="section-copy mt-4">
-            Estamos en Durana. Si vas a acercarte, av&iacute;sanos antes y te indicamos
-            el acceso de la forma m&aacute;s sencilla.
+            Duranan gaude. Hurbiltzekotan bazara, abisatu aurretik eta sarrera
+            modu errazenean azalduko dizugu.
           </p>
         </div>
       </div>

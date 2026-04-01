@@ -1,24 +1,75 @@
+---
+import type { Locale } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    name: "Nombre",
+    namePlaceholder: "Tu nombre",
+    email: "Email",
+    emailPlaceholder: "tu@email.com",
+    phone: "Teléfono",
+    optional: "opcional",
+    phonePlaceholder: "Tu teléfono, si quieres que te llamemos",
+    message: "Mensaje",
+    messagePlaceholder: "Escribe aquí tu mensaje",
+    consent: "Al enviar aceptas que usemos tus datos solo para responder a tu consulta.",
+    submit: "Enviar",
+    sending: "Enviando mensaje...",
+    success: "Mensaje enviado correctamente.",
+    error: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+    requestError: "Error al enviar el mensaje.",
+  },
+  eu: {
+    name: "Izena",
+    namePlaceholder: "Zure izena",
+    email: "Emaila",
+    emailPlaceholder: "zure@email.com",
+    phone: "Telefonoa",
+    optional: "aukerakoa",
+    phonePlaceholder: "Zure telefonoa, deitzea nahi baduzu",
+    message: "Mezua",
+    messagePlaceholder: "Idatzi hemen zure mezua",
+    consent: "Bidaltzean onartzen duzu zure datuak zure kontsultari erantzuteko soilik erabiltzea.",
+    submit: "Bidali",
+    sending: "Mezua bidaltzen...",
+    success: "Mezua ondo bidali da.",
+    error: "Ezin izan da mezua bidali. Saiatu berriro.",
+    requestError: "Errorea mezua bidaltzean.",
+  },
+}[locale];
+---
+
 <form
   id="contact-form"
   class="grid grid-cols-1 gap-5 md:grid-cols-2"
+  data-sending={copy.sending}
+  data-success={copy.success}
+  data-error={copy.error}
+  data-request-error={copy.requestError}
 >
   <div class="md:col-span-1">
-    <label class="block text-sm font-semibold text-stone-900">Nombre</label>
+    <label class="block text-sm font-semibold text-stone-900">{copy.name}</label>
     <input
       type="text"
       name="name"
-      placeholder="Tu nombre"
+      placeholder={copy.namePlaceholder}
       required
       class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
     />
   </div>
 
   <div class="md:col-span-1">
-    <label class="block text-sm font-semibold text-stone-900">Email</label>
+    <label class="block text-sm font-semibold text-stone-900">{copy.email}</label>
     <input
       type="email"
       name="email"
-      placeholder="tu@email.com"
+      placeholder={copy.emailPlaceholder}
       required
       class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
     />
@@ -26,21 +77,21 @@
 
   <div class="md:col-span-2">
     <label class="block text-sm font-semibold text-stone-900">
-      Telefono <span class="font-normal text-stone-400">(opcional)</span>
+      {copy.phone} <span class="font-normal text-stone-400">({copy.optional})</span>
     </label>
     <input
       type="text"
       name="phone"
-      placeholder="Tu telefono, si quieres que te llamemos"
+      placeholder={copy.phonePlaceholder}
       class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
     />
   </div>
 
   <div class="md:col-span-2">
-    <label class="block text-sm font-semibold text-stone-900">Mensaje</label>
+    <label class="block text-sm font-semibold text-stone-900">{copy.message}</label>
     <textarea
       name="message"
-      placeholder="Escribe aqui tu mensaje"
+      placeholder={copy.messagePlaceholder}
       required
       rows="6"
       class="mt-2 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-400 focus:ring-2 focus:ring-stone-900/10"
@@ -50,7 +101,7 @@
   <div class="md:col-span-2 border-t border-stone-200 pt-2">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <p class="max-w-xl text-sm text-stone-500">
-        Al enviar aceptas que usemos tus datos solo para responder a tu consulta.
+        {copy.consent}
       </p>
 
       <button
@@ -58,7 +109,7 @@
         type="submit"
         class="inline-flex items-center justify-center rounded-full bg-stone-950 px-8 py-3 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-stone-800 active:translate-y-[1px] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Enviar
+        {copy.submit}
       </button>
     </div>
 
@@ -76,7 +127,12 @@
 
     if (!status || !submitButton || !(form instanceof HTMLFormElement)) return;
 
-    status.textContent = "Enviando mensaje...";
+    const sending = form.dataset.sending ?? "Enviando mensaje...";
+    const success = form.dataset.success ?? "Mensaje enviado correctamente.";
+    const error = form.dataset.error ?? "No se pudo enviar el mensaje. Inténtalo de nuevo.";
+    const requestError = form.dataset.requestError ?? "Error al enviar el mensaje.";
+
+    status.textContent = sending;
     submitButton.setAttribute("disabled", "disabled");
 
     const formData = new FormData(form);
@@ -94,13 +150,13 @@
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result?.error || "Error al enviar el mensaje.");
+        throw new Error(result?.error || requestError);
       }
 
-      status.textContent = "Mensaje enviado correctamente.";
+      status.textContent = success;
       form.reset();
     } catch {
-      status.textContent = "No se pudo enviar el mensaje. Intentalo de nuevo.";
+      status.textContent = error;
     } finally {
       submitButton.removeAttribute("disabled");
     }

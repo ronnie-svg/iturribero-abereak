@@ -1,5 +1,44 @@
 ---
+import type { Locale, PageKey } from "../../i18n";
+import { getLocalizedPath, getPageKeyFromPath, navigation } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+  pageKey?: PageKey;
+}
+
+const locale = Astro.props.locale ?? "es";
+const pageKey = Astro.props.pageKey;
+
 const pathname = Astro.url.pathname;
+const resolvedPageKey = pageKey ?? getPageKeyFromPath(pathname);
+const copy = navigation[locale];
+const uiCopy = {
+  es: {
+    switchToEs: "Cambiar idioma a castellano",
+    switchToEu: "Cambiar idioma a euskera",
+    openMenu: "Abrir menu",
+    closeMenu: "Cerrar menu",
+  },
+  eu: {
+    switchToEs: "Hizkuntza gaztelaniara aldatu",
+    switchToEu: "Hizkuntza euskarara aldatu",
+    openMenu: "Menua ireki",
+    closeMenu: "Menua itxi",
+  },
+}[locale];
+
+const items = [
+  { key: "about" as PageKey, label: copy.about },
+  { key: "livestock" as PageKey, label: copy.livestock },
+  { key: "agriculture" as PageKey, label: copy.agriculture },
+];
+
+const desktopIds: Record<string, string> = {
+  about: "nav-qs",
+  livestock: "nav-gan",
+  agriculture: "nav-agr",
+};
 
 const isActive = (href: string) =>
   pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
@@ -13,6 +52,11 @@ const mobileLinkClass = (href: string) =>
   isActive(href)
     ? "rounded-[1.25rem] border border-amber-300/60 bg-amber-50 px-4 py-4 text-base font-medium text-stone-950 no-underline transition"
     : "rounded-[1.25rem] border border-stone-200 bg-stone-50 px-4 py-4 text-base font-medium text-stone-900 no-underline transition hover:bg-stone-100 hover:text-stone-950";
+
+const otherLocale = locale === "es" ? "eu" : "es";
+const switchPath = resolvedPageKey
+  ? getLocalizedPath(resolvedPageKey, otherLocale)
+  : pathname;
 ---
 
 <header
@@ -20,7 +64,7 @@ const mobileLinkClass = (href: string) =>
   class="fixed left-0 right-0 top-0 z-50 bg-linear-to-b from-black/35 to-transparent transition-all duration-300"
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-    <a href="/" class="flex items-center gap-3 rounded-full focus-visible:ring-offset-transparent">
+    <a href={getLocalizedPath("home", locale)} class="flex items-center gap-3 rounded-full focus-visible:ring-offset-transparent">
       <img
         src="/Iturriberoabereaklogo.svg"
         alt="Iturribero Abereak"
@@ -31,38 +75,93 @@ const mobileLinkClass = (href: string) =>
       </span>
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm md:flex">
-      <a id="nav-qs" href="/quienes-somos" data-active={isActive("/quienes-somos")} class={`${navLinkClass("/quienes-somos")} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}>
-        Nuestra historia
-      </a>
-      <a id="nav-gan" href="/ganaderia" data-active={isActive("/ganaderia")} class={`${navLinkClass("/ganaderia")} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}>
-        Ganaderia
-      </a>
-      <a id="nav-agr" href="/agricultura" data-active={isActive("/agricultura")} class={`${navLinkClass("/agricultura")} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}>
-        Agricultura
-      </a>
+    <div class="hidden items-center gap-6 md:flex">
+      <nav class="flex items-center gap-6 text-sm">
+        {items.map((item) => {
+          const href = getLocalizedPath(item.key, locale);
+          return (
+            <a
+              id={desktopIds[item.key]}
+              href={href}
+              data-active={isActive(href)}
+              class={`${navLinkClass(href)} rounded-full px-1 py-1 focus-visible:ring-offset-transparent`}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
 
+      <div class="flex items-center gap-4 pl-2">
+        <div
+          id="locale-switcher"
+          class="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em]"
+        >
+          {locale === "es" ? (
+            <>
+              <span id="locale-current" class="text-white/68">ES</span>
+              <span id="locale-divider" class="text-white/26">|</span>
+              <a
+                id="locale-target"
+                href={switchPath}
+                class="text-white/68 transition hover:text-white/92"
+                aria-label={uiCopy.switchToEu}
+              >
+                EUS
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                id="locale-target"
+                href={switchPath}
+                class="text-white/68 transition hover:text-white/92"
+                aria-label={uiCopy.switchToEs}
+              >
+                ES
+              </a>
+              <span id="locale-divider" class="text-white/26">|</span>
+              <span id="locale-current" class="text-white/68">EUS</span>
+            </>
+          )}
+        </div>
+
+        <a
+          id="nav-contact"
+          href={getLocalizedPath("contact", locale)}
+          data-active={isActive(getLocalizedPath("contact", locale))}
+          class={`inline-flex items-center justify-center rounded-full px-5 py-2 font-semibold transition ${
+            isActive(getLocalizedPath("contact", locale))
+              ? "bg-amber-300 text-stone-950"
+              : "border border-white/25 bg-white/15 text-white hover:bg-white/25 active:translate-y-[1px]"
+          }`}
+        >
+          {copy.contact}
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 md:hidden">
       <a
-        id="nav-contact"
-        href="/contacto"
-        data-active={isActive("/contacto")}
-        class={`inline-flex items-center justify-center rounded-full px-5 py-2 font-semibold transition ${
-          isActive("/contacto")
-            ? "bg-amber-300 text-stone-950"
-            : "border border-white/25 bg-white/15 text-white hover:bg-white/25 active:translate-y-[1px]"
-        }`}
+        href={switchPath}
+        class="inline-flex h-11 items-center justify-center px-2"
+        aria-label={otherLocale === "es" ? uiCopy.switchToEs : uiCopy.switchToEu}
       >
-        Contacto
+        <span class="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em]" aria-hidden="true">
+          <span class={locale === "es" ? "text-white/78" : "text-white/42"}>ES</span>
+          <span class="text-white/22">|</span>
+          <span class={locale === "eu" ? "text-white/78" : "text-white/42"}>EUS</span>
+        </span>
       </a>
-    </nav>
 
-    <div class="flex items-center md:hidden">
       <button
         id="mobile-menu-button"
         type="button"
-        aria-label="Abrir menu"
+        aria-label={uiCopy.openMenu}
         aria-expanded="false"
         aria-controls="mobile-menu"
+        data-label-open={uiCopy.openMenu}
+        data-label-close={uiCopy.closeMenu}
         class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition duration-200 hover:bg-white/20 active:scale-[0.98]"
       >
         <svg
@@ -103,27 +202,24 @@ const mobileLinkClass = (href: string) =>
     class="pointer-events-none invisible absolute left-0 right-0 top-full z-50 border-t border-stone-200/80 bg-white/96 opacity-0 shadow-xl backdrop-blur transition duration-300 md:hidden"
   >
     <nav class="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-5">
-      <a href="/quienes-somos" class={mobileLinkClass("/quienes-somos")}>
-        Nuestra historia
-      </a>
-
-      <a href="/ganaderia" class={mobileLinkClass("/ganaderia")}>
-        Ganaderia
-      </a>
-
-      <a href="/agricultura" class={mobileLinkClass("/agricultura")}>
-        Agricultura
-      </a>
+      {items.map((item) => {
+        const href = getLocalizedPath(item.key, locale);
+        return (
+          <a href={href} class={mobileLinkClass(href)}>
+            {item.label}
+          </a>
+        );
+      })}
 
       <a
-        href="/contacto"
+        href={getLocalizedPath("contact", locale)}
         class={`mt-1 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold no-underline transition ${
-          isActive("/contacto")
+          isActive(getLocalizedPath("contact", locale))
             ? "bg-amber-300 text-stone-950"
             : "bg-stone-950 text-white hover:bg-stone-800 active:translate-y-[1px]"
         }`}
       >
-        Contacto
+        {copy.contact}
       </a>
     </nav>
   </div>

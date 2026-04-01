@@ -1,21 +1,60 @@
 ---
-const pillars = [
-  {
-    title: "Ganado",
+import type { Locale } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    eyebrow: "Nuestro enfoque",
+    title: "Campo trabajado con criterio, calma y continuidad.",
     description:
-      "Seguimiento diario, bienestar animal y una manera de trabajar basada en la constancia.",
+      "Ganadería y agricultura conviven en una misma explotación familiar. Lo importante no es hacer más ruido, sino sostener una forma de trabajar que cuide animales, tierra y campañas.",
+    pillars: [
+      {
+        title: "Ganado",
+        description:
+          "Seguimiento diario, bienestar animal y una manera de trabajar basada en la constancia.",
+      },
+      {
+        title: "Tierra",
+        description:
+          "Cada campaña se planifica con respeto por el suelo, el ritmo del clima y el trabajo bien hecho.",
+      },
+      {
+        title: "Familia",
+        description:
+          "Proyecto sostenido por experiencia, arraigo local y decisiones pensadas a largo plazo.",
+      },
+    ],
   },
-  {
-    title: "Tierra",
+  eu: {
+    eyebrow: "Gure ikuspegia",
+    title: "Irizpidez, patxadaz eta jarraitutasunez landutako lurra.",
     description:
-      "Cada campana se planifica con respeto por el suelo, el ritmo del clima y el trabajo bien hecho.",
+      "Gure familia-ustiategian, abeltzaintza eta nekazaritza elkarrekin bizi dira. Guretzat garrantzitsuena ez da zarata egitea, baizik eta animaliak, lurra eta urtaroak errespetatzen dituen lan egiteko moduari eustea.",
+    pillars: [
+      {
+        title: "Azienda",
+        description:
+          "Eguneroko jarraipena, animalien ongizatea eta etengabeko lan egiteko modu bat.",
+      },
+      {
+        title: "Lurra",
+        description:
+          "Sasoi bakoitza lurra, eguraldiaren erritmoa eta ondo egindako lana errespetatuz planifikatzen da.",
+      },
+      {
+        title: "Familia",
+        description:
+          "Esperientzian, tokiko erroetan eta epe luzerako erabakietan oinarritutako proiektua.",
+      },
+    ],
   },
-  {
-    title: "Familia",
-    description:
-      "Proyecto sostenido por experiencia, arraigo local y decisiones pensadas a largo plazo.",
-  },
-];
+}[locale];
 ---
 
 <section class="border-t border-stone-200 bg-stone-50">
@@ -23,22 +62,20 @@ const pillars = [
     <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-start">
       <div class="max-w-3xl">
         <p class="eyebrow text-stone-500">
-          Nuestro enfoque
+          {copy.eyebrow}
         </p>
 
         <h2 class="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-stone-950 md:text-6xl">
-          Campo trabajado con criterio, calma y continuidad.
+          {copy.title}
         </h2>
 
         <p class="mt-6 max-w-2xl text-base leading-7 text-stone-600 md:text-lg">
-          Ganaderia y agricultura conviven en una misma explotacion familiar.
-          Lo importante no es hacer mas ruido, sino sostener una forma de
-          trabajar que cuide animales, tierra y campanas.
+          {copy.description}
         </p>
       </div>
 
       <div class="grid gap-4">
-        {pillars.map((pillar, index) => (
+        {copy.pillars.map((pillar, index) => (
           <article class="rounded-[1.75rem] border border-stone-200 bg-white p-6 shadow-[0_24px_60px_-42px_rgba(28,25,23,0.35)]">
             <div class="flex items-start gap-4">
               <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-sm font-semibold text-amber-900">

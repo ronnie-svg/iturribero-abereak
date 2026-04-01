@@ -12,26 +12,45 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    const smtpHost = import.meta.env.SMTP_HOST;
+    const smtpPort = Number(import.meta.env.SMTP_PORT);
+    const smtpSecure = import.meta.env.SMTP_SECURE === "true";
+    const smtpUser = import.meta.env.SMTP_USER;
+    const smtpPass = import.meta.env.SMTP_PASS;
+    const contactTo = import.meta.env.CONTACT_TO || smtpUser;
+
+    if (!smtpHost || !smtpPort || !smtpUser || !smtpPass || !contactTo) {
+      console.error("Faltan variables SMTP para enviar el formulario.");
+
+      return new Response(
+        JSON.stringify({
+          ok: false,
+          error: "La configuracion de correo no esta completa.",
+        }),
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
-      host: import.meta.env.SMTP_HOST,
-      port: Number(import.meta.env.SMTP_PORT),
-      secure: import.meta.env.SMTP_SECURE === "true",
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
       auth: {
-        user: import.meta.env.SMTP_USER,
-        pass: import.meta.env.SMTP_PASS,
+        user: smtpUser,
+        pass: smtpPass,
       },
     });
 
     await transporter.sendMail({
-      from: `"Web Iturribero Abereak" <${import.meta.env.SMTP_USER}>`,
-      to: import.meta.env.CONTACT_TO || import.meta.env.SMTP_USER,
+      from: `"Web Iturribero Abereak" <${smtpUser}>`,
+      to: contactTo,
       replyTo: email,
       subject: "Nuevo mensaje desde la web",
       html: `
         <h2>Nuevo mensaje desde la web</h2>
         <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Teléfono:</strong> ${escapeHtml(phone || "")}</p>
+        <p><strong>Telefono:</strong> ${escapeHtml(phone || "")}</p>
         <p><strong>Mensaje:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
       `,

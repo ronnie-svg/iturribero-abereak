@@ -1,41 +1,91 @@
 ---
 import { Image } from "astro:assets";
 import hero from "@/assets/agricultura/hero-colza.jpg";
+import type { Locale } from "../../../i18n";
+import { getLocalizedPath } from "../../../i18n";
 
-const quickFacts = [
-  "Ganaderia de vacuno de carne",
-  "Cultivos cerealistas y forrajeros",
-  "Trabajo familiar en Durana, Alava",
-];
+interface Props {
+  locale?: Locale;
+}
 
-const stats = [
-  {
-    value: "Familia",
-    label: "Proyecto arraigado al territorio y al trabajo de cada campana.",
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    alt: "Explotación agroganadera en Durana, Álava",
+    brand: "Iturribero Abereak",
+    title: ["Campo vivo,", "ganado cuidado", "y tierra en marcha."],
+    description:
+      "Explotación agroganadera familiar en Durana, Álava, donde la ganadería y la agricultura se trabajan como una misma forma de entender el territorio.",
+    quickFacts: [
+      "Ganadería de vacuno de carne",
+      "Cultivos cerealistas y forrajeros",
+    ],
+    statsTitle: "Un modo de trabajar",
+    statsLead: "Cuidamos animales, cultivos y tiempo de campo con la misma mirada.",
+    stats: [
+      {
+        value: "Familia",
+        label: "Proyecto arraigado al territorio y al trabajo de cada campaña.",
+      },
+      {
+        value: "Ganadería",
+        label: "Cuidado diario del bienestar animal con manejo responsable.",
+      },
+      {
+        value: "Agricultura",
+        label: "Ciclos de siembra, forraje y cereal conectados con la explotación.",
+      },
+    ],
+    livestockCta: "Ver ganadería",
+    agricultureCta: "Ver agricultura",
+    contactCta: "Ir a contacto",
   },
-  {
-    value: "Ganaderia",
-    label: "Cuidado diario del bienestar animal con manejo responsable.",
+  eu: {
+    alt: "Duranako nekazaritza eta abeltzaintza ustiapena",
+    brand: "Iturribero Abereak",
+    title: ["Lur landua,", "abere zainduak,", "herri bizia."],
+    description:
+      "Duranako (Araba) familia-ustiategi agroabeltzaina gara. Gurean, nekazaritza eta abeltzaintza ez dira bereizten: lurraldea ulertzeko modu bera osatzen dute.",
+    quickFacts: [
+      "Haragi-behiak",
+      "Zereal eta bazka laboreak",
+    ],
+    statsTitle: "Lan egiteko modu bat",
+    statsLead: "Animaliak, laboreak eta landako denbora begirada berarekin zaintzen ditugu.",
+    stats: [
+      {
+        value: "Familia",
+        label: "Lurraldeari eta sasoiko lanari lotutako proiektua.",
+      },
+      {
+        value: "Abeltzaintza",
+        label: "Animalien ongizatea eguneroko arretaz eta ardura handiz lantzen dugu.",
+      },
+      {
+        value: "Nekazaritza",
+        label: "Ereintza, bazka eta zereal zikloak ustiapen osoarekin lotuta daude.",
+      },
+    ],
+    livestockCta: "Ikusi abeltzaintza",
+    agricultureCta: "Ikusi nekazaritza",
+    contactCta: "Jarri gurekin harremanetan",
   },
-  {
-    value: "Agricultura",
-    label: "Ciclos de siembra, forraje y cereal conectados con la explotacion.",
-  },
-];
+}[locale];
 ---
 
 <section class="relative isolate overflow-hidden bg-stone-950 text-white">
   <div class="absolute inset-0">
     <Image
       src={hero}
-      alt="Explotacion agroganadera en Durana, Alava"
+      alt={copy.alt}
       class="h-full w-full object-cover object-center"
       sizes="100vw"
       loading="eager"
       priority
     />
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(246,196,111,0.22),_transparent_38%),linear-gradient(120deg,_rgba(17,24,39,0.66),_rgba(17,24,39,0.2)_42%,_rgba(0,0,0,0.5))]"></div>
-    <div class="absolute inset-0 bg-[linear-gradient(to_top,_rgba(12,10,9,0.74),_rgba(12,10,9,0.08)_35%,_rgba(12,10,9,0.48))]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(246,196,111,0.2),_transparent_38%),linear-gradient(120deg,_rgba(17,24,39,0.6),_rgba(17,24,39,0.16)_42%,_rgba(0,0,0,0.42))]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_top,_rgba(12,10,9,0.66),_rgba(12,10,9,0.06)_35%,_rgba(12,10,9,0.4))]"></div>
   </div>
 
   <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 md:px-8">
@@ -43,26 +93,25 @@ const stats = [
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/84 backdrop-blur-sm">
           <span class="h-2 w-2 rounded-full bg-amber-300"></span>
-          Iturribero Abereak
+          {copy.brand}
         </div>
 
         <h1 class="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-balance sm:text-6xl lg:text-7xl">
-          Campo vivo,
+          {copy.title[0]}
           <br />
-          ganado cuidado
+          {copy.title[1]}
           <br />
-          y tierra en marcha.
+          {copy.title[2]}
         </h1>
 
         <p class="mt-6 max-w-2xl text-base leading-7 text-white/78 md:text-lg">
-          Explotacion agroganadera familiar en Durana, Alava, donde la
-          ganaderia y la agricultura se trabajan como una misma forma de
-          entender el territorio.
+          {copy.description}
         </p>
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          {quickFacts.map((fact) => (
-            <span class="rounded-full border border-white/15 bg-black/10 px-4 py-2 text-sm text-white/90 backdrop-blur-sm">
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          {copy.quickFacts.map((fact) => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/8 px-3.5 py-1.5 text-[12px] font-medium text-white/72 backdrop-blur-sm sm:text-sm sm:text-white/78">
+              <span class="h-1.5 w-1.5 rounded-full bg-amber-300/80"></span>
               {fact}
             </span>
           ))}
@@ -70,32 +119,32 @@ const stats = [
 
         <div class="mt-10 flex flex-col gap-4 sm:flex-row">
           <a
-            href="/ganaderia"
+            href={getLocalizedPath("livestock", locale)}
             class="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-amber-200"
           >
-            Ver ganaderia
+            {copy.livestockCta}
           </a>
 
           <a
-            href="/agricultura"
+            href={getLocalizedPath("agriculture", locale)}
             class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-stone-950"
           >
-            Ver agricultura
+            {copy.agricultureCta}
           </a>
         </div>
       </div>
 
       <aside class="justify-self-end rounded-[2rem] border border-white/15 bg-white/8 p-5 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-6 lg:max-w-md">
         <p class="text-xs uppercase tracking-[0.32em] text-white/55">
-          Un modo de trabajar
+          {copy.statsTitle}
         </p>
 
         <p class="mt-4 text-2xl font-semibold leading-tight text-white">
-          Cuidamos animales, cultivos y tiempo de campo con la misma mirada.
+          {copy.statsLead}
         </p>
 
         <div class="mt-6 space-y-4">
-          {stats.map((item) => (
+          {copy.stats.map((item) => (
             <div class="rounded-2xl border border-white/10 bg-black/10 p-4">
               <p class="text-sm font-semibold uppercase tracking-[0.24em] text-amber-200/90">
                 {item.value}
@@ -108,10 +157,10 @@ const stats = [
         </div>
 
         <a
-          href="/contacto"
+          href={getLocalizedPath("contact", locale)}
           class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white no-underline transition hover:text-amber-200"
         >
-          Ir a contacto
+          {copy.contactCta}
           <span aria-hidden="true">+</span>
         </a>
       </aside>

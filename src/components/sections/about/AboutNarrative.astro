@@ -2,30 +2,57 @@
 import { Image } from "astro:assets";
 import camino from "@/assets/agricultura/camino.jpg";
 import vacas from "@/assets/ganaderia/vacas.jpg";
+import type { Locale } from "../../../i18n";
 
-const blocks = [
-  {
-    eyebrow: "Nuestra manera de hacer",
-    title: "Menos ruido.",
-    highlight: "Mas campo.",
-    text: "El proyecto se sostiene en el trabajo diario, en el contacto directo con el terreno y en una forma de hacer que valora mas la constancia que el gesto.",
-    image: camino,
-    align: "right",
-  },
-  {
-    eyebrow: "Nuestra filosofia",
-    title: "Hacer las cosas bien,",
-    highlight: "sin atajos",
-    text: "Cuidar el ganado, respetar los tiempos del campo y mantener un equilibrio real entre agricultura y ganaderia forma parte de la identidad de la casa.",
-    image: vacas,
-    align: "left",
-  },
-];
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: [
+    {
+      eyebrow: "Nuestra manera de hacer",
+      title: "Menos ruido.",
+      highlight: "Más campo.",
+      text: "El proyecto se sostiene en el trabajo diario, en el contacto directo con el terreno y en una forma de hacer que valora más la constancia que el gesto.",
+      image: camino,
+      align: "right",
+    },
+    {
+      eyebrow: "Nuestra filosofía",
+      title: "Hacer las cosas bien,",
+      highlight: "sin atajos",
+      text: "Cuidar el ganado, respetar los tiempos del campo y mantener un equilibrio real entre agricultura y ganadería forma parte de la identidad de la casa.",
+      image: vacas,
+      align: "left",
+    },
+  ],
+  eu: [
+    {
+      eyebrow: "Lan egiteko modua",
+      title: "Zarata gutxiago.",
+      highlight: "Landa gehiago.",
+      text: "Iturribero Abereak proiektuaren atzean, lurrari eta abereen zaintzari lotutako familia-historia dago; artifiziorik gabe, jarraitutasuna eta presentzia ardatz dituena.",
+      image: camino,
+      align: "right",
+    },
+    {
+      eyebrow: "Filosofia",
+      title: "Gauzak ondo egitea,",
+      highlight: "lasterbiderik gabe.",
+      text: "Abereak zaintzea, landaren denborak errespetatzea eta nekazaritzaren eta abeltzaintzaren arteko oreka mantentzea da gure nortasun ikurra.",
+      image: vacas,
+      align: "left",
+    },
+  ],
+}[locale];
 ---
 
 <section class="section-shell bg-white">
   <div class="section-inner space-y-28">
-    {blocks.map((block) => (
+    {copy.map((block) => (
       <div class="relative">
         <div class="relative h-64 overflow-hidden rounded-4xl md:h-84 lg:h-95">
           <Image

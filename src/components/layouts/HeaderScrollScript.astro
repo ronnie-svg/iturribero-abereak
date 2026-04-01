@@ -6,6 +6,9 @@
   const navGan = document.getElementById("nav-gan");
   const navAgr = document.getElementById("nav-agr");
   const navContact = document.getElementById("nav-contact");
+  const localeCurrent = document.getElementById("locale-current");
+  const localeTarget = document.getElementById("locale-target");
+  const localeDivider = document.getElementById("locale-divider");
 
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -15,7 +18,9 @@
 
   const isHome =
     window.location.pathname === "/" ||
-    window.location.pathname === "/index.html";
+    window.location.pathname === "/index.html" ||
+    window.location.pathname === "/eu/" ||
+    window.location.pathname === "/eu/index.html";
 
   const THRESHOLD = 12;
   let mobileOpen = false;
@@ -39,7 +44,10 @@
     iconMenu.classList.add("hidden");
     iconClose.classList.remove("hidden");
     mobileMenuButton.setAttribute("aria-expanded", "true");
-    mobileMenuButton.setAttribute("aria-label", "Cerrar menu");
+    mobileMenuButton.setAttribute(
+      "aria-label",
+      mobileMenuButton.dataset.labelClose ?? "Cerrar menu"
+    );
     lockBodyScroll(true);
   }
 
@@ -54,7 +62,10 @@
     iconMenu.classList.remove("hidden");
     iconClose.classList.add("hidden");
     mobileMenuButton.setAttribute("aria-expanded", "false");
-    mobileMenuButton.setAttribute("aria-label", "Abrir menu");
+    mobileMenuButton.setAttribute(
+      "aria-label",
+      mobileMenuButton.dataset.labelOpen ?? "Abrir menu"
+    );
     lockBodyScroll(false);
   }
 
@@ -92,6 +103,16 @@
       mobileMenuButton.className =
         "inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition hover:bg-white/20";
     }
+
+    if (localeCurrent) {
+      localeCurrent.className = "text-white/68";
+    }
+    if (localeDivider) {
+      localeDivider.className = "text-white/26";
+    }
+    if (localeTarget) {
+      localeTarget.className = "text-white/68 transition hover:text-white/92";
+    }
   }
 
   function setSolid() {
@@ -127,6 +148,16 @@
     if (mobileMenuButton) {
       mobileMenuButton.className =
         "inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-900 transition hover:bg-gray-50";
+    }
+
+    if (localeCurrent) {
+      localeCurrent.className = "text-stone-900/78";
+    }
+    if (localeDivider) {
+      localeDivider.className = "text-stone-400";
+    }
+    if (localeTarget) {
+      localeTarget.className = "text-stone-600 transition hover:text-stone-950";
     }
   }
 

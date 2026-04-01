@@ -1,3 +1,45 @@
+---
+import type { Locale, PageKey } from "../../i18n";
+import { getLocalizedPath, getPageKeyFromPath } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+  pageKey?: PageKey;
+}
+
+const locale = Astro.props.locale ?? "es";
+const pageKey = Astro.props.pageKey;
+const otherLocale = locale === "es" ? "eu" : "es";
+const pathname = Astro.url.pathname;
+const resolvedPageKey = pageKey ?? getPageKeyFromPath(pathname);
+const switchPath = resolvedPageKey
+  ? getLocalizedPath(resolvedPageKey, otherLocale)
+  : pathname;
+
+const copy = {
+  es: {
+    description: "Explotación agroganadera familiar en Durana (Arrazua-Ubarrundia, Álava).",
+    support: "Campo, ganado y trabajo hecho con continuidad.",
+    contact: "Contacto",
+    info: "Información",
+    follow: "Seguir en Instagram",
+    legal: "Aviso legal",
+    privacy: "Política de privacidad",
+    cookies: "Política de cookies",
+  },
+  eu: {
+    description: "Duranan (Arrazua-Ubarrundia, Araba) dagoen familia ustiapen agroabeltzaina.",
+    support: "Landa lana, azienda eta jarraitutasunez egindako egunerokoa.",
+    contact: "Kontaktua",
+    info: "Informazioa",
+    follow: "Instagramen jarraitu",
+    legal: "Lege oharra",
+    privacy: "Pribatutasun politika",
+    cookies: "Cookie politika",
+  },
+}[locale];
+---
+
 <footer class="bg-slate-100 border-t border-gray-200">
   <div class="max-w-7xl mx-auto px-8 py-14">
     <div class="grid md:grid-cols-[1.2fr_1fr_1fr] gap-12 md:gap-16 items-start">
@@ -9,22 +51,28 @@
         />
 
         <p class="mt-6 text-base leading-relaxed text-gray-700">
-          Explotacion agroganadera familiar en Durana
-          (Arrazua-Ubarrundia, Alava).
+          {copy.description}
         </p>
 
         <p class="mt-6 text-base text-gray-500">
-          Campo, ganado y trabajo hecho con continuidad.
+          {copy.support}
         </p>
+
+        <a
+          href={switchPath}
+          class="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500 no-underline transition duration-200 hover:text-stone-900"
+        >
+          <span aria-hidden="true">ES | EUS</span>
+        </a>
       </div>
 
       <div>
         <p class="text-sm font-semibold text-gray-900 uppercase tracking-[0.18em]">
-          Contacto
+          {copy.contact}
         </p>
 
         <div class="mt-6 space-y-4 text-base text-gray-700">
-          <p>Durana - Arrazua-Ubarrundia - Alava</p>
+          <p>Durana - Arrazua-Ubarrundia - Álava</p>
 
           <a
             href="mailto:info@iturriberoabereak.com"
@@ -48,20 +96,20 @@
                 d="M7.75 2h8.5C19.99 2 22 4.01 22 7.75v8.5C22 19.99 19.99 22 16.25 22h-8.5C4.01 22 2 19.99 2 16.25v-8.5C2 4.01 4.01 2 7.75 2zm8.4 2h-8.3A3.85 3.85 0 004 7.85v8.3A3.85 3.85 0 007.85 20h8.3A3.85 3.85 0 0020 16.15v-8.3A3.85 3.85 0 0016.15 4zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm5.2-2.3a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
               />
             </svg>
-            <span>Seguir en Instagram</span>
+            <span>{copy.follow}</span>
           </a>
         </div>
       </div>
 
       <div>
         <p class="text-sm font-semibold text-gray-900 uppercase tracking-[0.18em]">
-          Informacion
+          {copy.info}
         </p>
 
         <div class="mt-6 space-y-4 text-base text-gray-700">
-          <a href="/aviso-legal" class="block rounded-md transition duration-200 hover:text-gray-900 active:translate-y-[1px]">Aviso legal</a>
-          <a href="/privacidad" class="block rounded-md transition duration-200 hover:text-gray-900 active:translate-y-[1px]">Politica de privacidad</a>
-          <a href="/politicas-cookies" class="block rounded-md transition duration-200 hover:text-gray-900 active:translate-y-[1px]">Politica de cookies</a>
+          <a href="/aviso-legal" class="block rounded-md transition duration-200 hover:text-gray-900 active:translate-y-[1px]">{copy.legal}</a>
+          <a href="/privacidad" class="block rounded-md transition duration-200 hover:text-gray-900 active:translate-y-[1px]">{copy.privacy}</a>
+          <a href="/politicas-cookies" class="block rounded-md transition duration-200 hover:text-gray-900 active:translate-y-[1px]">{copy.cookies}</a>
         </div>
       </div>
     </div>
@@ -70,7 +118,7 @@
   <div class="border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-8 py-6 text-sm text-gray-500 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
       <p>&copy; {new Date().getFullYear()} Iturribero Abereak</p>
-      <p>Durana - Arrazua-Ubarrundia - Alava</p>
+      <p>Durana - Arrazua-Ubarrundia - Álava</p>
     </div>
   </div>
 </footer>

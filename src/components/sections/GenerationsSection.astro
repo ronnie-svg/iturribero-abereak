@@ -3,6 +3,90 @@ import { Image } from "astro:assets";
 import tierraImg from "@/assets/agricultura/tierra.jpg";
 import caminoImg from "@/assets/agricultura/camino.jpg";
 import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
+import type { Locale } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    eyebrow: "Generaciones",
+    title: ["Un proyecto que evoluciona", "sin perder la raíz"],
+    description:
+      "Tres generaciones unidas por una misma manera de entender el campo: trabajo diario, continuidad familiar y una relación directa con el territorio.",
+    brand: "Iturribero Abereak",
+    indicators: ["Primera", "Segunda", "Tercera"],
+    contents: [
+      {
+        eyebrow: "Primera generación",
+        title: "Los inicios del proyecto",
+        lead:
+          "Todo empieza con el trabajo diario, el conocimiento del campo y una forma de entender la vida ligada al esfuerzo, la constancia y el arraigo al entorno.",
+        text:
+          "Esta etapa representa la base sobre la que se construye todo lo demás: oficio, experiencia y una relación directa con la tierra.",
+      },
+      {
+        eyebrow: "Segunda generación",
+        title: "Continuidad con capacidad de adaptación",
+        lead:
+          "La segunda generación mantiene viva la base familiar, incorporando ajustes y decisiones que permiten dar continuidad al proyecto en un contexto cambiante.",
+        text:
+          "Es una etapa de consolidación: seguir adelante sin perder la esencia, pero sabiendo evolucionar con cada campaña y necesidad.",
+      },
+      {
+        eyebrow: "Tercera generación",
+        title: "El presente de Iturribero Abereak",
+        lead:
+          "Hoy, el proyecto se traduce en una explotación pequeña, cercana y responsable, con vacas de carne y cultivos destinados a su alimentación.",
+        text:
+          "Una forma de trabajar con identidad propia, conectada al territorio y sostenida por una historia familiar que sigue viva.",
+      },
+    ],
+    footerTitle: "Legado",
+    footerText:
+      "Cada generación suma experiencia, decisiones y una forma propia de seguir vinculados al campo.",
+  },
+  eu: {
+    eyebrow: "Belaunaldiak",
+    title: ["Eboluzioan dagoen proiektua,", "sustraiak galdu gabe."],
+    description:
+      "Hiru belaunaldi landa ulertzeko modu berean bilduta: familia-jarraitutasuna eta lurraldearekiko harreman zuzena.",
+    brand: "Iturribero Abereak",
+    indicators: ["Lehena", "Bigarrena", "Hirugarrena"],
+    contents: [
+      {
+        eyebrow: "Lehen belaunaldia",
+        title: "Hasierak",
+        lead:
+          "Ofizioaren oinarriak, lurraren ezagutza eta irmotasuna.",
+        text:
+          "Dena eraiki zuen esperientzia.",
+      },
+      {
+        eyebrow: "Bigarren belaunaldia",
+        title: "Egokitzapena",
+        lead:
+          "Familia-oinarria bizirik mantenduz, proiektua garai berrietara eta testuinguru aldakorretara egokitzea.",
+        text:
+          "",
+      },
+      {
+        eyebrow: "Hirugarren belaunaldia",
+        title: "Oraina",
+        lead:
+          "Iturribero Abereaken gaur egungo errealitatea: ustiapen hurbila, arduratsua eta nortasun propio duna.",
+        text:
+          "",
+      },
+    ],
+    footerTitle: "Ondarea",
+    footerText:
+      "Belaunaldi bakoitzak bere esperientzia eta landari lotzeko modu propioa gehitu dio gure familiari.",
+  },
+}[locale];
 ---
 
 <section class="w-full bg-white">
@@ -10,19 +94,18 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
     <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7">
         <p class="eyebrow mb-5">
-          Generaciones
+          {copy.eyebrow}
         </p>
 
         <h2 class="section-title">
-          Un proyecto que evoluciona
-          <span class="block">sin perder la raiz</span>
+          {copy.title[0]}
+          <span class="block">{copy.title[1]}</span>
         </h2>
       </div>
 
       <div class="lg:col-span-5">
         <p class="section-copy max-w-xl">
-          Tres generaciones unidas por una misma manera de entender el campo:
-          trabajo diario, continuidad familiar y una relacion directa con el territorio.
+          {copy.description}
         </p>
       </div>
     </div>
@@ -61,7 +144,7 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
 
           <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8">
             <div class="inline-flex items-center gap-3 rounded-full bg-black/30 px-4 py-2 text-[11px] text-white/85 backdrop-blur-sm md:text-sm">
-              <span class="uppercase tracking-[0.3em]">Iturribero Abereak</span>
+              <span class="uppercase tracking-[0.3em]">{copy.brand}</span>
             </div>
           </div>
         </div>
@@ -74,86 +157,83 @@ import asturianaImg from "@/assets/ganaderia/asturiana.jpg";
               <div class="generation-indicators no-scrollbar -mx-1 overflow-x-auto px-1 pb-2">
                 <button class="generation-indicator is-active" data-generation="1" type="button">
                   <span class="generation-indicator__number">1</span>
-                  <span class="generation-indicator__label">Primera</span>
+                  <span class="generation-indicator__label">{copy.indicators[0]}</span>
                 </button>
 
                 <button class="generation-indicator" data-generation="2" type="button">
                   <span class="generation-indicator__number">2</span>
-                  <span class="generation-indicator__label">Segunda</span>
+                  <span class="generation-indicator__label">{copy.indicators[1]}</span>
                 </button>
 
                 <button class="generation-indicator" data-generation="3" type="button">
                   <span class="generation-indicator__number">3</span>
-                  <span class="generation-indicator__label">Tercera</span>
+                  <span class="generation-indicator__label">{copy.indicators[2]}</span>
                 </button>
               </div>
 
               <div id="generation-content-1" class="generation-content is-active">
-                <p class="generation-content__eyebrow">Primera generacion</p>
+                <p class="generation-content__eyebrow">{copy.contents[0].eyebrow}</p>
 
                 <h3 class="generation-content__title">
-                  Los inicios del proyecto
+                  {copy.contents[0].title}
                 </h3>
 
                 <p class="generation-content__text generation-content__text--lead">
-                  Todo empieza con el trabajo diario, el conocimiento del campo y una
-                  forma de entender la vida ligada al esfuerzo, la constancia y el
-                  arraigo al entorno.
+                  {copy.contents[0].lead}
                 </p>
 
-                <p class="generation-content__text">
-                  Esta etapa representa la base sobre la que se construye todo lo demas:
-                  oficio, experiencia y una relacion directa con la tierra.
-                </p>
+                {copy.contents[0].text && (
+                  <p class="generation-content__text">
+                    {copy.contents[0].text}
+                  </p>
+                )}
               </div>
 
               <div id="generation-content-2" class="generation-content">
-                <p class="generation-content__eyebrow">Segunda generacion</p>
+                <p class="generation-content__eyebrow">{copy.contents[1].eyebrow}</p>
 
                 <h3 class="generation-content__title">
-                  Continuidad con capacidad de adaptacion
+                  {copy.contents[1].title}
                 </h3>
 
                 <p class="generation-content__text generation-content__text--lead">
-                  La segunda generacion mantiene viva la base familiar, incorporando
-                  ajustes y decisiones que permiten dar continuidad al proyecto en un
-                  contexto cambiante.
+                  {copy.contents[1].lead}
                 </p>
 
-                <p class="generation-content__text">
-                  Es una etapa de consolidacion: seguir adelante sin perder la esencia,
-                  pero sabiendo evolucionar con cada campana y necesidad.
-                </p>
+                {copy.contents[1].text && (
+                  <p class="generation-content__text">
+                    {copy.contents[1].text}
+                  </p>
+                )}
               </div>
 
               <div id="generation-content-3" class="generation-content">
-                <p class="generation-content__eyebrow">Tercera generacion</p>
+                <p class="generation-content__eyebrow">{copy.contents[2].eyebrow}</p>
 
                 <h3 class="generation-content__title">
-                  El presente de Iturribero Abereak
+                  {copy.contents[2].title}
                 </h3>
 
                 <p class="generation-content__text generation-content__text--lead">
-                  Hoy, el proyecto se traduce en una explotacion pequena, cercana y
-                  responsable, con vacas de carne y cultivos destinados a su alimentacion.
+                  {copy.contents[2].lead}
                 </p>
 
-                <p class="generation-content__text">
-                  Una forma de trabajar con identidad propia, conectada al territorio y
-                  sostenida por una historia familiar que sigue viva.
-                </p>
+                {copy.contents[2].text && (
+                  <p class="generation-content__text">
+                    {copy.contents[2].text}
+                  </p>
+                )}
               </div>
             </div>
 
             <div class="generation-stage__footer">
               <div class="generation-stage__footer-top">
-                <span>Legado</span>
+                <span>{copy.footerTitle}</span>
                 <span></span>
               </div>
 
               <p>
-                Cada generacion suma experiencia, decisiones y una forma propia de
-                seguir vinculados al campo.
+                {copy.footerText}
               </p>
             </div>
           </div>
