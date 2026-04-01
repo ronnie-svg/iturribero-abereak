@@ -8,7 +8,9 @@ export default defineConfig({
   site: 'https://iturriberoabereak.com',
   integrations: [react(), sitemap()],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+  }),
   vite: {
     plugins: [tailwindcss()],
   },
