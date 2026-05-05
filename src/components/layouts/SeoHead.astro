@@ -54,20 +54,37 @@ const schema = {
     {
       "@type": "LocalBusiness",
       "@id": `${canonical}#organization`,
-      name: "Iturribero Abereak",
-      image: imageUrl,
-      url: canonical,
-      description,
-      address: {
+      "@context": "https://schema.org",
+      "name": "Iturribero Abereak",
+      "image": imageUrl,
+      "url": canonical,
+      "description": "Explotación agroganadera familiar en Durana, Álava. Ganadería de vacuno de carne y cultivos cerealistas y forrajeros trabajados con cuidado y arraigo al territorio.",
+      "additionalType": ["FarmBusiness", "AgriculturalBusiness"],
+      "address": {
         "@type": "PostalAddress",
-        addressLocality: "Durana",
-        addressRegion: "Álava",
-        addressCountry: "ES",
+        "streetAddress": "Durana",
+        "addressLocality": "Durana",
+        "addressRegion": "Álava",
+        "addressCountry": "ES",
       },
-      areaServed: {
-        "@type": "AdministrativeArea",
-        name: "Álava",
-      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Álava",
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Durana",
+        }
+      ],
+      "knowsAbout": [
+        "Ganadería de carne",
+        "Cultivos cerealistas",
+        "Cultivos forrajeros",
+        "Agricultura sostenible",
+        "Explotación agroganadera"
+      ],
+      "sameAs": [canonical],
     },
   ],
 };
