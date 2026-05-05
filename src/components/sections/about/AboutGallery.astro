@@ -3,25 +3,53 @@ import { Image } from "astro:assets";
 import tierra from "@/assets/agricultura/tierra.jpg";
 import deutz from "@/assets/agricultura/deutz.jpg";
 import girasol from "@/assets/agricultura/girasol.jpg";
+import type { Locale } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    eyebrow: "Entorno y trabajo",
+    title: ["Una explotación hecha", "de paisaje y rutina."],
+    alts: [
+      "Tierra de cultivo en Iturribero Abereak",
+      "Maquinaria agrícola en Iturribero Abereak",
+      "Cultivo en flor dentro del entorno de la explotación",
+    ],
+  },
+  eu: {
+    eyebrow: "Ingurunea eta lana",
+    title: ["Paisaiaz eta errutinaz", "egindako ustiapena."],
+    alts: [
+      "Iturribero Abereakeko laborantza lurra",
+      "Iturribero Abereakeko nekazaritza makineria",
+      "Ustiapenaren inguruan loratuta dagoen laborea",
+    ],
+  },
+}[locale];
 ---
 
 <section class="section-shell bg-stone-50">
   <div class="section-inner">
     <div class="max-w-2xl">
       <p class="eyebrow mb-3">
-        Entorno y trabajo
+        {copy.eyebrow}
       </p>
 
       <h2 class="section-title">
-        Una explotacion hecha
-        <span class="block">de paisaje y rutina.</span>
+        {copy.title[0]}
+        <span class="block">{copy.title[1]}</span>
       </h2>
     </div>
 
     <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-[1.05fr_0.95fr_1fr]">
       <Image
         src={tierra}
-        alt="Tierra de cultivo en Iturribero Abereak"
+        alt={copy.alts[0]}
         class="h-72 w-full rounded-[1.75rem] border border-stone-200 object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.35)] md:h-[28rem]"
         sizes="(min-width: 1024px) 34vw, 100vw"
         loading="lazy"
@@ -29,7 +57,7 @@ import girasol from "@/assets/agricultura/girasol.jpg";
 
       <Image
         src={deutz}
-        alt="Maquinaria agricola en Iturribero Abereak"
+        alt={copy.alts[1]}
         class="h-72 w-full rounded-[1.75rem] border border-stone-200 object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.35)] md:h-[24rem] lg:mt-10"
         sizes="(min-width: 1024px) 30vw, 100vw"
         loading="lazy"
@@ -37,7 +65,7 @@ import girasol from "@/assets/agricultura/girasol.jpg";
 
       <Image
         src={girasol}
-        alt="Cultivo en flor dentro del entorno de la explotacion"
+        alt={copy.alts[2]}
         class="h-72 w-full rounded-[1.75rem] border border-stone-200 object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.35)] md:col-span-2 md:h-[20rem] lg:col-span-1 lg:h-[30rem]"
         sizes="(min-width: 1024px) 32vw, 100vw"
         loading="lazy"

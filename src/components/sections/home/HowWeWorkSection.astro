@@ -1,58 +1,101 @@
 ---
 import { Image } from "astro:assets";
+import type { Locale } from "../../../i18n";
 
 import vaca from "@/assets/ganaderia/vaca_primer-plano.jpg";
 import tierra from "@/assets/agricultura/tierra.jpg";
 import vacas from "@/assets/ganaderia/vacas.jpg";
 
-const cards = [
-  {
-    title: "Bienestar animal",
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    eyebrow: "Nuestra manera de hacer",
+    title: "Menos artificio, más campo real.",
     description:
-      "Manejo responsable, observacion continua y cuidado diario del ganado en cada etapa.",
-    tags: ["Cuidado", "Rutina", "Seguimiento"],
-    image: vaca,
+      "Trabajo constante, decisiones responsables y una forma de hacer las cosas que se sostiene sobre el terreno todos los días.",
+    cards: [
+      {
+        title: "Bienestar animal",
+        description:
+          "Manejo responsable, observación continua y cuidado diario del ganado en cada etapa.",
+        tags: ["Cuidado", "Rutina", "Seguimiento"],
+        image: vaca,
+      },
+      {
+        title: "Cuidado del suelo",
+        description:
+          "Prácticas que respetan la fertilidad, el ritmo natural de la tierra y cada campaña.",
+        tags: ["Suelo", "Equilibrio", "Planificación"],
+        image: tierra,
+      },
+      {
+        title: "Trabajo claro",
+        description:
+          "Una explotación que busca consistencia, decisiones honestas y mejora constante.",
+        tags: ["Claridad", "Control", "Continuidad"],
+        image: vacas,
+      },
+    ],
   },
-  {
-    title: "Cuidado del suelo",
+  eu: {
+    eyebrow: "Lan egiteko modua",
+    title: "Itxura gutxiago eta benetako landa gehiago.",
     description:
-      "Practicas que respetan la fertilidad, el ritmo natural de la tierra y cada campana.",
-    tags: ["Suelo", "Equilibrio", "Planificacion"],
-    image: tierra,
+      "Egunerokoan oinarritutako lan jarraitua, erabaki arduratsuak eta egiteko modu garbia: horixe da gure konpromisoa.",
+    cards: [
+      {
+        title: "Animalien ongizatea",
+        description:
+          "Ardurazko kudeaketa, etengabeko behaketa eta aziendaren eguneroko zaintza etapa bakoitzean.",
+        tags: ["Zaintza", "Errutina", "Jarraipena"],
+        image: vaca,
+      },
+      {
+        title: "Lurraren zaintza",
+        description:
+          "Lurraren emankortasuna, erritmo naturala eta sasoi bakoitza errespetatzen dituzten praktikak.",
+        tags: ["Lurra", "Oreka", "Plangintza"],
+        image: tierra,
+      },
+      {
+        title: "Lan argia",
+        description:
+          "Koherentzia, erabaki zintzoak eta etengabeko hobekuntza bilatzen dituen ustiapena.",
+        tags: ["Argitasuna", "Kontrola", "Jarraitutasuna"],
+        image: vacas,
+      },
+    ],
   },
-  {
-    title: "Trabajo claro",
-    description:
-      "Una explotacion que busca consistencia, decisiones honestas y mejora constante.",
-    tags: ["Claridad", "Control", "Continuidad"],
-    image: vacas,
-  },
-];
+}[locale];
 ---
 
 <section class="bg-white">
   <div class="mx-auto max-w-7xl px-6 py-18 md:px-8 md:py-24">
     <header class="max-w-3xl">
       <p class="eyebrow text-stone-500">
-        Nuestra manera de hacer
+        {copy.eyebrow}
       </p>
 
       <div class="mt-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div class="max-w-4xl">
           <h2 class="max-w-[16ch] text-4xl font-semibold leading-[0.95] tracking-[-0.045em] text-stone-950 md:max-w-none md:text-6xl">
-            Menos artificio, mas campo real.
+            {copy.title}
           </h2>
         </div>
 
         <p class="max-w-xl text-base leading-7 text-stone-600 md:text-lg">
-          Trabajo constante, decisiones responsables y una forma de hacer las
-          cosas que se sostiene sobre el terreno todos los dias.
+          {copy.description}
         </p>
       </div>
     </header>
 
     <div class="mt-12 grid gap-6 lg:grid-cols-3">
-      {cards.map((card) => (
+      {copy.cards.map((card) => (
         <article class="group relative overflow-hidden rounded-[2rem] border border-stone-200 bg-stone-950 text-white shadow-[0_30px_80px_-48px_rgba(28,25,23,0.55)]">
           <div class="absolute inset-0">
             <Image

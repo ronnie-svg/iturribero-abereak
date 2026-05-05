@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+
+import GanaderiaHero from "../../components/sections/ganaderia/GanaderiaHero.astro";
+import GanaderiaIntro from "../../components/sections/ganaderia/GanaderiaIntro.astro";
+import GanaderiaVisualCta from "../../components/sections/ganaderia/GanaderiaVisualCta.astro";
+import GanaderiaGallery from "../../components/sections/ganaderia/GanaderiaGallery.astro";
+import { getAlternateEntries } from "../../i18n";
+---
+
+<Layout
+  title="Haragitarako abeltzaintza Duranan, Araban | Iturribero Abereak"
+  description="Haragitarako abeltzaintza Duranan, Araban. Animalien ongizatea, ardurazko kudeaketa, eguneroko jarraipena eta landaren erritmoari lotutako familia ustiapena."
+  image="/vaca_primer-plano.jpg"
+  canonical="https://iturriberoabereak.com/eu/abeltzaintza"
+  locale="eu"
+  pageKey="livestock"
+  alternates={getAlternateEntries("livestock")}
+>
+  <GanaderiaHero locale="eu" />
+  <GanaderiaIntro locale="eu" />
+  <GanaderiaVisualCta locale="eu" />
+  <GanaderiaGallery locale="eu" />
+</Layout>

@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+
+import AgriculturaHero from "../../components/sections/agricultura/AgriculturaHero.astro";
+import AgriculturaIntro from "../../components/sections/agricultura/AgriculturaIntro.astro";
+import AgriculturaVisualCta from "../../components/sections/agricultura/AgriculturaVisualCta.astro";
+import AgriculturaMediaGallery from "../../components/sections/agricultura/AgriculturaMediaGallery.astro";
+import { getAlternateEntries } from "../../i18n";
+---
+
+<Layout
+  title="Nekazaritza Duranan, Araban | Iturribero Abereak"
+  description="Zereal eta bazka laboreak Duranan, Araban. Garia, garagarra, oloa, artoa, koltza, zezia eta belarra plangintzaz, lurzoruaren zaintzaz eta abeltzaintzarekiko loturaz landuak."
+  image="/hero-colza.jpg"
+  canonical="https://iturriberoabereak.com/eu/nekazaritza"
+  locale="eu"
+  pageKey="agriculture"
+  alternates={getAlternateEntries("agriculture")}
+>
+  <AgriculturaHero locale="eu" />
+  <AgriculturaIntro locale="eu" />
+  <AgriculturaVisualCta locale="eu" />
+  <AgriculturaMediaGallery locale="eu" />
+</Layout>

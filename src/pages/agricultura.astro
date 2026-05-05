@@ -6,16 +6,20 @@ import AgriculturaHero from "../components/sections/agricultura/AgriculturaHero.
 import AgriculturaIntro from "../components/sections/agricultura/AgriculturaIntro.astro";
 import AgriculturaVisualCta from "../components/sections/agricultura/AgriculturaVisualCta.astro";
 import AgriculturaMediaGallery from "../components/sections/agricultura/AgriculturaMediaGallery.astro";
+import { getAlternateEntries } from "../i18n";
 ---
 
 <Layout
-  title="Agricultura en Durana, Alava | Iturribero Abereak"
-  description="Cultivos cerealistas y forrajeros en Durana, Alava. Trigo, cebada, avena, maiz, colza, veza y hierba trabajados con planificacion, cuidado del suelo y conexion con la ganaderia."
+  title="Agricultura en Durana, Álava | Iturribero Abereak"
+  description="Cultivos cerealistas y forrajeros en Durana, Álava. Trigo, cebada, avena, maíz, colza, veza y hierba trabajados con planificación, cuidado del suelo y conexión con la ganadería."
   image="/hero-colza.jpg"
   canonical="https://iturriberoabereak.com/agricultura"
+  locale="es"
+  pageKey="agriculture"
+  alternates={getAlternateEntries("agriculture")}
 >
-  <AgriculturaHero />
-  <AgriculturaIntro />
-  <AgriculturaVisualCta />
-  <AgriculturaMediaGallery />
+  <AgriculturaHero locale="es" />
+  <AgriculturaIntro locale="es" />
+  <AgriculturaVisualCta locale="es" />
+  <AgriculturaMediaGallery locale="es" />
 </Layout>

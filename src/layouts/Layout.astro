@@ -4,6 +4,8 @@ import SeoHead from "../components/layouts/SeoHead.astro";
 import SiteHeader from "../components/layouts/SiteHeader.astro";
 import SiteFooter from "../components/layouts/SiteFooter.astro";
 import HeaderScrollScript from "../components/layouts/HeaderScrollScript.astro";
+import type { Locale, PageKey } from "../i18n";
+import { localeMeta } from "../i18n";
 
 export interface Props {
   title?: string;
@@ -13,12 +15,15 @@ export interface Props {
   type?: string;
   robots?: string;
   headerOffset?: boolean;
+  locale?: Locale;
+  pageKey?: PageKey;
+  alternates?: Record<string, string>;
 }
 
 const pageTitle = Astro.props.title ?? "Iturribero Abereak";
 const pageDescription =
   Astro.props.description ??
-  "Explotacion agroganadera familiar en Durana, Alava. Vacuno de carne y cultivos cerealistas.";
+  "Explotación agroganadera familiar en Durana, Álava. Vacuno de carne y cultivos cerealistas.";
 
 const pageImage = Astro.props.image ?? "/hero-colza.jpg";
 const canonicalUrl = Astro.props.canonical ?? Astro.url.href;
@@ -27,9 +32,13 @@ const pageRobots =
   Astro.props.robots ??
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const headerOffset = Astro.props.headerOffset ?? false;
+const locale = Astro.props.locale ?? "es";
+const pageKey = Astro.props.pageKey;
+const alternates = Astro.props.alternates ?? {};
+const langMeta = localeMeta[locale];
 ---
 
-<html lang="es">
+<html lang={langMeta.lang}>
   <head>
     <SeoHead
       title={pageTitle}
@@ -38,6 +47,9 @@ const headerOffset = Astro.props.headerOffset ?? false;
       canonical={canonicalUrl}
       type={pageType}
       robots={pageRobots}
+      lang={langMeta.lang}
+      ogLocale={langMeta.ogLocale}
+      alternates={alternates}
     />
   </head>
 
@@ -53,13 +65,13 @@ const headerOffset = Astro.props.headerOffset ?? false;
     </noscript>
     <!-- End Google Tag Manager -->
 
-    <SiteHeader />
+    <SiteHeader locale={locale} pageKey={pageKey} />
 
     <main class={`min-h-screen ${headerOffset ? "pt-20 md:pt-24" : ""}`}>
       <slot />
     </main>
 
-    <SiteFooter />
+    <SiteFooter locale={locale} pageKey={pageKey} />
     <HeaderScrollScript />
   </body>
 </html>

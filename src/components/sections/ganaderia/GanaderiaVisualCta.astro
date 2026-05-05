@@ -1,15 +1,44 @@
 ---
 import { Image } from "astro:assets";
 import vacaImg from "@/assets/ganaderia/vaca_2.jpg";
+import type { Locale } from "../../../i18n";
+import { getLocalizedPath } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    href: getLocalizedPath("contact", locale),
+    alt: "Ganado",
+    eyebrow: "Explotación pequeña",
+    title: "Cercania y control",
+    description:
+      "Un tamaño humano permite estar encima del día a día y responder con más calma y criterio.",
+    cta: "Ir a contacto",
+  },
+  eu: {
+    href: getLocalizedPath("contact", locale),
+    alt: "Azienda",
+    eyebrow: "Ustiapen txikia",
+    title: "Hurbiltasuna eta kontrola",
+    description:
+      "Giza eskalako ustiapen batek egunerokoaren gainean egoteko aukera ematen digu, patxadaz eta irizpide profesional bati jarraituz.",
+    cta: "Jarri gurekin harremanetan",
+  },
+}[locale];
 ---
 
 <section class="section-shell bg-white py-2">
   <div class="section-inner py-0">
-    <a href="/contacto" class="group block">
+    <a href={copy.href} class="group block">
       <div class="image-card h-105 border border-gray-200 shadow-[0_28px_80px_-56px_rgba(0,0,0,0.55)]">
         <Image
           src={vacaImg}
-          alt="Ganado"
+          alt={copy.alt}
           class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
           sizes="100vw"
           loading="lazy"
@@ -19,19 +48,19 @@ import vacaImg from "@/assets/ganaderia/vaca_2.jpg";
 
         <div class="absolute bottom-8 left-8 right-8 max-w-md rounded-[1.5rem] border border-white/10 bg-black/18 p-6 text-white backdrop-blur-sm md:bottom-10 md:left-10 md:right-auto">
           <p class="eyebrow-light mb-3">
-            Explotacion pequena
+            {copy.eyebrow}
           </p>
 
           <h3 class="panel-title">
-            Cercania y control
+            {copy.title}
           </h3>
 
           <p class="section-copy-light mt-3">
-            Un tamano humano permite estar encima del dia a dia y responder con mas calma y criterio.
+            {copy.description}
           </p>
 
           <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition group-hover:gap-3 group-hover:text-amber-200">
-            Ir a contacto
+            {copy.cta}
             <span aria-hidden="true">+</span>
           </div>
         </div>

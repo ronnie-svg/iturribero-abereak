@@ -6,6 +6,9 @@ export interface Props {
   canonical: string;
   type?: string;
   robots?: string;
+  lang?: string;
+  ogLocale?: string;
+  alternates?: Record<string, string>;
 }
 
 const {
@@ -15,6 +18,9 @@ const {
   canonical,
   type = "website",
   robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  lang = "es",
+  ogLocale = "es_ES",
+  alternates = {},
 } = Astro.props;
 const imageUrl = image.startsWith("http")
   ? image
@@ -29,7 +35,7 @@ const schema = {
       url: canonical,
       name: "Iturribero Abereak",
       description,
-      inLanguage: "es",
+      inLanguage: lang,
     },
     {
       "@type": "WebPage",
@@ -43,7 +49,7 @@ const schema = {
         "@id": `${canonical}#organization`,
       },
       description,
-      inLanguage: "es",
+      inLanguage: lang,
     },
     {
       "@type": "LocalBusiness",
@@ -55,12 +61,12 @@ const schema = {
       address: {
         "@type": "PostalAddress",
         addressLocality: "Durana",
-        addressRegion: "Alava",
+        addressRegion: "Álava",
         addressCountry: "ES",
       },
       areaServed: {
         "@type": "AdministrativeArea",
-        name: "Alava",
+        name: "Álava",
       },
     },
   ],
@@ -87,6 +93,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="canonical" href={canonical} />
 <link rel="icon" href="/Iturriberoabereaklogo.svg" type="image/svg+xml" />
+{Object.entries(alternates).map(([hrefLang, href]) => (
+  <link rel="alternate" hreflang={hrefLang} href={href} />
+))}
+<link rel="alternate" hreflang="x-default" href={alternates.es ?? canonical} />
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -94,7 +104,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={imageUrl} />
 <meta property="og:image:alt" content={title} />
-<meta property="og:locale" content="es_ES" />
+<meta property="og:locale" content={ogLocale} />
 <meta property="og:site_name" content="Iturribero Abereak" />
 
 <meta name="twitter:card" content="summary_large_image" />

@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+import AboutHero from "../../components/sections/about/AboutHero.astro";
+import AboutOverview from "../../components/sections/about/AboutOverview.astro";
+import AboutNarrative from "../../components/sections/about/AboutNarrative.astro";
+import AboutGallery from "../../components/sections/about/AboutGallery.astro";
+import TimelineGeneraciones from "../../components/sections/GenerationsSection.astro";
+import { getAlternateEntries } from "../../i18n";
+---
+
+<Layout
+  title="Gure historia | Iturribero Abereak Duranan, Araban"
+  description="Ezagutu Iturribero Abereak: Duranan, Araban, dagoen familia ustiapen agroabeltzaina. Hirugarren belaunaldia, haragitarako azienda, landako lana eta jarraitutasunean oinarritutako egiteko modu bat."
+  image="/txabola.jpg"
+  canonical="https://iturriberoabereak.com/eu/gure-historia"
+  locale="eu"
+  pageKey="about"
+  alternates={getAlternateEntries("about")}
+>
+  <AboutHero locale="eu" />
+  <AboutOverview locale="eu" />
+  <AboutNarrative locale="eu" />
+  <TimelineGeneraciones locale="eu" />
+  <AboutGallery locale="eu" />
+</Layout>

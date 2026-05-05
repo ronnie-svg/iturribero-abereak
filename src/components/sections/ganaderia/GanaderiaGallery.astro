@@ -2,6 +2,32 @@
 import { Image } from "astro:assets";
 import mcormickImg from "../../../assets/agricultura/mcormick2.jpg";
 import deutzImg from "../../../assets/agricultura/deutz.jpg";
+import type { Locale } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    eyebrow: "Campo y trabajo real",
+    title: ["Día a día en", "la explotación."],
+    description:
+      "Imágenes y vídeos del trabajo diario, la maquinaria y el ritmo real del campo que acompaña también a la ganadería.",
+    mcormickAlt: "Tractor McCormick en la explotación",
+    deutzAlt: "Tractor Deutz en la explotación",
+  },
+  eu: {
+    eyebrow: "Lurra eta benetako lana",
+    title: ["Egunerokoa", "ustiapenean."],
+    description:
+      "Eguneroko lanaren, makineriaren eta abeltzaintza laguntzen duen landaren benetako erritmoaren irudiak eta bideoak.",
+    mcormickAlt: "McCormick traktorea ustiapenean",
+    deutzAlt: "Deutz traktorea ustiapenean",
+  },
+}[locale];
 ---
 
 <section class="section-shell bg-stone-50">
@@ -9,52 +35,51 @@ import deutzImg from "../../../assets/agricultura/deutz.jpg";
     <div class="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
       <div class="max-w-xl">
         <p class="eyebrow mb-3">
-          Campo y trabajo real
+          {copy.eyebrow}
         </p>
 
         <h2 class="section-title">
-          Dia a dia en
-          <span class="block">la explotacion.</span>
+          {copy.title[0]}
+          <span class="block">{copy.title[1]}</span>
         </h2>
 
         <p class="section-copy mt-4">
-          Imagenes y videos del trabajo diario, la maquinaria y el ritmo real
-          del campo que acompaña tambien a la ganaderia.
+          {copy.description}
         </p>
       </div>
 
       <div class="grid gap-5 md:grid-cols-2">
-      <video
-        class="h-72 w-full rounded-[1.75rem] border border-stone-200 bg-black object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.65)] md:row-span-2 md:h-full"
-        src="/reels/cosechando.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-      ></video>
+        <video
+          class="h-72 w-full rounded-[1.75rem] border border-stone-200 bg-black object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.65)] md:row-span-2 md:h-full"
+          src="/reels/cosechando.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
 
         <Image
           src={mcormickImg}
-          alt="Tractor McCormick en la explotacion"
+          alt={copy.mcormickAlt}
           class="h-72 w-full rounded-[1.75rem] border border-stone-200 object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.45)]"
           sizes="(min-width: 1024px) 28vw, 50vw"
           loading="lazy"
         />
 
-      <video
-        class="h-56 w-full rounded-[1.75rem] border border-stone-200 bg-black object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.65)]"
-        src="/reels/cosechadora-remolque.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-      ></video>
+        <video
+          class="h-56 w-full rounded-[1.75rem] border border-stone-200 bg-black object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.65)]"
+          src="/reels/cosechadora-remolque.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
 
         <Image
           src={deutzImg}
-          alt="Tractor Deutz en la explotacion"
+          alt={copy.deutzAlt}
           class="h-72 w-full rounded-[1.75rem] border border-stone-200 object-cover shadow-[0_20px_50px_-42px_rgba(28,25,23,0.45)] md:col-span-2"
           sizes="(min-width: 1024px) 56vw, 100vw"
           loading="lazy"

@@ -1,49 +1,89 @@
 ---
 import { Image } from "astro:assets";
 import hero from "@/assets/agricultura/hero-colza.jpg";
+import type { Locale } from "../../../i18n";
 
-const notes = [
-  "Cultivos cerealistas y forrajeros",
-  "Trabajo ligado a la campana",
-  "Conexion directa con la ganaderia",
-];
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    alt: "Cultivos de Iturribero Abereak en Durana, \u00C1lava",
+    title: ["El campo marca", "el calendario."],
+    description:
+      "Cultivamos cereal y forraje en Durana, \u00C1lava, con decisiones que se toman seg\u00FAn suelo, clima, tiempo de trabajo y necesidades reales de la explotaci\u00F3n.",
+    notes: ["Cultivos cerealistas y forrajeros", "Conexi\u00F3n con la ganader\u00EDa"],
+    panels: [
+      {
+        title: "Suelo",
+        text: "Mantener la tierra en condiciones para la siguiente campa\u00F1a.",
+      },
+      {
+        title: "Ritmo",
+        text: "Sembrar, seguir y cosechar cuando el momento acompa\u00F1a.",
+      },
+      {
+        title: "Ganado",
+        text: "Parte del cultivo vuelve a la explotaci\u00F3n como alimento.",
+      },
+    ],
+  },
+  eu: {
+    alt: "Iturribero Abereakeko laboreak Duranan, Araban",
+    title: ["Lurraren", "erritmoan."],
+    description:
+      "Duranan zereala eta bazka lantzen ditugu, betiere lurzoruaren, eguraldiaren eta ustiapenaren benetako beharren arabera. Nekazaritza eta abeltzaintza eskutik doaz gurean, ziklo naturala itxiz.",
+    notes: ["Zereal eta bazka laboreak", "Abeltzaintzarekin lotura zuzena"],
+    panels: [
+      {
+        title: "Lurra",
+        text: "Lurra hurrengo sasoirako baldintza onean mantentzea.",
+      },
+      {
+        title: "Erritmoa",
+        text: "Une egokian erein, jarraitu eta bildu.",
+      },
+      {
+        title: "Azienda",
+        text: "Laborearen zati bat ustiapenera itzultzen da elikagai gisa.",
+      },
+    ],
+  },
+}[locale];
 ---
 
-<section class="relative isolate overflow-hidden border-b border-stone-200 bg-stone-100 text-stone-950">
+<section class="relative isolate overflow-hidden border-b border-stone-200 bg-stone-100 text-white">
   <div class="absolute inset-0">
     <Image
       src={hero}
-      alt="Cultivos de Iturribero Abereak en Durana, Alava"
+      alt={copy.alt}
       class="h-full w-full object-cover object-center"
       sizes="100vw"
       loading="eager"
       priority
     />
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,_rgba(245,245,244,0.74)_0%,_rgba(245,245,244,0.56)_34%,_rgba(245,245,244,0.08)_64%,_rgba(28,25,23,0.24)_100%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.08),_transparent_30%)]"></div>
+    <div class="absolute inset-0 bg-black/18"></div>
   </div>
 
   <div class="relative mx-auto flex min-h-[58vh] max-w-7xl items-end px-6 py-14 md:min-h-[62vh] md:px-8 md:py-16">
     <div class="grid w-full gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
       <div class="max-w-2xl">
-        <p class="eyebrow text-stone-500">
-          Agricultura
-        </p>
-
-        <h1 class="mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.045em] text-stone-950 sm:text-6xl lg:text-7xl">
-          El campo marca
+        <h1 class="text-5xl font-semibold leading-[0.96] tracking-[-0.045em] text-white [text-shadow:0_10px_30px_rgba(0,0,0,0.35)] sm:text-6xl lg:text-7xl">
+          {copy.title[0]}
           <br />
-          el calendario.
+          {copy.title[1]}
         </h1>
 
-        <p class="mt-6 max-w-xl text-base leading-7 text-stone-600 md:text-lg">
-          Cultivamos cereal y forraje en Durana, Alava, con decisiones que se
-          toman segun suelo, clima, tiempo de trabajo y necesidades reales de la explotacion.
+        <p class="mt-6 max-w-xl text-base leading-7 text-white/88 [text-shadow:0_6px_20px_rgba(0,0,0,0.3)] md:text-lg">
+          {copy.description}
         </p>
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          {notes.map((note) => (
-            <span class="rounded-full border border-stone-300 bg-white/80 px-4 py-2 text-sm text-stone-700 shadow-[0_10px_24px_-18px_rgba(28,25,23,0.35)] backdrop-blur-sm">
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          {copy.notes.map((note) => (
+            <span class="rounded-full border border-stone-300/85 bg-white/66 px-3.5 py-1.5 text-[12px] font-medium text-stone-600 shadow-[0_10px_24px_-22px_rgba(28,25,23,0.26)] backdrop-blur-sm sm:text-sm">
               {note}
             </span>
           ))}
@@ -54,28 +94,28 @@ const notes = [
         <div class="grid gap-px overflow-hidden rounded-[2rem] border border-stone-300 bg-stone-300 shadow-[0_30px_80px_-56px_rgba(28,25,23,0.45)] md:grid-cols-3">
           <article class="bg-white/86 p-5 backdrop-blur-sm">
             <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
-              Suelo
+              {copy.panels[0].title}
             </p>
             <p class="mt-3 text-lg font-semibold leading-tight text-stone-950">
-              Mantener la tierra en condiciones para la siguiente campana.
+              {copy.panels[0].text}
             </p>
           </article>
 
           <article class="bg-white/78 p-5 backdrop-blur-sm">
             <p class="text-xs uppercase tracking-[0.28em] text-stone-500">
-              Ritmo
+              {copy.panels[1].title}
             </p>
             <p class="mt-3 text-lg font-semibold leading-tight text-stone-950">
-              Sembrar, seguir y cosechar cuando el momento acompana.
+              {copy.panels[1].text}
             </p>
           </article>
 
           <article class="bg-stone-950 p-5 text-white">
             <p class="text-xs uppercase tracking-[0.28em] text-amber-200/90">
-              Ganado
+              {copy.panels[2].title}
             </p>
             <p class="mt-3 text-lg font-semibold leading-tight">
-              Parte del cultivo vuelve a la explotacion como alimento.
+              {copy.panels[2].text}
             </p>
           </article>
         </div>

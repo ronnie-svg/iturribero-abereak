@@ -1,50 +1,93 @@
 ---
-const pillars = [
-  {
-    step: "01",
-    title: "Tercera generacion",
+import type { Locale } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = Astro.props.locale ?? "es";
+
+const copy = {
+  es: {
+    eyebrow: "Nuestra manera de hacer",
+    title: ["Menos ruido.", "Más campo."],
     description:
-      "Un oficio heredado y llevado adelante con escala humana, continuidad y trabajo diario.",
-    tone: "light",
+      "Detrás de Iturribero Abereak hay una historia familiar ligada al campo, al cuidado del ganado y a una manera de trabajar que no busca artificio, sino continuidad, presencia y criterio.",
+    pillars: [
+      {
+        step: "01",
+        title: "Tercera generación",
+        description:
+          "Un oficio heredado y llevado adelante con escala humana, continuidad y trabajo diario.",
+        tone: "light",
+      },
+      {
+        step: "02",
+        title: "Vacuno de carne",
+        description:
+          "Seguimiento constante, bienestar animal y decisiones tomadas desde el ritmo real del campo.",
+        tone: "dark",
+      },
+      {
+        step: "03",
+        title: "Ciclo campo-ganado",
+        description:
+          "Cultivos propios conectados con la alimentación del ganado y con el equilibrio general de la explotación.",
+        tone: "light",
+      },
+    ],
   },
-  {
-    step: "02",
-    title: "Vacuno de carne",
+  eu: {
+    eyebrow: "Lan egiteko modua",
+    title: ["Zarata gutxiago.", "Landa gehiago."],
     description:
-      "Seguimiento constante, bienestar animal y decisiones tomadas desde el ritmo real del campo.",
-    tone: "dark",
+      "Iturribero Abereak proiektuaren atzean, lurrari eta abereen zaintzari lotutako familia-historia dago; artifiziorik gabe, jarraitutasuna eta presentzia ardatz dituena.",
+    pillars: [
+      {
+        step: "01",
+        title: "Hirugarren belaunaldia",
+        description:
+          "Jasotako ofizioa, giza eskalara ekarria eta eguneroko lanaren bidez berrituatua.",
+        tone: "light",
+      },
+      {
+        step: "02",
+        title: "Haragitarako azienda",
+        description:
+          "Ongizatea eta landaren benetako erritmoan oinarritutako erabakiak.",
+        tone: "dark",
+      },
+      {
+        step: "03",
+        title: "Lur-azienda zikloa",
+        description:
+          "Ustiapenaren oreka orokorra bermatzen duten labore propioak.",
+        tone: "light",
+      },
+    ],
   },
-  {
-    step: "03",
-    title: "Ciclo campo-ganado",
-    description:
-      "Cultivos propios conectados con la alimentacion del ganado y con el equilibrio general de la explotacion.",
-    tone: "light",
-  },
-];
+}[locale];
 ---
 
 <section class="section-shell border-t border-stone-200 bg-white">
   <div class="section-inner">
     <div class="max-w-4xl">
       <p class="eyebrow mb-5">
-        Nuestra manera de hacer
+        {copy.eyebrow}
       </p>
 
       <h2 class="text-4xl font-semibold leading-[0.98] tracking-[-0.045em] text-stone-950 md:text-5xl">
-        Menos ruido.
-        <span class="block">Mas campo.</span>
+        {copy.title[0]}
+        <span class="block">{copy.title[1]}</span>
       </h2>
 
       <p class="mt-6 max-w-2xl text-base leading-7 text-stone-600 md:text-lg">
-        Detras de Iturribero Abereak hay una historia familiar ligada al campo,
-        al cuidado del ganado y a una manera de trabajar que no busca artificio,
-        sino continuidad, presencia y criterio.
+        {copy.description}
       </p>
     </div>
 
     <div class="mt-12 grid gap-5 md:grid-cols-3">
-      {pillars.map((item) => (
+      {copy.pillars.map((item) => (
         <article
           class={`rounded-[2rem] border p-6 shadow-[0_20px_50px_-42px_rgba(28,25,23,0.22)] ${
             item.tone === "dark"

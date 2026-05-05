@@ -1,58 +1,120 @@
 ---
 import { Image } from "astro:assets";
 import hero from "@/assets/agricultura/hero-colza.jpg";
+
+const quickFacts = [
+  "Ganaderia de vacuno de carne",
+  "Cultivos cerealistas y forrajeros",
+  "Trabajo familiar en Durana, Alava",
+];
+
+const stats = [
+  {
+    value: "Familia",
+    label: "Proyecto arraigado al territorio y al trabajo de cada campana.",
+  },
+  {
+    value: "Ganaderia",
+    label: "Cuidado diario del bienestar animal con manejo responsable.",
+  },
+  {
+    value: "Agricultura",
+    label: "Ciclos de siembra, forraje y cereal conectados con la explotacion.",
+  },
+];
 ---
 
-<section class="relative min-h-screen -mt-16 pt-16 md:mt-0 md:pt-0 overflow-hidden">
-  <Image
-    src={hero}
-    alt="Explotación agroganadera en Durana, Álava"
-    class="absolute inset-0 w-full h-full object-cover"
-    sizes="100vw"
-    loading="eager"
-    priority
-  />
+<section class="relative isolate overflow-hidden bg-stone-950 text-white">
+  <div class="absolute inset-0">
+    <Image
+      src={hero}
+      alt="Explotacion agroganadera en Durana, Alava"
+      class="h-full w-full object-cover object-center"
+      sizes="100vw"
+      loading="eager"
+      priority
+    />
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(246,196,111,0.22),_transparent_38%),linear-gradient(120deg,_rgba(17,24,39,0.66),_rgba(17,24,39,0.2)_42%,_rgba(0,0,0,0.5))]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_top,_rgba(12,10,9,0.74),_rgba(12,10,9,0.08)_35%,_rgba(12,10,9,0.48))]"></div>
+  </div>
 
-  <!-- Solo una capa muy suave general -->
-  <div class="absolute inset-0 bg-black/10"></div>
-
-  <!-- Refuerzo solo arriba para que el menú se lea -->
-  <div class="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-black/45 to-transparent"></div>
-
-  <div class="relative z-10 flex min-h-screen items-center">
-    <div class="max-w-7xl mx-auto w-full px-8">
-      <div class="max-w-2xl text-white">
-        <p class="eyebrow mb-5">
+  <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 md:px-8">
+    <div class="grid w-full gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-end">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/84 backdrop-blur-sm">
+          <span class="h-2 w-2 rounded-full bg-amber-300"></span>
           Iturribero Abereak
-        </p>
+        </div>
 
-        <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
-          Ganadería y agricultura
+        <h1 class="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-balance sm:text-6xl lg:text-7xl">
+          Campo vivo,
           <br />
-          en Durana, Álava
+          ganado cuidado
+          <br />
+          y tierra en marcha.
         </h1>
 
-        <p class="mt-6 text-lg text-white/90 leading-relaxed">
-          Explotación agroganadera familiar centrada en el cuidado del ganado,
-          el trabajo de la tierra y el respeto por cada campaña.
+        <p class="mt-6 max-w-2xl text-base leading-7 text-white/78 md:text-lg">
+          Explotacion agroganadera familiar en Durana, Alava, donde la
+          ganaderia y la agricultura se trabajan como una misma forma de
+          entender el territorio.
         </p>
 
-        <div class="mt-8 flex flex-wrap gap-4">
+        <div class="mt-8 flex flex-wrap gap-3">
+          {quickFacts.map((fact) => (
+            <span class="rounded-full border border-white/15 bg-black/10 px-4 py-2 text-sm text-white/90 backdrop-blur-sm">
+              {fact}
+            </span>
+          ))}
+        </div>
+
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row">
           <a
             href="/ganaderia"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-gray-900 text-sm font-semibold hover:bg-gray-200 transition"
+            class="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-amber-200"
           >
-            Ganadería →
+            Ver ganaderia
           </a>
 
           <a
             href="/agricultura"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white text-sm font-semibold hover:bg-white hover:text-gray-900 transition"
+            class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-stone-950"
           >
-            Agricultura →
+            Ver agricultura
           </a>
         </div>
       </div>
+
+      <aside class="justify-self-end rounded-[2rem] border border-white/15 bg-white/8 p-5 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-6 lg:max-w-md">
+        <p class="text-xs uppercase tracking-[0.32em] text-white/55">
+          Un modo de trabajar
+        </p>
+
+        <p class="mt-4 text-2xl font-semibold leading-tight text-white">
+          Cuidamos animales, cultivos y tiempo de campo con la misma mirada.
+        </p>
+
+        <div class="mt-6 space-y-4">
+          {stats.map((item) => (
+            <div class="rounded-2xl border border-white/10 bg-black/10 p-4">
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-amber-200/90">
+                {item.value}
+              </p>
+              <p class="mt-2 text-sm leading-6 text-white/72">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="/contacto"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white no-underline transition hover:text-amber-200"
+        >
+          Ir a contacto
+          <span aria-hidden="true">+</span>
+        </a>
+      </aside>
     </div>
   </div>
 </section>
